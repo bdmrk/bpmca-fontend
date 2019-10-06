@@ -1,0 +1,386 @@
+<div class="mobileHeader desktopHidden">
+    <div class="headerContent">
+
+        <div class="logo">
+            <a routerLink="/">
+                <img src="assets/images/logos/edutubeLogo.png" alt="">
+            </a>
+        </div>
+        <ul class="topHeaderIcons">
+            <!-- <li>
+                <a (click)="goCart(itemCount)" matTooltip="Shopping Cart" mat-icon-button color="warn">
+                    <mat-icon [matBadgeHidden]="itemCount == 0" matBadge="{{itemCount}}">shopping_cart
+                    </mat-icon>
+                </a>
+            </li> -->
+
+            <!-- <li class="header-icon">
+                <a mat-icon-button class="mp-0 m-10" routerLink="/user-dashboard/complaint/add"
+                    matTooltip="Help Center">
+                    <mat-icon class="icon-complaint">perm_phone_msg</mat-icon>
+                </a>
+            </li> -->
+
+             <li *ngIf="!isLoggedin">
+                <a routerLink="/login" matTooltip="Login / Sign Up" mat-icon-button>
+                    <mat-icon>person</mat-icon>
+                </a>
+            </li> 
+            <li *ngIf="isLoggedin">
+                <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+                    <div fxLayout="row" fxLayoutAlign="center center">
+                        <div class="headerAvatar">
+                            <img class="avatar" src="{{ profile_image }}">
+                            <!-- <span class="username hiddenMobile mr-12" fxHide
+                                fxShow.gt-sm>{{ userData ? userData.name.substring(0,4) : 'Charlie Adams' }}</span> -->
+                            <mat-icon class="s-16 down-arrow" fxHide.xs>keyboard_arrow_down</mat-icon>
+                        </div>
+                    </div>
+                </button>
+
+                <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+                    <a href="/dashboard" mat-menu-item class="">
+                        <mat-icon>home</mat-icon>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a mat-menu-item class="" (click)="logout()">
+                        <mat-icon>exit_to_app</mat-icon>
+                        <span>Logout</span>
+                    </a>
+                </mat-menu>
+            </li>
+
+            <li>
+                <a mat-icon-button class="searchIconPadding">
+                    <mat-icon (click)="expand(2)">search</mat-icon>
+                </a>
+                <div class="serachBar" [ngClass]="collapsed?'search-bar-collapser':'search-bar-expand'">
+
+                    <mat-form-field appearance="fill">
+
+                        <mat-label>Search here</mat-label>
+                        <mat-icon matPrefix>search</mat-icon>
+                        <input matInput [(ngModel)]="search" #courseSearchInput2>
+                        <mat-icon matSuffix (click)="collapse()">close</mat-icon>
+
+                    </mat-form-field>
+                    <button mat-button class="btnTheme mobileSearchBtn" (click)="searchCourse()"> Search </button>
+
+                </div>
+            </li>
+
+            <li>
+                <div class="searchsuggestion">
+                    <div *ngIf="!collapsed">
+                        <mat-list role="list">
+                            <mat-list-item role="listitem" (click)="searchAction(name.title)"
+                                *ngFor="let name of searchResponse">
+                                {{name.title}}
+                            </mat-list-item>
+                        </mat-list>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- <div class="mobileNavBtn">
+        <div class="btn ">
+            <a routerLink="/live-classes" mat-raised-button>Live Class</a>
+        </div>
+        <div class="btn">
+            <a routerLink="/video-courses" mat-raised-button>Videos</a>
+        </div>
+        <div class="btn">
+            <a routerLink="/registration" mat-raised-button>Become A Tutor</a>
+        </div>
+    </div> -->
+</div>
+
+<div #desktopheader id="navbar" *ngIf="collapsed" class="mobileHidden desktopHeader">
+
+    <div class="logoContainer">
+        <div class="logo" (click)="openCourse('all')">
+            <a routerLink="/">
+                <img src="assets/images/logos/edutubeLogo.png" alt="">
+            </a>
+        </div>
+
+        <ul>
+            <!-- <li (click)="openCourse('course')">
+                <a [class.activeMenu]="isCourseOpen">Courses</a>
+                <div class="mega-menu container" [class.showMegamenu]="isCourseOpen">
+                    <div class="mega-menu-grid">
+                        <div class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/courses">
+                                        <i class="material-icons">play_arrow</i>
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngFor="let category of categories;" class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/courses/{{ category.id }}">
+                                        <i class="material-icons">play_arrow</i>
+                                        {{ category.name }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </li> -->
+            <!-- <li><a roter-link="/">Home</a></li> -->
+            <li><a routerLink="/home">Home</a></li>
+            <li><a routerLink="/about-us">About Us</a></li>
+            <li><a routerLink="/tutors">Directors</a></li>
+            <li><a routerLink="/about-us">Our Activities</a></li>
+            <li><a routerLink="/home">Events</a></li>
+            <li><a routerLink="/home">Notice</a></li>           
+            <li><a routerLink="/contact-us">Contact Us</a></li>
+
+
+            <!-- <li (click)="openCourse('content')">
+                <a [class.activeMenu]="isContentOpen">Contents</a>
+                <div class="mega-menu container" [class.showMegamenu]="isContentOpen">
+                    <div class="mega-menu-grid">
+                        <div class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/contents">
+                                        <i class="material-icons">play_arrow</i>
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngFor="let category of content_categories" class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/contents/{{ category.id }}"><i
+                                            class="material-icons">play_arrow</i>{{ category.name }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li (click)="openCourse('tutor')">
+                <a [class.activeMenu]="isTutorOpen">Directors</a>
+                <div class="mega-menu container" [class.showMegamenu]="isTutorOpen">
+                    <div class="mega-menu-grid">
+                        <div class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/tutors">
+                                        <i class="material-icons">play_arrow</i>
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngFor="let tutor of tutorCatergories" class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/tutors/class/{{ tutor.id }}"><i
+                                            class="material-icons">play_arrow</i>{{ tutor.name }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li (click)="openCourse('podcast')">
+                <a [class.activeMenu]="isTutorOpen">Podcast</a>
+                <div class="mega-menu container" [class.showMegamenu]="isPodcastOpen">
+                    <div class="mega-menu-grid">
+                        <div class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/podcast">
+                                        <i class="material-icons">play_arrow</i>
+                                        All
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div *ngFor="let category of content_categories" class="grid-item">
+                            <ul>
+                                <li>
+                                    <a routerLink="/podcast/{{ category.id }}"><i
+                                            class="material-icons">play_arrow</i>{{ category.name }}</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a [matMenuTriggerFor]="preparation"> Preparation </a>
+                <mat-menu #preparation="matMenu">
+                    <button mat-menu-item [matMenuTriggerFor]="mcq">MCQ Practice</button>
+                    <button mat-menu-item [matMenuTriggerFor]="mcqTest">MCQ Test</button>
+                    <button mat-menu-item [matMenuTriggerFor]="bq">Board Questions</button>
+                </mat-menu>
+
+                <mat-menu #mcq="matMenu">
+                    <a mat-menu-item routerLink="/mcq">
+                        All
+                    </a>
+                    <div *ngFor="let category of mcq_categories;">
+                        <a mat-menu-item routerLink="/mcq/{{ category.id }}">
+                            {{ category.name }}
+                        </a>
+
+                    </div>
+                </mat-menu>
+                <mat-menu #mcqTest="matMenu">
+                    <a mat-menu-item routerLink="/mcq-test">
+                        All
+                    </a>
+                    <div *ngFor="let category of mcq_categories;">
+                        <a mat-menu-item routerLink="/mcq-test/{{ category.id }}">
+                            {{ category.name }}
+                        </a>
+                    </div>
+                </mat-menu>
+                <mat-menu #bq="matMenu">
+                    <a mat-menu-item routerLink="/bq">
+                        All
+                    </a>
+                    <div *ngFor="let category of board_categories;">
+                        <a mat-menu-item routerLink="/bq/{{ category.id }}">
+                            {{ category.name }}
+                        </a>
+                    </div>
+                </mat-menu>
+
+            </li> -->
+
+
+            <!-- <li class="header-button">
+                <a routerLink="/live-classes" class="btnColor" mat-raised-button>Live Class</a>
+            </li>
+            
+            <li class="header-button">
+                <a routerLink="/video-courses" class="btnColor" mat-raised-button>Videos</a>
+            </li>      -->
+
+        </ul>
+    </div>
+
+    <ul>
+        <!-- <li class="header-button">
+            <a routerLink="/registration" mat-raised-button class="btnColor">Become A Tutor</a>
+        </li> -->
+
+        <!-- <li class="shoppingCart">
+            <a (click)="goCart(itemCount)" class="mp-0" matTooltip="Shopping Cart" mat-icon-button>
+                <mat-icon [matBadgeHidden]="itemCount == 0" matBadge="{{itemCount}}">shopping_cart </mat-icon>
+            </a>
+            <div class="mega-menu container miniCart">
+                <div>
+                    <div class="row item" *ngFor="let item of cartItems;">
+                        <div class="col-xs-5">
+                            <div class="cartImage">
+                                <img *ngIf="item.image" src={{awsS3Path+item.image}}>
+                                <img *ngIf="!item.image" src="/assets/img/course/sample.jpg">
+                            </div>
+                        </div>
+                        <div class="col-xs-7">
+                            <p class="mp-0">{{item.title}}</p>
+                            <p class="mp-0 text-muted">By {{item.tutor.name}}</p>
+                            <p class="mp-0 h2" *ngIf="item.price">৳ {{item.price.amount | number: '1.2-2'}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <mat-card class="text-center">
+                            <h3 mat-subheader>You have {{cartItems ? cartItems.length : 0}} items in you cart.</h3>
+                            <button *ngIf="(cartItems && cartItems.length>0)" mat-button routerLink="/cart"
+                                class="btnTheme btnBlock">Go To Cart</button>
+                        </mat-card>
+                    </div>
+                </div>
+
+            </div>
+        </li> -->
+
+     
+        <li class="header-button">
+            <a mat-icon-button routerLink="/user-dashboard/complaint"><img class="icon-help" src="/assets/images/icon-help.png"></a>
+        </li>
+
+        <li *ngIf="!isLoggedin" class="header-icon mp-0">
+            <a routerLink="/login" class="mp-0 m-10" matTooltip="Login / Sign Up" mat-icon-button color="warn">
+                <mat-icon class="icon-login">person</mat-icon>
+            </a>
+        </li>
+
+        <li class="header-icon">
+            <a mat-icon-button class="mp-0" matTooltip="Search Here">
+                <mat-icon class="icon-search" (click)="expand(1)">search</mat-icon>
+            </a>
+        </li>
+
+        <div class="searchsuggestion">
+            <div *ngIf="!collapsed">
+
+                <mat-list role="list">
+                    <mat-list-item role="listitem" (click)="searchAction(name.title)"
+                        *ngFor="let name of searchResponse">
+                        {{name.title}}
+                    </mat-list-item>
+                </mat-list>
+            </div>
+        </div>
+        <li *ngIf="isLoggedin" class="header-icon mp-0">
+            <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
+                <div class="headerAvatar">
+                    <img class="avatar mr-0 mr-sm-16" src="{{ profile_image }}">
+                    <span class="username mr-12" fxHide fxShow.gt-sm>{{ splittedName ? splittedName : 'User' }}</span>
+                    <mat-icon class="s-16" fxHide.xs>keyboard_arrow_down</mat-icon>
+                </div>
+            </button>
+
+            <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+
+                <a href="/dashboard" mat-menu-item class="">
+                    <mat-icon>dashboard</mat-icon>
+                    <span>Dashboard</span>
+                </a>
+                <a href="/user-dashboard" mat-menu-item class="">
+                    <mat-icon>dashboard</mat-icon>
+                    <span>User Dashboard</span>
+                </a>
+
+                <a mat-menu-item class="" (click)="logout()">
+                    <mat-icon>exit_to_app</mat-icon>
+                    <span>Logout</span>
+                </a>
+
+            </mat-menu>
+        </li>
+    </ul>
+</div>
+<div class="serachBar" [ngClass]="collapsed?'search-bar-collapser':'search-bar-expand'">
+
+    <mat-form-field appearance="fill">
+
+        <mat-label>Search here</mat-label>
+        <mat-icon matPrefix>search</mat-icon>
+        <input style="padding-left: 0.5em;" matInput [(ngModel)]="search" #courseSearchInput
+            (keyup.enter)="searchCourse()">
+        <mat-icon matSuffix (click)="collapse()">close</mat-icon>
+    </mat-form-field>
+
+    <button mat-button class="btnTheme desktopSearchBtn" (click)="searchCourse()"> Search </button>
+
+</div>

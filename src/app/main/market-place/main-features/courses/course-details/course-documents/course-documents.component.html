@@ -1,0 +1,9 @@
+
+<mat-list role="list">
+  <mat-list-item class="listItem" *ngFor="let document of documents" (click)="downloadPDF(document.file)" role="listitem">
+    <mat-icon class="mr-5">info</mat-icon>
+      <p> {{document?.title}}</p>
+      <p> {{document?.description}}</p>
+  
+  </mat-list-item>
+</mat-list>

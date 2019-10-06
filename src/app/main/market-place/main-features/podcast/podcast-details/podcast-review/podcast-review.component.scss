@@ -1,0 +1,82 @@
+@import "src/css/variables.scss";
+
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+
+    p{
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .btnOutline{
+        height: 2.5em;
+    }
+}
+.reviewContainer{
+    text-align: center;
+    text-align: -webkit-center;
+    border: 2px solid gray;
+    padding: 4em 0;
+    p{
+        font-size: 1.3em;
+    }
+    .rating{
+        // background: $mainColor;
+        
+        padding: 0.3em;
+        border-radius: 6px;
+        margin: 1.5em;
+        width: 10em;
+    }
+    .rating:hover{
+        cursor: pointer;
+    }
+    .buttonGroup{
+        margin-top: 1.5em;
+    }
+}
+
+.pastReviewsContainer{
+    display: flex;
+}
+.avatarContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    .reviewAvatar{
+        height: 4em;
+        img{
+            height: 100%;
+            border-radius: 10em;
+        }
+    }
+}
+.mat-card{
+    margin: 1em 0;
+    background: #f7f7f7;
+    border-radius: 4px;
+    padding: 10px;
+    text-align: justify;
+}
+.commentContainer{
+    flex: 3;
+    padding-right: 20px;
+}
+
+@media (max-width: 767px) {
+
+    .top{
+        flex-direction: column;
+    }
+    .pastReviewsContainer{
+        flex-direction: column;
+    }
+    .mat-card{
+        padding: 20px;
+    }
+ 
+}

@@ -1,0 +1,96 @@
+
+
+/*FILTER IN COURSES*/
+.filter{
+    padding: 1% 12%;
+    background: #d8d4d4;
+  
+    .filterContent{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 1em;
+    }
+   
+  
+    ul{
+      list-style: none;
+      display: inline-flex;
+      margin: 0;
+      padding: 0;
+      width: 100%;
+  
+      li{
+        margin-right: 1.5em;
+        font-size: 1em;
+        padding: 0em 1em;
+  
+      }
+      .active{
+        color: #429a3b;
+        font-weight: bold;
+        background: #e2e2e2;
+        border-radius: 6px;
+        
+      }
+      li:hover{
+        background: #e2e2e2;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1401px)  { 
+   
+    .filter{
+      padding: 0.5% 12%;
+    }
+    .filterContent{
+        ul{
+            li{
+            font-size: 1.5em;
+            margin-right: 1.25em;
+            }
+        }
+    }
+  
+  
+   }
+  
+   // Large devices (desktops, 992px and up)
+  @media (min-width: 992px)  and (max-width: 1400px) { 
+
+    .filter{
+      padding: 0.4% 6%;
+  
+      .moreBtn{
+        font-size: 1.3em;
+      }
+      ul{
+      
+        li{
+          font-size: 1.3em;
+        }
+      }
+    }
+   }
+  
+  // Medium devices (tablets, 768px and up)
+  @media (min-width: 768px)  and (max-width: 991px) { 
+
+    .filter{
+      padding: 0.5% 6%;
+    }
+   }
+  
+  // Small devices (landscape phones, 576px and up)
+  @media only screen and (max-width:767px) { 
+    .filter{
+      padding: 1% 4%;
+    }
+  }
+  

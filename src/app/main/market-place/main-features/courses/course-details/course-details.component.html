@@ -1,0 +1,116 @@
+<div class="test-scroll" *ngIf="testBrowser">
+    <div class="topHeader fixedOnTop">
+
+        <div class="headerContent">
+            <div class="left">
+                <div class="singleRow">
+                    <span class="title">{{ data ? data?.title?.substring(0,45) : "" }} </span>  
+                    <div class="ratingStardiv">
+                        <span class="rating-star" *ngIf="data">
+                            <star-rating [readOnly]="true" [starType]="'icon'" [rating]="
+                                data.rating_sum / data.rating_count > 0
+                                    ? data.rating_sum / data.rating_count
+                                    : 0
+                            "></star-rating>
+                        </span>
+                    </div>
+                </div>
+        
+                <p class="mb-0" *ngIf="data && data.tutor.type === 2"> 
+                    <span>
+                        Uploaded by
+                        <a class="tutorName" routerLink="/tutor/{{ data ? data.tutor.id : '' }}">
+                            {{ data ? data.tutor.name : "" }}
+                        </a>
+                    </span>
+                    {{ (data && data.tutor.type === 3) ? 'Edutube Own Course' : '' }}
+                </p>
+                <p class="mp-0">Edutube</p>
+            </div>
+            <div class="right" style="text-align: right;">
+                <p class="title2">{{ data ? data.course_category.name : "" }} </p>
+                <p class="title2">{{ data ? data.course_subcategory.name : "" }}</p> 
+            </div>
+        </div>
+      
+    </div>
+    <div class="customContainer topheaderMarginCourseDetails">
+       
+        <app-course-preview [data]="data" *ngIf="data"></app-course-preview>
+
+        <div class="row">
+            <div class="col-xs-12 col-md-8 ">
+
+                 <div class="courseDetailsTab">
+                        <mat-tab-group >
+                            <mat-tab label="About" class="tab"> 
+                                <app-course-contain [data]="data" *ngIf="data"></app-course-contain>
+                            </mat-tab>
+                            <mat-tab label="Review"> 
+                                <app-course-review ></app-course-review>
+                            </mat-tab>
+                            <mat-tab label="Comment"> 
+                                <app-course-comment></app-course-comment>
+                            </mat-tab>
+                            <mat-tab label="Documents"> 
+                                <app-course-documents [data]="data" *ngIf="data"></app-course-documents>
+                            </mat-tab>
+        
+                        </mat-tab-group>
+                 </div>
+            </div>
+            <div class="col-xs-12 col-md-4">
+               <div class="card tutorInfo">
+                <p class="sectionTitle mp-0">About This Tutor</p>
+
+                <div class="flexRow">
+                    <div class="flex-col-1">
+                        <div class="avatarImage">
+                            <div *ngIf="data && data.tutor && data.tutor.avatar;else default"class="avatarImage">
+                                <img [src]="data.tutor.avatar" alt="" />
+                            </div>
+                            <ng-template #default>
+                                <img src="/assets/img/avatar.png" alt=""/> 
+                            </ng-template>
+                        </div>
+                    </div>
+                    <div class="flex-col-2" *ngIf="data && data.tutor">
+                        <p class="tutorName"> 
+                            <span> {{ (data.tutor.type === 3) ? 'Edutube Own Course' : data.tutor.name }}</span>  
+                            <span>
+                                <star-rating [readOnly]="true" [starType]="'icon'"
+                                    [rating]="data.tutor.rating_sum/data.tutor.rating_count > 0 ? data.tutor.rating_sum/data.tutor.rating_count : 0">
+                                </star-rating>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            
+                <div class="row m-t-10">
+                    <div class="col-xs-12" *ngIf="data && data.tutor">
+                        {{data.tutor.description}}
+                    </div>
+                </div>
+            
+
+                </div>
+                <div class="btnGroup" *ngIf="data">
+                    <a (click)="gotomcq()" class="btnCustom" mat-button> Practice</a> 
+                    <a (click)="gotoAllMcq()" class="btnCustom" mat-button>All Practice</a> 
+                    <a (click)="gotomcqTest()" class="btnCustom" mat-button> Test</a> 
+                    <a (click)="gotobq()" class="btnCustom" mat-button>Board Questions</a>
+                   
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <section class="section">
+                <app-course-list [title]="'Related Courses'" [dataSource]="data?.related_courses" [limit]="4" [range]="3"
+                  [showFilter]="false" [redirect]="'/courses'" *ngIf="data?.related_courses">
+                </app-course-list>
+            </section>
+        </div>
+    </div>
+</div>

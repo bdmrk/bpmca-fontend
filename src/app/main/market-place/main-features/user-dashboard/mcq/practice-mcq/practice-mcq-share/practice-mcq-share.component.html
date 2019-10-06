@@ -1,0 +1,9 @@
+
+<div class="title">
+    <h3>{{class_info?.subject?.name}}</h3>
+    <button mat-raised-button (click)="back()"><mat-icon>keyboard_arrow_left</mat-icon> back</button>
+  </div>
+
+<div>
+    <app-mcq-practice *ngIf="question_sets && question_sets.length > 0" [question_sets]="question_sets"></app-mcq-practice>
+</div>

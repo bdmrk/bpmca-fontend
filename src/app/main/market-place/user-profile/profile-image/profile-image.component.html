@@ -1,0 +1,17 @@
+
+<div style="margin-bottom: 20px; margin: 0 auto; width: 300px;">
+
+    <div>
+        <h2 class="text-center">Preview Image</h2>
+
+        <mat-card style="padding: 0 !important;">
+            <mat-progress-bar *ngIf="progressImage" mode="indeterminate"></mat-progress-bar>
+            <img mat-card-image src="{{ imagePreview }}" style="width: 100%; height: 200px; margin: 0; padding: 0;">
+        </mat-card>
+
+        <input (change)="loadImage($event)" type="file" style="width: 100%; margin-top: 20px;" accept="image/*" #clearImage/>
+
+        <button (click)="uploadImage()" mat-raised-button color="primary" style="margin-top: 20px; width: 100%; height: 35px;">Upload</button>
+    </div>
+
+</div>

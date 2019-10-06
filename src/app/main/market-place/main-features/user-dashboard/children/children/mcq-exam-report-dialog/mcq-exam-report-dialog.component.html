@@ -1,0 +1,243 @@
+<div class="container">
+
+    <div class="row" *ngIf="childOnDisplay">
+        <div class="col-xs-12 col-md-12">
+            <button mat-icon-button style="float: right" (click)="closeDialog()"><mat-icon>close</mat-icon></button>
+            <h2>Student Info</h2>
+            <hr>
+            <p><strong>Student Name : </strong> {{childOnDisplay?.user?.name}} </p>
+            <p><strong>Student Email :</strong> {{childOnDisplay?.user?.email}} </p>
+            <p><strong>Student of : </strong> {{childOnDisplay?.current_class?.name}} </p> 
+        </div>
+    </div>
+
+    <div>
+        <span><strong>Created at : </strong> &nbsp; &nbsp;{{ mcq_test_result?.created_at | date }} </span>&nbsp;
+        &nbsp; | &nbsp; &nbsp;
+        <span><strong>Time : </strong>{{ mcq_test_result?.time }} sec</span>&nbsp; &nbsp; | &nbsp; &nbsp;
+        <span><strong>Class : </strong> {{ mcq_test_result?.class?.name }}</span>&nbsp; &nbsp; | &nbsp; &nbsp;
+        <span><strong>Subject : </strong>{{ mcq_test_result?.subject?.name }}</span>
+    </div>
+
+    <div class="quiz-summary">
+      <div class="row">
+        <div class="col-xs-6 col-sm-3">
+            <div class="quiz-correct">
+                Correct<br> {{ mcq_test_result?.right }}/{{ mcq_test_result?.answers?.length }}  
+            </div>    
+        </div> 
+        <div class="col-xs-6 col-sm-3">
+            <div class="quiz-wrong">
+                Wrong<br> {{ mcq_test_result?.wrong }}
+            </div>    
+        </div>  
+        <div class="col-xs-6 col-sm-3">
+            <div class="quiz-skipped">
+                Skipped<br> {{ mcq_test_result?.skipped }}
+            </div>    
+        </div>    
+        <div class="col-xs-6 col-sm-3">
+            <div class="quiz-score">
+                Score<br>
+                {{
+                    mcq_test_result.answers && mcq_test_result.right > 0
+                        ? ( (mcq_test_result.right / mcq_test_result.answers.length) * 100 ).toFixed(2)
+                        : "0"
+                }}
+                %
+            </div>    
+        </div>   
+      </div>
+    </div>  
+
+    <div *ngFor="let value of mcq_test_result.answers; let j = index">
+        <mat-card class="m-b-20">
+            <div class="question-title">
+                <span>{{ j + 1 }}.</span> <span [innerHTML]="value.questions.question_title"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <div>
+                        <mat-radio-group>
+                            <mat-radio-button
+                                [ngClass]="[
+                                    (value.givenAnswer ===
+                                        value.questions.answer &&
+                                        value.givenAnswer === '1') ||
+                                    value.questions.answer === '1'
+                                        ? 'right-answer'
+                                        : '',
+                                    value.givenAnswer !==
+                                        value.questions.answer &&
+                                    value.givenAnswer === '1'
+                                        ? 'wrong-answer'
+                                        : ''
+                                ]"
+                                disabled="disabled"
+                                [value]="1"
+                                [checked]="
+                                    value.givenAnswer &&
+                                    value.givenAnswer !== '-1' &&
+                                    value.givenAnswer === '1'
+                                        ? true
+                                        : false
+                                "
+                            >
+                                <span
+                                    *ngIf="
+                                        value.questions.options.option1;
+                                        else image_option_1
+                                    "
+                                    ><span [innerHTML]="value.questions.options.option1"></span></span
+                                >
+                                <ng-template #image_option_1
+                                    ><img
+                                        [src]="
+                                            aws_link +
+                                            value.questions.options.image_option_1
+                                        "
+                                    />
+                                </ng-template>
+                            </mat-radio-button>
+                            <mat-radio-button
+                                [ngClass]="[
+                                    (value.givenAnswer ===
+                                        value.questions.answer &&
+                                        value.givenAnswer === '2') ||
+                                    value.questions.answer === '2'
+                                        ? 'right-answer'
+                                        : '',
+                                    value.givenAnswer !==
+                                        value.questions.answer &&
+                                    value.givenAnswer === '2'
+                                        ? 'wrong-answer'
+                                        : ''
+                                ]"
+                                disabled="disabled"
+                                [value]="2"
+                                [checked]="
+                                    value.givenAnswer &&
+                                    value.givenAnswer !== '-1' &&
+                                    value.givenAnswer === '2'
+                                        ? true
+                                        : false
+                                "
+                            >
+                                <span
+                                    *ngIf="
+                                        value.questions.options.option2;
+                                        else image_option_2
+                                    "
+                                    ><span [innerHTML]="value.questions.options.option2"></span></span
+                                >
+                                <ng-template #image_option_2
+                                    ><img
+                                        [src]="
+                                            aws_link +
+                                            value.questions.options.image_option_2
+                                        "
+                                    />
+                                </ng-template>
+                            </mat-radio-button>
+                            <mat-radio-button
+                                [ngClass]="[
+                                    (value.givenAnswer ===
+                                        value.questions.answer &&
+                                        value.givenAnswer === '3') ||
+                                    value.questions.answer === '3'
+                                        ? 'right-answer'
+                                        : '',
+                                    value.givenAnswer !==
+                                        value.questions.answer &&
+                                    value.givenAnswer === '3'
+                                        ? 'wrong-answer'
+                                        : ''
+                                ]"
+                                disabled="disabled"
+                                [value]="3"
+                                [checked]="
+                                    value.givenAnswer &&
+                                    value.givenAnswer !== '-1' &&
+                                    value.givenAnswer === '3'
+                                        ? true
+                                        : false
+                                "
+                            >
+                                <span
+                                    *ngIf="
+                                        value.questions.options.option3;
+                                        else image_option_3
+                                    "
+                                    ><span [innerHTML]="value.questions.options.option3"></span></span
+                                >
+                                <ng-template #image_option_3
+                                    ><img
+                                        [src]="
+                                            aws_link +
+                                            value.questions.options.image_option_3
+                                        "
+                                    />
+                                </ng-template>
+                            </mat-radio-button>
+                            <mat-radio-button
+                                [ngClass]="[
+                                    (value.givenAnswer ===
+                                        value.questions.answer &&
+                                        value.givenAnswer === '4') ||
+                                    value.questions.answer === '4'
+                                        ? 'right-answer'
+                                        : '',
+                                    value.givenAnswer !==
+                                        value.questions.answer &&
+                                    value.givenAnswer === '4'
+                                        ? 'wrong-answer'
+                                        : ''
+                                ]"
+                                disabled="disabled"
+                                [value]="4"
+                                [checked]="
+                                    value.givenAnswer &&
+                                    value.givenAnswer !== '-1' &&
+                                    value.givenAnswer === '4'
+                                        ? true
+                                        : false
+                                "
+                            >
+                                <span
+                                    *ngIf="
+                                        value.questions.options.option4;
+                                        else image_option_4
+                                    "
+                                    ><span [innerHTML]="value.questions.options.option4"></span></span
+                                >
+                                <ng-template #image_option_4
+                                    ><img
+                                        [src]="
+                                            aws_link +
+                                            value.questions.options.image_option_4
+                                        "
+                                    />
+                                </ng-template>
+                            </mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+                </div>  
+                <div class="col-xs-12 col-md-6">
+                    <div class="question-body-img">
+                        <img [src]="aws_link+value.questions.question_image" *ngIf="value.questions.question_image" />
+                    </div>    
+                </div>  
+            </div>          
+        </mat-card>
+    </div>
+
+</div>
+
+  <ng-container *ngIf="!mcq_test_result">
+      <h2 class="center-text">No exam found</h2>
+  </ng-container>
+
+
+<!-- <p>right: {{exam_report.answers && exam_report.right > 0 ? ( (exam_report.right / exam_report.answers.length) * 100 ).toFixed(2): "0"}} %</p>
+<p>wrong: {{exam_report.answers && exam_report.wrong > 0 ? ( (exam_report.wrong / exam_report.answers.length) * 100 ).toFixed(2): "0"}} %</p>
+<p>skipped: {{exam_report.answers && exam_report.skipped > 0 ? ( (exam_report.skipped / exam_report.answers.length) * 100 ).toFixed(2): "0"}} %</p> -->

@@ -1,0 +1,166 @@
+<div class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+  <div class="content">
+    <div class="center p-24 pb-56">
+      <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+        <div class="app-panel-header">
+          <div class="app-panel-title">Current class</div>
+          <a routerLink="/user-dashboard/my-progress" mat-raised-button class="reference-button mat-white-bg mt-sm-0">
+            <mat-icon style="margin-right: 3px;">keyboard_arrow_left</mat-icon>
+            <span>Go back</span>
+          </a>
+        </div>
+        <div class="app-panel-body">
+          
+          <form name="childForm" [formGroup]="childForm" novalidate (ngSubmit)="onSubmit()"
+                style="margin: 0 auto;">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <mat-form-field>
+                      <mat-select placeholder="Select group" formControlName="group" required>
+                          <mat-option *ngFor="let category of tutor_categories" [value]="category.id">
+                              {{category.name}}
+                          </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-12">
+                    <mat-form-field>
+                      <mat-select placeholder="Select class" formControlName="class" required>
+                          <mat-option *ngFor="let category of course_subcategories" [value]="category.id">
+                              {{category.name}}
+                          </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="com-md-12">
+                        <div class="col-md-3">
+                            <mat-form-field appearance="fill">
+                                    <mat-select (selectionChange)="onChangeDivision($event.value)" placeholder="Select division" >
+                                            <mat-option value="">Select division</mat-option>
+                                            <mat-option *ngFor="let division of divisions" [value]="division.id">
+                                                {{division.eng_name}}
+                                            </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
+                       </div>
+                        <div class="col-md-3">
+                                <mat-form-field appearance="fill">
+                                        <mat-select (selectionChange)="onChangeDistrict($event.value)" placeholder="Select district" >
+                                                <mat-option value="">Select district</mat-option>
+                                                <mat-option *ngFor="let district of districts" [value]="district.id">
+                                                    {{district.eng_name}}
+                                                </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+          
+          
+                        <div class="col-md-3">
+                                <mat-form-field appearance="fill">
+                                        <mat-select (selectionChange)="onChangeThana($event.value)" placeholder="Select thana" >
+                                                <mat-option value="">Select thana</mat-option>
+                                                <mat-option *ngFor="let thana of thanas" [value]="thana.id">
+                                                    {{thana.bn_name}}
+                                                </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+                        <div class="col-md-3">
+                                <mat-form-field appearance="fill">
+                                        <mat-select placeholder="Select post office" (selectionChange)="onChangePostOffice($event.value)" >
+                                                <mat-option value="">Select post office</mat-option>
+                                                <mat-option *ngFor="let postoffice of postoffices" [value]="postoffice.id">
+                                                    {{postoffice.eng_name}}
+                                                </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>  
+                  </div>
+
+                  <div class="col-md-12">
+                      <mat-form-field>
+                        <mat-select placeholder="Select institute" formControlName="institute" required>
+                            <mat-option *ngFor="let institute of institutes" [value]="institute.id">
+                                {{institute.institute_name_bn}}
+                            </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                </div>
+
+              <div style="width: 100%; position: relative; min-height: 50px;">
+                  <mat-spinner-button [options]="btnOpts"
+                                      style="margin-left: 0; position: absolute; right: 0;"></mat-spinner-button>
+              </div>
+
+          </form>
+<!--           
+          <form name="searchForm" [formGroup]="searchForm" novalidate>
+                <div class="row">
+                      <div class="col-md-1">
+                          <p>Search institute</p>
+                      </div>
+                      
+                        <div class="col-md-2">
+                                <mat-form-field appearance="fill">
+                                        <mat-select (selectionChange)="onChangeDivision($event.value)" placeholder="Select division" formControlName="division_id">
+                                                <mat-option value="">Select division</mat-option>
+                                                <mat-option *ngFor="let division of divisions" [value]="division.id">
+                                                    {{division.eng_name}}
+                                                </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+                        <div class="col-md-2">
+                                <mat-form-field appearance="fill">
+                                        <mat-select (selectionChange)="onChangeDistrict($event.value)" placeholder="Select district" formControlName="district_id">
+                                                <mat-option value="">Select district</mat-option>
+                                                <mat-option *ngFor="let district of districts" [value]="district.id">
+                                                    {{district.eng_name}}
+                                                </mat-option>
+                                        </mat-select>
+                                </mat-form-field>
+                        </div>
+                
+                
+                    <div class="col-md-2">
+                            <mat-form-field appearance="fill">
+                                    <mat-select (selectionChange)="onChangeThana($event.value)" placeholder="Select thana" formControlName="thana_id">
+                                            <mat-option value="">Select thana</mat-option>
+                                            <mat-option *ngFor="let thana of thanas" [value]="thana.id">
+                                                {{thana.bn_name}}
+                                            </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-2">
+                            <mat-form-field appearance="fill">
+                                    <mat-select placeholder="Select post office" formControlName="post_id">
+                                            <mat-option value="">Select post office</mat-option>
+                                            <mat-option *ngFor="let postoffice of postoffices" [value]="postoffice.id">
+                                                {{postoffice.eng_name}}
+                                            </mat-option>
+                                    </mat-select>
+                            </mat-form-field>
+                    </div>   
+                    <div class="col-md-2">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Search by name *</mat-label>
+                            <input matInput placeholder="Enter institute name" formControlName="name">
+                        </mat-form-field>
+                    </div>
+                    <div class="col-md-1">
+                          <button class="btnTheme" mat-raised-button (click) = "final_submit(1)">Search</button>  
+                    </div>
+                    
+                  
+            </div>
+        </form> -->
+           
+       
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

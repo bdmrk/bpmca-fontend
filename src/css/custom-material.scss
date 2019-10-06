@@ -1,0 +1,158 @@
+@import "src/css/variables.scss";
+
+.mat-drawer{
+    max-height: 100vh!important;
+    width: 18em;
+}
+
+.mobileSidebar{
+    .mat-expansion-panel-body {
+        padding: 0!important;
+    }
+    .mat-expansion-panel-header{
+        background: rgb(249, 249, 249);
+        font-size: 1.15em;
+        padding: 0.5em 2em 0.5em 0.8em;
+        height: 50px!important;
+        border-bottom: 1px solid #efe6e6;
+    }
+}
+
+
+
+
+
+
+/*COURSEPREVIEW PLAYLIST ->*/
+
+.playListCard{
+
+    .mat-list, .mat-nav-list, .mat-selection-list {
+        padding-top: 0px !important; 
+   }
+   
+
+}
+
+
+
+/* COURSECONTENT ->  */ 
+
+.courseContent{
+
+    .mat-content{
+        flex-direction: row-reverse;
+        align-items: center;
+    } 
+
+    .mat-expansion-panel-header {
+        font-size: calc(16px + (20 - 16) * ((100vw - 300px) / (1600 - 300)))!important;
+        background: #eaecec;
+        border-radius: 6px;
+    }
+    .mat-expansion-panel-header.mat-expanded{
+        background: #d4d4d1!important;
+    }
+
+    .mat-expansion-panel-body {
+        max-height: 20em;
+        overflow-y: scroll;
+    }
+
+    
+    
+}
+
+
+
+.courseDetailsTab , .progressTab{
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+      display: none;
+    }
+    .mat-tab-group{
+      margin-top: $marginTop;
+    }
+    
+    .mat-tab-label {
+      height: 60px!important;
+      margin: 0 0.1em;
+      min-width: 25%!important;
+      background: #d0d0d0!important;
+      font-size: 1.5em;
+      font-weight: bold;
+      
+    }
+    .mat-tab-group.mat-primary .mat-ink-bar{
+      background: none;
+    }
+    .mat-tab-label-active{
+      background: #8d8d8d!important;
+    }
+  }
+  @media (max-width: 767px) {
+  
+  
+    .courseDetailsTab{
+      .mat-tab-label {
+        height: 45px!important;
+        font-size: 1em;
+      }
+    
+    }
+    
+  
+  }
+
+
+.mcqDetails{
+
+    .mat-tab-header-pagination-controls-enabled .mat-tab-header-pagination {
+      display: none;
+    }
+
+    .mat-tab-label {
+      height: 60px!important;
+      min-width: 50%!important;
+      background: #d0d0d0!important;
+      font-size: 1.5em;
+      font-weight: bold;
+      
+    }
+    .mat-tab-group.mat-primary .mat-ink-bar{
+      background: none;
+    }
+    .mat-tab-label-active{
+      background: #8d8d8d!important;
+    }
+  }
+  @media (max-width: 767px) {
+  
+  
+    .mcqDetails{
+      .mat-tab-label {
+        height: 45px!important;
+        font-size: 1em;
+      }
+    
+    }
+    
+  
+  }
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+    opacity: 0.5 !important;     /*click effect color change*/
+    background-color: $mainColor !important;
+  }
+
+  ::ng-deep .mat-radio-button.mat-accent .mat-radio-inner-circle {
+      background-color: $mainColor !important;   /*inner circle color change*/
+  }
+
+  ::ng-deep.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color:$mainColor !important; /*outer ring color change*/
+  }
+
+
+
+  

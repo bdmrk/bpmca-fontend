@@ -1,0 +1,105 @@
+<div>
+    <div *ngIf="showFilter" class="row mp0 m-t-25 m-b-25">
+        <div class="col-md-12">
+            <h2 *ngIf="title" class="mainTitle">{{ title }}</h2>
+            <div class="course-filter">
+                <button mat-raised-button color="warn">All</button> 
+                <button mat-raised-button>Academic</button>
+                <button mat-raised-button>Undergraduate</button>
+                <button mat-raised-button>Postgraduate</button> 
+                <button mat-raised-button>Development</button>
+                <button mat-raised-button>Design</button>
+                <button mat-raised-button>Business</button>
+                <button mat-raised-button>Marketing</button>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="!showFilter && title" class="row mp0"> 
+        <div class="col-md-12 headerCourseList">
+            <h2 class="mainTitle">{{ title }}</h2>
+            <div>
+                <!-- <button *ngIf="showAll && courseList.length !== dataSource.length" (click)="viewAll()" mat-stroked-button> 
+                   See All
+                </button> -->
+                <button *ngIf="redirect" [routerLink] = "redirect" (click)="viewAll()" mat-stroked-button>
+                   See All
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row mp0 products">
+        <div *ngFor="let course of courseList" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <!-- <a routerLink="/course/{{ course.id }}"> -->
+            <mat-card *ngIf="course && course.tutor" class="single-product mp-0 m-b-20">
+                <a routerLink="/course/{{ course.id }}">
+                    <!-- <img *ngIf="course.image" mat-card-image class="product-image" [src]="(course.id < 138 && [109, 108, 107, 106].indexOf(course.id) == -1 ? old_aws_url:AWS_URL).toString() + course.image" alt="Photo"> -->
+                    <img *ngIf="course.image" mat-card-image class="product-image" [src]="AWS_URL + course.image" alt="Photo">
+                    <div *ngIf="!course.image" class="product-image" [style.background]="'url(assets/img/placeholder.jpg)'"></div>
+                </a>
+                <div class="rating-meta">
+                    <span class="rating-star">
+                        <star-rating [readOnly]="true" [starType]="'icon'" [rating]="course.rating_sum/course.rating_count > 0 ? course.rating_sum/course.rating_count : 0"></star-rating>
+                    </span>
+                    <!-- <span class="rating-value">{{ course.rating_sum/course.rating_count > 0 ? course.rating_sum/course.rating_count : 0 }} ({{ course.rating_count }})</span> -->
+                </div>
+                <div class="product-details">
+                    <a routerLink="/course/{{ course.id }}">
+                        <h2 class="product-title mp-0">{{ course.title.substring(0, 50) }}</h2>
+                    </a>
+                    <div class="product-meta p-t-10">
+                        <p class="courseSubContent mp-0">
+                             {{ (course.course_category) ? course.course_subcategory.name.substring(0, 15) : ' ' }}
+                             |
+                             {{ (course.course_category) ? course.course_category.name.substring(0, 15) : ' ' }}
+                             
+                        </p>
+                    </div>
+            
+                    <div class="product-action">
+                        <p>
+                            <span *ngIf="course.type==1 && course.price" class="price">৳{{  course.price.amount | number: '1.2-2'  }}</span>
+                            <span  *ngIf="course.type==0" class="courseSubContent">
+                                {{ (course.tutor.type === 3) ? 'Edutube' : course.tutor.name.substring(0, 15) }}
+                            </span>
+                        </p>
+                       <div class="productBtn">
+                            <span *ngIf="!course.type" class="price">
+                                FREE
+                            </span>
+                            <button  *ngIf="course.type" (click)="purchase(course)" mat-icon-button>
+                                <mat-icon aria-label="Example icon-button with a heart icon">shopping_cart</mat-icon>
+                            </button>
+                            <button  *ngIf="course.type" mat-button class="btnBuy" (click)="bookNow(course)">
+                                Buy Now
+                            </button>
+                       </div>
+                    </div>
+                </div>
+            </mat-card>
+            <!-- </a> -->
+        </div>
+    </div>
+    <div class="row mp0 products" style="margin-top: -30px;" *ngIf="!scrolling"> 
+        <div class="col-md-12 mp-0" style="text-align: center;">
+            <div style="text-align: center;">
+                <button *ngIf="showMinus" (click)="loadLess(range - limit)" class="m-r-15" matTooltip="View Less"
+                        mat-icon-button color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <button *ngIf="showPlus" (click)="loadMore(range + limit)" class="m-r-15" matTooltip="View More"
+                        mat-icon-button color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <!-- <button *ngIf="!redirect" [routerLink] = "redirect" matTooltip="View All" mat-icon-button color="warn" style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>apps</mat-icon>
+                </button>  -->
+                <button *ngIf="!redirect" (click)="viewAll()" matTooltip="View All" mat-icon-button color="warn" style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>apps</mat-icon>
+                </button> 
+            </div>
+        </div>
+    </div>
+
+</div>

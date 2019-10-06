@@ -1,0 +1,19 @@
+<div class="topHeader">
+  <h1 class="title">Top Courses</h1>
+</div>
+<div class="customContainer">
+  <div *ngIf="dataList">
+      <section *ngFor="let data of dataList" class="section bg-white m-t-m6">
+          <app-course-list
+              [title]="data.name"
+              [dataSource]="data.courses"
+              [limit]="12"
+              [range]="11"
+              [showFilter]="false"
+              [showAll]="true"
+              *ngIf="data.courses.length > 0"
+          >
+          </app-course-list>
+      </section>
+  </div>
+</div>

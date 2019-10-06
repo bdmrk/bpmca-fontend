@@ -1,0 +1,33 @@
+<div class="page-layout simple">
+    <div class="content">
+        <div class="center pb-56">
+            <div class="app-panel-body">
+                <form name="formInfo" [formGroup]="formInfo" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;"> 
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select tutor category status" formControlName="category" (ngModelChange)="onSelectChange($event)" required>
+                            <mat-option *ngFor="let category of categories" [value]="category.id">
+                                {{category.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formInfo.get('category').hasError('required')">Category is required.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select tutor subcategory status" formControlName="subcategory" required>
+                            <mat-option *ngFor="let subcategory of subCategories" [value]="subcategory.id">
+                                {{subcategory.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formInfo.get('subcategory').hasError('required')">Sub Categories is required.</mat-error>
+                    </mat-form-field>     
+
+                    <div style="float: right;">
+                        <button mat-raised-button>Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

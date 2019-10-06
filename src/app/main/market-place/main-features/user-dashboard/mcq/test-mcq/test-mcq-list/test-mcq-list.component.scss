@@ -1,0 +1,58 @@
+@import "src/css/variables.scss";
+@import "src/css/filter.scss";
+
+.mat-card{
+    // background: #f1f1f1;
+    // background-image: url("assets/img/questions.png");
+    // background-position: center; 
+    // background-repeat: no-repeat; 
+    // background-size: 160px 160px;
+}
+
+.title{
+    font-size: 20px;
+    margin-top: -20px;
+    margin-bottom: 25px;
+}
+
+.mcqList{
+    border-radius: 6px;
+    transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s  ease-in-out 0s;
+    -webkit-transition: all 0.5s  ease-in-out 0s;
+    -o-transition: all 0.5s  ease-in-out 0s;
+    
+
+    p{
+        margin: 6px 0 0 0;
+        //font-weight: 500;
+        font-size: 20px;
+    }
+    .setName{
+        min-height: 4.5em;
+        font-size: 20px;
+    }
+    .category{
+        //font-weight: bold;
+        font-size: 18px;
+        margin: 1em 0;
+    }
+    .flexRow{
+        display: flex;
+        justify-content: space-between;
+
+        .questionCount{
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .setType{
+            font-weight: bold;
+            font-size: 24px;
+        }
+    }
+}
+.mcqList:hover{
+    cursor: pointer;
+    color: white;
+    background: $mainColor;
+}

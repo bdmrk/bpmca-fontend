@@ -1,0 +1,25 @@
+
+    <div class="topHeader fixedOnTop">
+            <h1 class="title">All Board Questions</h1>
+        </div>
+        <div class="customContainer topheaderMargin">
+          
+          <ng-container *ngFor="let board of board_questions">
+              <div class="row mp0"> 
+                  <div class="col-md-12 headerCourseList">
+                      <h2 class="mainTitle">{{board?.name}}</h2>
+                  </div>
+              </div>
+              <div class="row">
+                  <div class="col-xl-12 col-sm-6 col-md-3" *ngFor="let item of board.board_questions">
+                    <mat-card class="boardQuestionList m-b-20" (click)="bqDetails(item.id,board.board_questions)">
+                        <p class="boardName">{{ item?.board?.name }}</p>
+                        <h1 class="year">{{ item?.year }}</h1>
+                        <p><span> {{ item?.subject?.name }} </span> | <span> {{ item?.class?.name }} </span></p>
+                    </mat-card>
+                  </div>
+              </div>
+          </ng-container>
+    
+        </div>
+    

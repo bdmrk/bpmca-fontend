@@ -1,0 +1,13 @@
+
+    <div class="topHeader">
+        <h1 class="title">
+            <span class="live">Live</span> Classes
+        </h1>
+    </div>
+
+   
+    <section class="section bg-white m-t-m6" *ngIf="data">
+        <app-live-class-section [category]="data.category" [courses]="data.courses"></app-live-class-section>
+    </section>
+    
+    

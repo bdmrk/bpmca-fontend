@@ -1,0 +1,27 @@
+<div class="topHeader fixedOnTop">
+    <h1 class="title">All Contents</h1>
+  
+</div>
+<div class="customContainer topheaderMargin">
+    
+    <div *ngIf="dataList">
+            <section *ngFor="let data of dataList">
+                <app-course-list
+                        [title]="data.category.name"
+                        [dataSource]="data.courses"
+                        [limit]="12"
+                        [range]="11"
+                        [showFilter]="false"
+                        *ngIf="data.courses.length > 0">
+                </app-course-list>
+            </section>
+    </div>
+        
+   
+    <section *ngIf="!dataList" class="noData">
+        <h1>Upload New Contents</h1>
+        <a routerLink="/registration" mat-raised-button  class="btnNodata">Upload Content</a>
+    </section>
+    <div class="social">
+    </div>
+</div>

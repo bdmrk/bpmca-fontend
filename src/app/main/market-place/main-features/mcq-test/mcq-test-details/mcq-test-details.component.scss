@@ -1,0 +1,56 @@
+@import "src/css/topHeader.scss";
+@import "src/css/variables.scss";
+@import "src/css/custom-material.scss";
+.mcqDetails{
+    .testCard{
+        border: 1px solid #e2dada;
+    }
+}
+.relatedMCQ{
+    border: 1px solid #e2dada;
+    min-height: 25em;
+    max-height: 25em;
+    overflow-y: scroll;
+    .title{
+        background: $mainColor;
+        padding: 1em;
+        font-size: large;
+        margin: 0;
+        color: white;
+    }
+    ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li{
+            padding: 1em;
+            border-bottom: 1px solid #e2dada;
+        }
+        li:hover {
+            background: $mainColor;
+            color: white;
+            cursor: pointer;
+        }
+        li:hover>mat-icon{
+            color: white;
+        }
+    }
+}
+
+.btnback{
+    font-size: large;
+    padding: 0.2em 1em;
+    min-width: 48%;
+}
+.btnColor{
+    font-size: large;
+    padding: 0.2em 1em;
+    width: 48%;
+}
+.active{
+    color: #444844;
+    font-weight: bold;
+    background: #e1e1e1;
+    border-left: 6px solid #6cc067;
+}

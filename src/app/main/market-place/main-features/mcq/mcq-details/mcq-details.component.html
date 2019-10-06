@@ -1,0 +1,60 @@
+<div class="fixedOnTop">
+  <div class="topHeader" *ngIf="mcq_type === 0">
+      <h1 class="title">{{class_info_set?.name}}</h1>
+      <p class="mp-0" > <span>{{class_info_set?.subject?.name}}</span> | <span>{{class_info_set?.class?.name}}</span></p>
+  </div>
+  <div class="topHeader" *ngIf="mcq_type === 1">
+      <h1 class="title">{{class_info_test?.name}}</h1>
+      <p class="mp-0" > <span>{{class_info_test?.subject?.name}}</span> | <span>{{class_info_test?.class?.name}}</span></p>
+  </div>
+</div>
+
+<div class="customContainer">
+  <section class="mcqDetails topheaderMarginPreparation">
+    <div class="row">
+      <div class="col-lg-8">
+        <mat-tab-group class="tab" (selectedTabChange)="tabChanged($event)">
+          <mat-tab label="Practice" class="tab"> 
+            <app-mcq-practice *ngIf="question_sets && question_sets.length > 0" [question_sets]="question_sets"></app-mcq-practice>
+          </mat-tab>
+          <mat-tab label="Test"> 
+            <app-mcq-test *ngIf="question_tests" [question_tests]="question_tests"></app-mcq-test>
+            <div class="noData warningDiv" *ngIf="!question_tests">
+              <h1 class="warningText">No Content Available</h1>
+            </div>
+          </mat-tab>
+
+      </mat-tab-group>
+      </div>
+      <div class="col-lg-4">
+        <div class="relatedMCQ" *ngIf="mcq_type === 0">
+          <p class="title">More MCQ Questions</p>
+          <ul>
+            <li *ngFor="let item of more_mcq" (click)="getSetItem(item)" [class.active]="item.id === selectedQuestion">
+              <mat-icon>list_alt</mat-icon>
+               {{item.name}} 
+            </li>
+          </ul>
+        </div>
+        <div class="relatedMCQ" *ngIf="mcq_type === 1">
+          <p class="title">Test MCQ Questions</p>
+          <ul>
+            <li *ngFor="let item of test_mcq" (click)="getTestItem(item)" [class.active]="item.id === selectedQuestion">
+              <mat-icon>list_alt</mat-icon>
+               {{item.name}}
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div class="btnGroup">
+         
+          
+          <a (click)="backtoMCQPractice()" class="btnCustom" mat-button>Practice</a> 
+          <a (click)="backtoMCQTestList()" class="btnCustom" mat-button>Test</a> 
+          <a (click)="backtoBoardQuestion()" class="btnCustom" mat-button>Board Questions</a> 
+        
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

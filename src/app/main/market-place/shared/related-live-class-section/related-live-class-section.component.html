@@ -1,0 +1,59 @@
+<div class="mp-0">
+    <div class="row mp0 m-t-10 m-b-10 products">
+        <div *ngFor="let course of courseList" class="col-md-4">
+            <mat-card class="single-product mp-0 m-b-30">
+                <a routerLink="/live-class/1">
+                    <div class="product-image" [style.background]="'url(' + course.image + ')'"></div>
+                </a>
+                <div class="product-details">
+                    <a routerLink="/live-class/1">
+                        <h2 class="product-title mp-0">{{ course.title }}</h2>
+                    </a>
+                    <div class="product-meta p-t-5">
+                        <span>{{ course.tutor.name }} | {{ course.category.name }}</span>
+                    </div>
+                    <div class="rating-meta">
+                        <span class="rating-star">
+                            <star-rating [starType]="'icon'" [rating]="course.rating"></star-rating>
+                        </span>
+                        <span class="rating-value">{{ course.rating }} ({{ course.rating_count }})</span>
+                    </div>
+                    <div class="row product-action">
+                        <div class="col-md-6 mp-0">
+                            <span class="price">{{ course.price ? course.price.amount : '-' }}</span>
+                        </div>
+                        <div class="col-md-6 mp-0">
+                            <button mat-icon-button color="warn" style="float: right !important; background: #fbfbfb;">
+                                <mat-icon aria-label="Example icon-button with a heart icon">favorite</mat-icon>
+                            </button>
+                            <button mat-icon-button color="warn"
+                                    style="float: right !important; background: #fbfbfb; margin-right: 10px;">
+                                <mat-icon aria-label="Example icon-button with a heart icon">shopping_cart</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row mp0 products" style="margin-top: -30px;">
+        <div class="col-md-12 mp-0" style="text-align: center;">
+            <div style="text-align: center;">
+                <button (click)="loadLess(count - limit)" class="m-r-15" matTooltip="View Less" mat-icon-button
+                        color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+                </button>
+                <button (click)="loadMore(count + limit)" class="m-r-15" matTooltip="View More" mat-icon-button
+                        color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+                <button matTooltip="View All" mat-icon-button color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">view_list</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

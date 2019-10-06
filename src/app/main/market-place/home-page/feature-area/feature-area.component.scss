@@ -1,0 +1,58 @@
+
+
+.feature-body{
+  margin-left: 2.5em;
+  color: #333;
+  h2{
+    font-size: 24px;
+    font-weight: 500;
+  }
+}
+
+.mat-card{
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  min-height: 10em;
+}
+
+
+@media (min-width:1367px) and (max-width:1400px) { 
+  h2{
+    font-size: 18px!important;
+  }
+}
+
+/* ----------- iPad Pro ----------- */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .feature-body{
+    h2{
+      font-size: 24px;
+    }
+  }
+}
+
+/* ----------- Tablet Layout ----------- */
+@media only screen and (min-width: 768px) and (max-width: 991px) { 
+  .feature{
+    margin-top: 20px;
+    display: none;
+  }
+  
+  .feature-body{
+    h2{
+      font-size: 24px;
+    }
+  }
+}
+
+/* ----------- Mobile Layout ----------- */
+@media only screen and (max-width: 767px) {
+  .feature{
+    margin-top: 20px;
+    display: none;
+  }
+}
+
+
+

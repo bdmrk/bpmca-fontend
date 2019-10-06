@@ -1,0 +1,15 @@
+<div *ngIf="ratingData">
+    <h2>
+        Average Rating: {{ ratingAvg }} ({{ ratingData.length }})
+        <button (click)="ratingModal(data)" color="warn" style="float: right;" mat-button>Rate this course!</button>
+    </h2>
+    <div *ngFor="let rating of ratingData" style="margin-bottom: 10px; background: #fafafa; padding: 15px;">
+        <h3 style="margin: 0; padding: 0;">{{ rating.given_by.name }}</h3>
+        <p style="margin: 0; padding: 0;">{{ rating.rating }}</p>
+        <p style="margin: 0; padding: 0;">{{ rating.comment }}</p>
+    </div>
+</div>
+
+<div *ngIf="!ratingData">
+    <p style="text-align: center">Not rated yet <br> <button (click)="ratingModal(data)" style="margin-top: 10px;" color="warn" mat-button>Give your rating.</button></p>
+</div>

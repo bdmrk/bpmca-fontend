@@ -1,0 +1,23 @@
+
+
+::ng-deep .mat-menu-content {
+  max-height: 25em!important;
+}
+
+
+.loader_center{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ // Large devices (desktops, 992px and up)
+ @media  (min-width: 1400px) { 
+
+  .filterContent{
+    .filterFont{
+      font-size: 1.3em!important;
+    } 
+  }
+ }

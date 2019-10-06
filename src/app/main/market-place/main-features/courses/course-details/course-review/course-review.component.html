@@ -1,0 +1,52 @@
+<div class="top">
+  <p>How People rated this course</p>
+  <button mat-stroked-button (click)="openReview()" class="btnOutline"> Leave Review</button>
+</div>
+<form id="ratingForm" [formGroup]="ratingForm" novalidate (ngSubmit)="onSubmit()">
+<div class="reviewContainer" *ngIf="showReview">
+  <p>How do you rate this course ? * </p>
+  <div class="rating">
+    <star-rating-control [starType]="'svg'" [rating]="rating" formControlName="rating" required></star-rating-control>
+
+  </div>
+
+  <div class="comment">
+    <p>Write a public review (optional)</p>
+
+    <mat-form-field>
+      <mat-label>write here</mat-label>
+      <br>
+      <textarea formControlName="comment" matInput placeholder="Leave a comment" 
+      cdkTextareaAutosize
+      #autosize="cdkTextareaAutosize"
+      cdkAutosizeMinRows="1"
+      cdkAutosizeMaxRows="5">
+    </textarea>
+  </mat-form-field>
+  
+    <div class="buttonGroup">
+      <mat-spinner-button [options]="btnOpts"></mat-spinner-button>
+      <button mat-button color="warn" mat-dialog-close (click)="close()">Cancel</button>    
+    </div>
+
+  </div>
+</div>
+</form>
+<div class="pastReviews">
+  <mat-card class="pastReviewsContainer" *ngFor="let rating of ratingData">
+    <div class="avatarContainer">
+        <div class="reviewAvatar">
+            <img src="/assets/img/avatar.png" alt=""/> 
+        </div>
+        <p class="reviewName">{{ rating.given_by.name }}</p>
+    </div>
+    <div class="commentContainer">
+      <div style="display: flex;align-items: center; margin-left: -8px;">
+        <!-- <p>I rate this course : </p> -->
+        <star-rating [readOnly]="true" [starType]="'icon'" [rating]="rating.rating"> </star-rating>
+      </div>
+      <hr class="lineGray">
+      <p>{{ rating.comment }}</p>
+    </div>
+  </mat-card>
+</div>

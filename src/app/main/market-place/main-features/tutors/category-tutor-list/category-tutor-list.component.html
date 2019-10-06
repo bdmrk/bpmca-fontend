@@ -1,0 +1,51 @@
+   
+<div class="fixedOnTop">
+    <div class="topHeader">
+        <h1 class="title">{{courseTitle}}</h1>
+    </div>
+
+    <div class="filter">
+
+        <div class="filterContent">
+            <ul>
+                <li [class.active]="filterApplied" (click)="allCourses()">সব</li>
+                <li *ngFor="let data of tutorFilterItemsInDisplay" [class.active]="selectedIndex === data.id"
+                    (click)="getAllTutors(data.id)">{{data.name}}</li>
+            </ul>
+            <div>
+                <button mat-icon-button [matMenuTriggerFor]="menu" class="filterFont">
+                    আরও <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button class="filterFont" mat-menu-item (click)="getAllTutors(data.id)"
+                        *ngFor="let data of tutorFilterItemsInMenuButton">{{data.name}}</button> 
+                </mat-menu>
+            </div>
+            
+        </div>
+    </div> 
+</div>
+
+
+<div class="customContainer">
+    <section class="topHeaderMarginWithFilter">
+      
+     
+        <app-tutor-list
+            [dataSource]="dataList"
+            [limit]="12"
+            [range]="11"
+            [showFilter]="false"
+            *ngIf="dataList && dataList.length > 0">
+        </app-tutor-list>
+       
+
+    </section>
+
+    <section *ngIf="!dataList || dataList.length==0" class="noData">
+        <h1>Register As A Tutor</h1>
+        <a routerLink="/registration" mat-raised-button  class="btnNodata">Become A Tutor</a>
+    </section>
+
+</div>
+   

@@ -1,0 +1,23 @@
+<div class="title">
+  <h3>{{class_info.name ? class_info.name : ''}}</h3>
+  <button mat-raised-button routerLink="/user-dashboard/mcq-practice"><mat-icon>keyboard_arrow_left</mat-icon> back</button>
+</div>
+
+<div class="row">
+  <ng-container *ngIf="setMCQlist && setMCQlist.length > 0">
+    <div class="col-md-3" *ngFor="let set of setMCQlist">
+        <mat-card class="mcqList m-b-20" (click)="mcqDetails(set)">
+            <p class="setName">{{set.name}}</p>
+            <p class="category"> <span>{{set.subject.name}}</span> | <span>{{set.class.name}}</span></p>
+            <div class="flexRow">
+                <div class="flexCol">
+                    <p class="questionCount">Total Q : {{set?.mcq_ids?.split(",")?.length}}</p>
+                </div>
+                <div class="flexCol">
+                    <p class="setType">Free</p>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+  </ng-container>
+</div>

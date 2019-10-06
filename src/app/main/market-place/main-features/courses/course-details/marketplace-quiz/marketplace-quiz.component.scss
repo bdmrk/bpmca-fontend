@@ -1,0 +1,73 @@
+@import "~bootstrap-sass-grid/sass/bootstrap-sass-grid";
+@import "src/css/variables.scss";
+.dialog-content {
+    padding: 10px;
+}
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: $mainColor;
+    padding: 1em 1.5em;
+    color: white;
+    font-weight: 500;
+    h2{
+        margin: 0;
+    }
+    .mat-icon{
+        color: white;
+    }
+}
+
+.mat-card-content{
+    min-height: 80px;
+}
+
+.start_icon{
+    font-size: 128px;
+}
+
+.mat-radio-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.mat-radio-button{
+    padding: .7em 0;
+}
+
+mat-radio-button img{
+    width: 4.5em;
+    height: 2.5em;
+  }
+
+.pagination{
+    button{
+        min-height: 35px;
+        margin: 0 1em;
+    }
+
+}
+.optionsDiv{
+    margin-bottom: 3em;
+}
+
+img {
+    width: 100%;
+    height: 12em;
+}
+
+.mat-card{
+    padding: 3em;
+}
+.mat-card:not([class*=mat-elevation-z]) {
+    box-shadow: unset;
+}
+
+.count-down{
+    display: flex !important;
+    direction: rtl;
+    font-size: 20px;
+    color: #6dc067;
+}

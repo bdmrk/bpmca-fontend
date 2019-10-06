@@ -1,0 +1,66 @@
+<div class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+    <div class="content">
+        <div class="center p-24 pb-56 col-12">
+            <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+                <div class="app-panel-header">
+                    <div class="app-panel-title">User Profile Settings</div>
+                    <a routerLink="/user-dashboard/profile" mat-raised-button
+                       class="reference-button mat-white-bg mt-16 mt-sm-0">
+                        <mat-icon style="margin-right: 3px;">keyboard_arrow_left</mat-icon>
+                        <span>Go back</span>
+                    </a>
+                </div>
+                <div class="app-panel-body">
+                    <mat-tab-group mat-stretch-tabs>
+                        <mat-tab label="General Information">
+                            <ng-template matTabContent>
+                                <app-general-information [data]="this.user_data.general_information" *ngIf="user_data"></app-general-information>
+                            </ng-template>
+                        </mat-tab>
+                        <!-- <mat-tab label="Tutor Category">
+                            <ng-template matTabContent>
+                                <app-tutor-category ></app-tutor-category>
+                            </ng-template>
+                        </mat-tab> -->
+                        <mat-tab label="Education">
+                            <ng-template matTabContent>
+                                <app-educational-information [data]="this.user_data.educations" *ngIf="user_data"></app-educational-information>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Experience">
+                            <ng-template matTabContent>
+                                <app-experience-information [data]="this.user_data.experience" *ngIf="user_data"></app-experience-information>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Certificate">
+                            <ng-template matTabContent>
+                                <app-user-certificate></app-user-certificate>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Skill">
+                            <ng-template matTabContent>
+                                <app-user-skill [data]="this.user_data.skills" *ngIf="user_data"></app-user-skill>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Language">
+                            <ng-template matTabContent>
+                                <app-user-language [data]="this.user_data.languages" *ngIf="user_data"></app-user-language>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Password Settings">
+                            <ng-template matTabContent>
+                                <app-account-password></app-account-password>
+                            </ng-template>
+                        </mat-tab>
+                        <mat-tab label="Profile Image">
+                            <ng-template matTabContent>
+                                <app-profile-image [data]="this.user_data" *ngIf="user_data"></app-profile-image>
+                            </ng-template>
+                        </mat-tab>
+                        
+                    </mat-tab-group>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

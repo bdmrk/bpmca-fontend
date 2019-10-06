@@ -1,0 +1,65 @@
+<div class="questionList" *ngFor="let item of mcq_question; let i = index">
+  <mat-card>
+  <div class="questionTitle">
+    <p>{{i+1}} . </p>
+    <p class="m-0" [innerHTML]="item.questions.question_title"></p>
+
+  </div>
+  <div class="question row">
+    <div class="options col-md-6">
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1">
+            <span *ngIf="item.questions.options.option1;else image_option_1" [innerHTML]="item.questions.options.option1"></span> 
+            <ng-template #image_option_1>
+              <img class="optionImg" [src]="aws_url+item.questions.options.image_option_1" />
+            </ng-template>
+          </mat-radio-button>
+          <mat-radio-button value="2">
+            <span *ngIf="item.questions.options.option2;else image_option_2" [innerHTML]="item.questions.options.option2"></span>
+            <ng-template #image_option_2>
+              <img class="optionImg" [src]="aws_url+item.questions.options.image_option_2" />
+            </ng-template>
+          </mat-radio-button>
+          <mat-radio-button value="3">
+            <span *ngIf="item.questions.options.option3;else image_option_3" [innerHTML]="item.questions.options.option3"></span>
+            <ng-template #image_option_3>
+              <img class="optionImg" [src]="aws_url+item.questions.options.image_option_3" />
+            </ng-template>
+          </mat-radio-button>
+          <mat-radio-button value="4">
+            <span *ngIf="item.questions.options.option4;else image_option_4" [innerHTML]="item.questions.options.option4"></span>
+            <ng-template #image_option_4>
+              <img class="optionImg" [src]="aws_url+item.questions.options.image_option_4" />
+            </ng-template>
+          </mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <div class="col-md-6">
+        <img class="questionImage" [src]="aws_url+item.questions.question_image" *ngIf="item.questions.question_image"/>
+    </div>
+  </div>
+
+ 
+  <br>
+  <div class="solution">
+    <button mat-raised-button class="btnAns" color="primary" (click)="showAnswer(item.questions,i, item.id)">
+      <span *ngIf="showAnswerDivIndex != i">
+          Show Answer
+      </span>
+      <span *ngIf="showAnswerDivIndex == i">
+          {{showAnswerButtonTitle ? 'Hide Answer' : 'Show Answer'}}
+      </span>
+      
+    </button>
+    <!-- <div class="answer"  *ngIf="answer?.index === i || showAnswerDiv"> -->
+    <div class="answer"  *ngIf="showAnswerDiv && showAnswerDivIndex === i && showAnswerDivToggle">  
+      <span style="font-weight: bold;margin-right: 0.5em;">Answer : </span>
+      <!-- {{showAnswerDiv}}, {{showAnswerDivIndex}} -->
+      <span *ngIf="answer?.option;else image_option" [innerHTML]="answer?.option"></span>
+      <ng-template #image_option>
+        <img class="optionImg" [src]="aws_url+answer?.image_option" />
+      </ng-template>
+    </div>
+  </div>
+  </mat-card>
+</div>

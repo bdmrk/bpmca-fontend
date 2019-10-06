@@ -1,0 +1,33 @@
+.container{
+  min-height: 62vh;
+}
+.mat-form-field{
+  width: 100%;
+}
+.loginPanel{
+  padding: 1em;
+  text-align: center;
+  margin: 1em 0;
+
+  .top{
+    padding: 1em;
+
+    .loginicon{
+     
+      height: 60px;
+      width: 60px;
+      font-size: 60px;
+    }
+  }
+  .title{
+    font-size: 1.3em;
+  }
+  .bottom{
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+  }
+  .forgot{
+    margin: 0.5em;
+  }
+}

@@ -1,0 +1,34 @@
+
+    <div class="topHeader fixedOnTop">
+        <h1 class="title">All Courses</h1>
+    </div>
+    <div class="customContainer topheaderMargin">
+        <div>
+            <app-animation-course></app-animation-course>
+        </div>
+        <div *ngIf="free_youtube_courses">
+            <app-free-youtube-course
+                [dataSource]="free_youtube_courses"
+                [limit]="8"
+                [range]="7"
+                [showFilter]="false"
+                *ngIf="free_youtube_courses.length > 0"
+            >
+            </app-free-youtube-course>
+        </div>
+    
+        <div *ngIf="dataList">
+            <section *ngFor="let data of dataList">
+                <app-course-list
+                    [title]="data.name"
+                    [dataSource]="data.courses"
+                    [limit]="12"
+                    [range]="11"
+                    [showFilter]="false"
+                    [showAll]="true"
+                    *ngIf="data && data.courses.length > 0"
+                >
+                </app-course-list>
+            </section>
+        </div>
+    </div>

@@ -1,0 +1,143 @@
+<!-- <div class="main">
+
+  <header id="navigation_area" class="section mp-0 bg-white">
+      <app-header></app-header>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+  <app-footer></app-footer>
+
+</div> -->
+
+
+<div class="main">
+
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav #drawer mode="over" role="navigation"> 
+        <div class="logo">
+            <a routerLink="/">
+                <img src="assets/images/logos/edutubeLogo.png" alt="">
+            </a>
+        </div>
+        <mat-nav-list>
+            <mat-accordion>
+                <mat-expansion-panel [expanded]="false" class="mobileSidebar">
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      <div class="mainmenu">
+                        <mat-icon>view_module</mat-icon> &nbsp;
+                        <span>Courses</span>
+                      </div>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <ul>
+                      <li (click)="drawer.close()" routerLink="/courses/{{ category.id }}" *ngFor="let category of categories" class="listItem">
+                          <a>
+                              {{ category.name }}
+                          </a>
+                      </li>
+                  </ul>
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel class="mobileSidebar"> 
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                       Contents
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li (click)="drawer.close()" routerLink="/contents/{{ category.id }}" *ngFor="let category of categories" class="listItem">
+                            <a>
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+                <mat-expansion-panel class="mobileSidebar">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        Tutors
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li (click)="drawer.close()" routerLink="/tutors/{{ category.id }}" *ngFor="let category of categories" class="listItem">
+                            <a>
+                                {{ category.name }}
+                            </a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel> -->
+                <mat-expansion-panel class="mobileSidebar">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                          <div class="mainmenu">
+                            <mat-icon>view_module</mat-icon> &nbsp;
+                            <span>MCQ</span>
+                          </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li class="listItem" (click)="drawer.close()" routerLink="/mcq"> All </li>
+                        <li routerLink="/mcq/{{ category.id }}" *ngFor="let category of categories" class="listItem">
+                            <a>{{ category.name }}</a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel> 
+                <mat-expansion-panel class="mobileSidebar">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                          <div class="mainmenu">
+                            <mat-icon>view_module</mat-icon> &nbsp;
+                            <span>Board Questions</span>
+                          </div>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li class="listItem" (click)="drawer.close()" routerLink="/bq"> All </li>
+                        <li routerLink="/bq/{{ category.id }}" *ngFor="let category of categories" class="listItem">
+                            <a>{{ category.name }}</a>
+                        </li>
+                    </ul>
+                </mat-expansion-panel> 
+
+
+                <ul *ngIf="showUserDashboardMenu" class="dashboardMenu">
+                    <li (click)="drawer.close()" routerLink="/user-dashboard/parents-panel">
+                        <mat-icon>wc</mat-icon> &nbsp;
+                        Childrens
+                    </li>
+                    <li (click)="drawer.close()" routerLink="/user-dashboard/mcq-practice">
+                        <mat-icon>view_list</mat-icon> &nbsp;
+                        Practice MCQ
+                    </li>
+                    <li (click)="drawer.close()" routerLink="/user-dashboard/mcq-test">
+                        <mat-icon>ballot</mat-icon> &nbsp;
+                        Test MCQ
+                    </li>
+                </ul>
+              </mat-accordion>
+              
+            
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+          <header (click)="clickInside()">
+              <button class="desktopHidden" type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+                <mat-icon aria-label="Side nav toggle icon" class="menu-icon">menu</mat-icon>
+              </button>
+              <app-header style="width: 100%;"></app-header>
+          </header>
+          <main (click)="clickout()">
+            <router-outlet></router-outlet> 
+          </main>
+          <app-footer></app-footer>
+       
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  
+  </div>
+  
+  
+

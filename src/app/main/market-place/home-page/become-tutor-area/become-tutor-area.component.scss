@@ -1,0 +1,147 @@
+$mainColor:#6dc067;
+
+.btnTutor{
+  background: #6dc067;
+  font-size: 1.5em;
+  padding: 0.6em 1.4em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 1em;
+  border-radius:6px;
+}
+.customContainer{
+  // background-image: url('assets/img/tutor.png'); 
+  background: #EBEBEB;
+  background-image: repeating-linear-gradient(180deg, #efefef, #efefef 1.5px, #e6e6e6 1.5px, #e6e6e6 3px);
+  background-position: center;
+  background-size: 40%;
+  height: 33em;
+  background-size: cover;  
+  .img-teacher{
+    height: 30em;
+    padding-left: 6.5em;
+  }
+}
+
+.content{
+  color: #444;
+  padding: 2em 9em 0 0;
+
+  h2{
+    font-size: 3em;
+    text-transform: uppercase;
+    margin-bottom: 0;
+  }
+  p{
+    font-size: 1.4em;
+    font-weight: 400;
+  }
+}
+
+@media only screen and (min-width:1367px) and (max-width: 1400px) {
+
+}
+
+/* ----------- iPad Pro ----------- */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+  .customContainer{
+    height: 33em;
+    .img-teacher{
+      height: 28em;
+      padding-top: 25px;
+      padding-left: 2em;
+    }
+  }
+  .content{
+    padding: 1em 4em 0 0;
+  
+    h2{
+      font-size: 3em;
+      text-transform: uppercase;
+      margin-bottom: 0;
+    }
+    p{
+      font-size: 1.4em;
+    }
+  }
+
+}
+
+/* ----------- Tablet Layout ----------- */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .customContainer{
+    height: 45em;
+    .img-teacher{
+      height: 24em;
+      padding-left: 0;
+      display: block;
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+  }
+ 
+  .content{
+    padding: 1em 1em 2em 1em;
+  
+    h2{
+      font-size: 1.8em;
+      text-transform: uppercase;
+      margin-top: -15px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.2em;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+  }
+
+  .btnTutor{
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: block;
+  }
+}
+
+/* ----------- Mobile Layout ----------- */
+@media only screen and (max-width:767px) { 
+  .customContainer{
+    height: 43.4em;
+    .img-teacher{
+      height: 22em;
+      padding-top: 20px;
+      padding-left: 1.5em;
+      display: block;
+      left:0;
+      right: 0;
+      margin: auto;
+    }
+  }
+ 
+  .content{
+    text-align: center;
+    padding: 1em 1em 2em 1em; 
+  
+    h2{
+      font-size: 1.8em;
+      text-transform: uppercase;
+      margin-top: -15px;
+      text-align: center;
+    }
+    p{
+      font-size: 1.2em;
+      text-align: center;
+      padding-bottom: 15px;
+    }
+  }
+
+  .btnTutor{
+    left: 0;
+    right: 0;
+    margin: auto;
+  }
+
+}
+

@@ -1,0 +1,95 @@
+<div class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+  <div class="content">
+      <div class="center p-24 pb-56 col-12">
+          <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+              <div class="app-panel-header">
+                  <div class="app-panel-title">Complaints</div>
+                      <a routerLink="/user-dashboard/complaint/add" mat-raised-button
+                      class="reference-button mat-white-bg mt-16 mt-sm-0">
+                      <mat-icon style="margin-right: 3px;">add_circle_outline</mat-icon>
+                      <span>Raise an issue</span>
+                      </a>
+              </div>
+              <div class="app-panel-body">
+                
+                  <mat-form-field appearance="fill">
+                      <mat-label>Search by anything</mat-label>
+                      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here">
+                  </mat-form-field>
+
+
+                  <mat-accordion class="desktopHidden">
+                      <mat-expansion-panel *ngFor="let complain of complainList">
+                          <mat-expansion-panel-header>
+                              <mat-panel-title>
+                                  <p class="mp-0"><span class="text-muted"> Ticket No : </span> {{complain.complaint_no}} </p>   
+                                  <p class="mp-0"><span class="text-muted"> Issue type : </span> {{complain.type.complaint}} </p>
+                              </mat-panel-title>
+                          </mat-expansion-panel-header>
+                          <div class="statusDiv">
+                              <p><span class="text-muted">Status : </span></p>
+                              <mat-chip-list>
+                                  <mat-chip [ngClass]="{
+                                      'warningChip': complain.status == 'open',
+                                      'successChip': complain.status == 'reviewing',
+                                      'dangerChip': complain.status == 'closed'
+                                      }"
+                                      > {{complain.status}}
+                                  </mat-chip>
+                              </mat-chip-list> 
+                          </div>
+          
+                          <p><span class="text-muted">Subject : </span>{{complain.subject}}</p>
+                          
+                          <button class="btnBlock" mat-button (click)="detailIssue(complain.id)">
+                              <mat-icon class="whiteIcon"> view_list </mat-icon> View Details
+                          </button>
+                        
+  
+  
+                      </mat-expansion-panel>
+                  </mat-accordion>
+  
+
+                  <table class="mobileHidden" mat-table [dataSource]="dataSource" matSort>
+                      <ng-container matColumnDef="id">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px;"> No.</th>
+                          <td mat-cell *matCellDef=" let i = index;"> {{i+1}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="ticket">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Ticket No</th>
+                          <td mat-cell *matCellDef="let row">{{row.complaint_no ? row.complaint_no : '-'}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="type">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Issue type</th>
+                          <td mat-cell *matCellDef="let row">{{row.type.complaint ? row.type.complaint : '-'}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="subject">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Subject</th>
+                          <td mat-cell *matCellDef="let row">{{row.subject ?
+                              row.subject : '-'}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="status">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+                          <td mat-cell *matCellDef="let row">{{row.status ?
+                              row.status : '-'}}</td>
+                      </ng-container>
+                      <ng-container matColumnDef="details">
+                          <th mat-header-cell *matHeaderCellDef mat-sort-header>Details</th>
+                          <td mat-cell *matCellDef="let row"> 
+                              <button mat-icon-button (click)="detailIssue(row.id)">
+                                  <mat-icon>format_indent_increase</mat-icon>
+                              </button>
+                          </td>
+                      </ng-container>
+                     
+                      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+                      </tr>
+                  </table>
+                  <mat-paginator class="mobileHidden" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

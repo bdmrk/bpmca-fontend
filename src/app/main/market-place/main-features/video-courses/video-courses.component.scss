@@ -1,0 +1,75 @@
+$mainColor:#6dc067;
+
+.mainTitle{
+  text-transform: uppercase;
+  padding: 0.8em 0;
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.product-details {
+  width: 100%;
+  padding: 1.5em;
+}
+
+.product-title {
+  font-size: 1em;
+  font-weight: 500;
+  min-height: 4em;
+}
+
+.single-product {
+  width: 100%;
+  background: #FFFFFF;
+  border-radius: 6px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  margin:0!important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+iframe{
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+@media only screen and (min-width:1367px) and (max-width: 1400px) {
+}
+
+/* ----------- iPad Pro ----------- */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+}
+
+/* ----------- Tablet Layout ----------- */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  
+  .single-product{
+    margin-top: 15px!important;
+    margin-bottom: 18px!important;
+  }
+}
+
+/* ----------- Mobile Layout ----------- */
+@media only screen and (max-width: 767px) {
+
+  .single-product{
+    margin-top: -20px!important;
+    margin-bottom: 50px!important;
+  }
+}
+/* ----------- Mobile Potrait Only ----------- */
+@media only screen and (max-width: 414px) { 
+
+  .single-product{
+    margin-top: 10px!important;
+    margin-bottom: 15px!important;
+  }
+}

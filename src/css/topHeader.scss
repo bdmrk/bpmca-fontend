@@ -1,0 +1,213 @@
+
+.fixedOnTop{
+    position: fixed;
+    width: 100vw;
+    z-index: 10;
+}
+
+
+
+.topHeader{
+   
+    background-image: url(/assets/images/banner-top.jpg);
+    color: aliceblue;
+    background-size: cover;
+    // margin-top: 4em;
+  
+    .title{
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+  .topheaderMargin{
+    z-index: 1;
+  }
+
+  
+  // Extra large devices (1401px and up)
+  @media (min-width: 1401px)  { 
+   
+    .topHeader{
+      top: 5.8em;
+      padding: 0.6% 12%;
+
+      .title{
+        font-size: 1.8em;
+      }
+    }
+    .topheaderMargin{
+        margin-top: 9em;
+    }
+    .topheaderMarginCourseDetails{
+        margin-top: 11em;
+    }
+    .topHeaderMarginWithFilter{
+        margin-top: 9em;
+    }
+    .topheaderMarginPreparation{
+      margin-top: 6em;
+    }
+  
+   }
+  
+   // Large devices (992px-1400px)
+  @media (min-width: 992px)  and (max-width: 1400px) { 
+
+    .topHeader{
+      top: 5.8em;
+      padding: 1% 6%;
+
+      .title{
+        font-size: 1.5em;
+      }
+    }
+    .topheaderMargin{
+        margin-top: 8em;
+    }
+    .topheaderMarginCourseDetails{
+        margin-top: 8em;
+    }
+    .topHeaderMarginWithFilter{
+        margin-top: 7em;
+    }
+    .topheaderMarginPreparation{
+      margin-top: 4em;
+    }
+   
+   }
+  
+  // Medium devices (768px-991px)
+  @media (min-width: 768px)  and (max-width: 991px) { 
+    // .fixedOnTop{
+    //   margin-top: 40px;
+    // }
+    .topHeader{
+        top: 4.5em;
+        padding: 1% 6%;
+  
+        .title{
+          font-size: 1.3em;
+        }
+      }
+      .topheaderMargin{
+          margin-top: 6em;
+      }
+      .topheaderMarginCourseDetails{
+        margin-top: 10em;
+      }
+      .topHeaderMarginWithFilter{
+        margin-top: 6.2em;
+      }
+      .topheaderMarginPreparation{
+        margin-top: 3em;
+      }
+      @media (orientation: landscape){
+    
+        .fixedOnTop{
+           position: absolute;
+           
+         }
+        }
+      
+   
+   }
+  
+
+
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+   
+
+    .topHeader{
+      top: 3.8em;
+      padding: 2% 4%!important;
+
+    .title{
+        font-size: 1em;
+      }
+    }
+    .topheaderMargin{
+        margin-top: 5em;
+    }
+    .topheaderMarginCourseDetails{
+        margin-top: 9.5em;
+    }
+    .topHeaderMarginWithFilter{
+        margin-top: 7em;
+    }
+    .topheaderMarginPreparation{
+      margin-top: 4em;
+    }
+    @media (orientation: landscape){
+      .topHeader{
+        top: 3.9em;
+      }
+      .topheaderMargin{
+        margin-top: 5.5em;
+      }
+  
+      .fixedOnTop{
+          position: absolute;
+      }
+    }
+
+
+  
+  }
+  // Small devices (0px-767px)
+  @media only screen and (max-width:480px) { 
+    @media (orientation: landscape){
+    
+      .fixedOnTop{
+         position: absolute;
+         
+       }
+      }
+
+    // .fixedOnTop{
+    //   margin-top: -40px;
+    // }
+  
+      .topHeader{
+          top: 7.2em;
+          padding: 2% 4%!important;
+    
+          .title{
+            font-size: 1em;
+          }
+        }
+      .topheaderMargin{
+          margin-top: 8em;
+      }
+      .topheaderMarginCourseDetails{
+          margin-top: 13.5em;
+      }
+      .topHeaderMarginWithFilter{
+          margin-top: 6em;
+      }
+      .topheaderMarginPreparation{
+        margin-top: 4em;
+      }
+      @media (orientation: landscape){
+       .topHeader{
+        top: 3.9em;
+       }
+       .topheaderMargin{
+        margin-top: 7em;
+       }
+      }
+  }
+
+ 
+
+
+
+  /* ----------- Mobile Potrait Only ----------- */
+// @media only screen and (max-width: 414px) { 
+//   .fixedOnTop{
+//     margin-top: 0;
+//   }
+//   .topHeaderMarginWithFilter{
+//     margin-top: 8em;
+// }
+// }
+  

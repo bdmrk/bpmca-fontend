@@ -1,0 +1,55 @@
+<div class="page-layout simple" style="margin-top: 20px; padding-right: 10px; padding-top: 2px;">
+  <div style="width: 100%;">
+      <a (click)="add()" mat-raised-button class="mat-white-bg mt-16 mt-sm-0 mb-20" style="float: right !important;">
+          <mat-icon style="margin-right: 3px;">add_circle_outline</mat-icon>
+          <span>Add More</span>
+      </a>
+  </div>
+  <mat-form-field appearance="fill">
+      <mat-label>Search by anything</mat-label> 
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here">
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px;"> No.</th>
+          <td mat-cell *matCellDef=" let i = index;"> {{i+paginateStartNo+1}}</td>
+      </ng-container>
+      <ng-container matColumnDef="certificate_type">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Certificate Type</th>
+          <td mat-cell *matCellDef="let row"> {{row.certificate ? row.certificate.name : '-'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="start_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Start Date</th>
+          <td mat-cell *matCellDef="let row"> {{row.start_date ? (row.start_date | date) : '-'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="end_date">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> End date</th>
+          <td mat-cell *matCellDef="let row"> {{row.end_date ? (row.end_date | date) : '-'}}</td>
+      </ng-container>
+      <ng-container matColumnDef="file">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> File</th>
+          <td mat-cell *matCellDef="let row"> 
+            <a [href]="AWS_URL + row.file" download>
+                <mat-icon style="font-size:35px;">cloud_download</mat-icon>
+            </a>
+          </td>
+      </ng-container>
+    
+      <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20px !important;">
+              Action
+          </th>
+          <td mat-cell *matCellDef="let row" style="width: 20px !important;">
+            <button mat-menu-item (click)="edit(row)">
+                <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+      </tr>
+  </table>
+  <mat-paginator class="mobileHide" [pageSizeOptions]="[5, 10, 25, 100]" (page)="onPaginateChange($event)">
+</mat-paginator>
+</div>

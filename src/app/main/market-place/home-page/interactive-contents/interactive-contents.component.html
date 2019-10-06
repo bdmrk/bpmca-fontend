@@ -1,0 +1,13 @@
+
+<div class="customContainer">
+  <app-course-list
+          [title]="'Interactive Contents'"
+          [dataSource]="courseList"
+          [limit]="12"
+          [range]="11"
+          [showFilter]="false"
+          [redirect]="'/interactive-contents'"
+          *ngIf="courseList && courseList.length > 0"
+        >
+  </app-course-list>
+</div>

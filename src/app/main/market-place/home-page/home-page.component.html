@@ -1,0 +1,59 @@
+  
+  <div class="home">
+    <!-- <section *ngIf="this.data && this.data.slides" id="slider_area" class="section mp-0 m-t-m4">
+        <app-home-slider [slides]="this.data.slides"></app-home-slider>
+        
+    </section> -->
+
+    <section>
+        <app-home-banner></app-home-banner>
+    </section>
+    <!-- <section id="feature_area" class="section my-3">
+        <app-feature-area></app-feature-area>
+    </section>  -->
+
+    <!-- <section *ngIf="youtubeCourses && youtubeCourses.length > 0" class="section"> 
+        <app-free-courses [courses]="youtubeCourses"></app-free-courses>
+    </section>
+
+    <section class="section">
+        <a routerLink="/ebooks-sections"> 
+            <section class="banner">
+                <div class="customContainer">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-6 imgDiv1">
+                            <img class="img-book" src="/assets/img/banner-book.png" alt="">
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 imgDiv2"> 
+                            <img class="img-cta" src="/assets/img/banner-cta.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </a>
+    </section> -->
+<!--     
+
+    <section *ngIf="data && data.courses" id="popular_course_area" class="section m-t-m4">
+        <app-course-area [courses]="data.courses"></app-course-area>
+    </section>
+
+    <section *ngIf="interactiveCourses && interactiveCourses.length > 0" class="section">
+        <app-interactive-contents [courses]="interactiveCourses"></app-interactive-contents>
+    </section>
+    
+    
+     -->
+
+    <!-- <section id="become_tutor_area" class="section">
+        <app-become-tutor-area></app-become-tutor-area>
+    </section> -->
+
+    
+    <section *ngIf="data && data.tutors" id="tutor_area" class="section">
+        <app-tutor-area [tutors]="data.tutors" *ngIf="data.tutors"></app-tutor-area>
+    </section>
+
+
+  </div>
+   

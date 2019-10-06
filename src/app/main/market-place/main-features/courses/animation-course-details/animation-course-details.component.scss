@@ -1,0 +1,40 @@
+.iframe{
+    overflow:hidden;
+    width: 100%;
+}
+   
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575px) { 
+    .iframe{
+       height: 23vh;
+    }
+ }
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) and (max-width: 767px) {
+    .iframe{
+       
+        height: 39vh;
+    }
+ }
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991px) { 
+    .iframe{      
+        height: 40vh;
+    }
+ }
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199px) { 
+    .iframe{
+        height: 52vh;
+    }
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .iframe{
+        height: 80vh;
+    }
+ }

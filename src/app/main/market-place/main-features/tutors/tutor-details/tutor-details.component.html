@@ -1,0 +1,104 @@
+
+ <div class="topHeader">
+    <h1 class="title">{{ data ? data.name : '' }}</h1>
+    <p class="description">{{ data && data.bio ? data.bio.substring(0, 200) : '' }}</p>
+
+  
+    <!-- <div *ngIf="data.rating_sum"  class="rating-meta">
+        <span class="rating-star">
+            <star-rating [readOnly]="true" [starType]="'icon'" [rating]="data.rating_sum/data.rating_count > 0 ? data.rating_sum/data.rating_count : 0"></star-rating>
+        </span>
+    </div> -->
+</div>
+
+<div class="customContainer">
+    <div class="row">
+        <div class="col-lg-3">
+            <mat-card class="imageCard">
+                <div class="profileImage">
+                    <img *ngIf="data.avatar" src="{{data.avatar}}" alt="">
+                    <img *ngIf="!data.avatar" src="assets/img/avatar.png" alt="">
+                    
+                </div>
+                <p class="name">{{ data ? data.name : '' }}</p>
+            </mat-card>
+        </div>
+        <div class="col-lg-9 tutorDetail">
+
+            <mat-card>
+                <p class="sectionTitle mp-0">About Me</p>
+                <hr class="lineGray">
+                <p style="justify-content: center;">{{ data ? data.about : '' }}</p>
+            </mat-card>
+
+            <!-- <mat-card *ngIf="data.available_slots.length>0" style="max-height: 400px!important;overflow-y: scroll;">
+                <p class="sectionTitle">Available Slot</p>
+                <table >
+                    <tr>
+                        <th>No</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Freequency</th>
+                        <th>Weekdays</th>
+                        <th>Booking</th>
+                    </tr>
+                    <tr *ngFor="let slot of data?.available_slots">
+                        <td>{{slot.id}}</td>
+                        <td>{{slot.start_date}}</td>
+                        <td>{{slot.start_time}}</td>
+                        <td>{{slot.end_date}}</td>
+                        <td>{{slot.end_time}}</td>
+                        <td>{{slot.frequency}}</td>
+                        <td>{{slot.week_days}}</td>
+                        <td> <button mat-button class="btnTheme"> Book Now</button></td>
+                        
+                    </tr>
+                </table>
+               
+                    
+            </mat-card>
+
+            <mat-card *ngIf="data.experience.length>0">
+                <p class="sectionTitle">Experience</p>
+
+                <table >
+                    <tr>
+                        <th>Institute Name</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Year</th>
+                    </tr>
+                    <tr *ngFor="let exp of data?.experience">
+                        <td>{{exp.name}}</td>
+                        <td>{{exp.department}}</td>
+                        <td>{{exp.position}}</td>
+                        <td>{{exp.start }} To {{exp.end}}</td>
+                    </tr>
+                    
+                </table>
+                 
+            </mat-card>
+            <mat-card *ngIf="data.education.length>0">
+                <p class="sectionTitle">Education</p>
+
+                <table >
+                    <tr>
+                        <th>Institute Name</th>
+                        <th>Degree</th>
+                       
+                    </tr>
+                    <tr *ngFor="let education of data?.education">
+                        <td>{{education.name}}</td>
+                        <td>{{education.degree}}</td>
+                        
+                        
+                    </tr>
+                </table>
+
+            </mat-card> -->
+       
+        </div>
+    </div>
+</div>

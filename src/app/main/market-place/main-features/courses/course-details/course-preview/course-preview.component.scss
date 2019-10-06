@@ -1,0 +1,222 @@
+@import "src/css/variables.scss";
+@import "src/css/custom-material.scss";
+
+.preview{
+  .video-thumb{
+    iframe{
+      width: 50vw;
+      height: 45vh;
+    }
+    .product-image{
+      background-repeat: no-repeat!important; 
+      height: 50vh;
+      width: 100%;
+
+      img{
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}
+
+iframe,video{
+    height: 45vh;
+    width: 100%;
+  }
+  .mat-card{
+    padding: 15px!important;
+  }
+  mat-form-field{
+    width: 100%;
+  }
+  
+  /*YOUTUBE youtubeVideoCard Design*/
+  
+  .videoCard{
+    padding: 0!important;
+    padding-bottom: 0.75em!important;
+  }
+  .youtubeVideoCard{
+    
+    iframe,video{
+      height: 45vh;
+      width: 100%;
+    }
+    .buttonGroup{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin: 0.75em 8px;
+  
+      .btnTheme{
+        min-width: 7em;
+      }
+    }
+  }
+  
+  // END youtubeVideoCard
+  .lectureTitle{
+    font-size: 1.5em;
+  }
+  .courseContent{
+    max-height: 25em;
+    overflow-y: scroll;
+  }
+  
+  
+  /*PlayList CSS*/
+  
+  .playListCard{
+    // max-height: 30.5em;
+    // min-height: 30.5em;
+    height: 45vh;
+    overflow: hidden;
+    padding: 0px!important;
+   
+  
+    .title{
+      margin: 0;
+      padding: 1em;
+      background: $mainColor;
+      font-size: 1.5em;
+      color: white;
+      font-weight: 500;
+    }
+  
+    .playListItems{
+      height: 75%;
+    }
+    .mat-list .mat-list-item {
+      padding: 0.5em 0;
+      min-height: 4em;
+      border-bottom: 1px solid #e2dede;
+  
+      .videoTitle{
+        margin-left: 0.5em;
+        font-size: 1.2em;
+      }
+    }
+    .active{
+      background: #e2dede;
+    }
+    .mat-list-item:hover{
+      background: #e2dede;
+      cursor: pointer;
+    }
+  }
+  
+  // END PLAYLIST CSS
+  
+  
+  // Pricing Card CSS
+  .pricingCard{
+    margin-top: 2.3em;
+    .price h2 {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin: 0;
+    }
+    
+  }
+  // END Pricing Card CSS
+
+  @media (min-width: 768px)  and (max-width: 991px) { 
+
+  .lectureTitle{
+    margin-top: 0;
+  }
+  .youtubeVideoCard{
+    
+    iframe,video{
+      height: 52vh;
+    }
+  }
+
+  .playListCard{
+    height: 52vh;
+
+    .title{
+      padding:0.5em 1em;
+    }
+    .videoTitle{
+      font-size: 1em;
+    }
+  }
+}
+
+
+
+  
+  // Small devices (landscape phones, 576px and up)
+  @media only screen and (max-width:767px) { 
+
+    .playListCard{
+      .title{
+        padding: 0.75em;
+      }
+    }
+  
+    .videoTitle{
+      font-size: 1em!important;
+    }
+    .playListItems{
+      height: 70vh!important;
+    }
+
+    @media (orientation: landscape){
+      .lectureTitle {
+        font-size: 1.2em;
+      }
+      iframe,video{
+        height: 70vh!important;
+      }
+      .playListCard{
+        height: 70vh!important;
+      }
+    }
+  
+  }
+  @media (min-width: 992px)  and (max-width: 1400px) { 
+  
+    .playListCard{
+  
+      .title{
+        padding:0.5em 1em;
+      
+      }
+    }
+
+
+
+    .videoTitle{
+      font-size: 1em!important;
+    }
+    .playListItems{
+      height: 33vh;
+    }
+    video{
+      max-height: 22em;
+    }
+     
+  
+  }
+  .icon{
+    img{
+      height: 2em;
+      margin-left: 1em;
+    }
+  }
+  .icon:hover{
+    cursor: pointer;
+  }
+
+  .quiz{
+    margin: 2px 0 0 10px;
+  }
+  
+  
+  
+  
+  

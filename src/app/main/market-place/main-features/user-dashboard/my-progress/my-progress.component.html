@@ -1,0 +1,84 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12 student-info">
+                        <h2>Exam Summary</h2>
+                        <app-compare-progress *ngIf="progressData[0]" [progressData]=progressData></app-compare-progress>
+                        <hr>
+                        <p style="font-size: medium;"> Total Exam : <strong>  {{exam_report?.total_exam}} </strong> | 
+                          Exam Taken :<strong> {{exam_report?.exam_taken}}  </strong> |
+                          Questions : <strong> {{score}} </strong> |
+                          Obtained Mark:  <strong> {{obtained_mark}}  </strong> | 
+                          Score :  <strong> {{ obtained_mark && score > 0 ? ((obtained_mark/score) * 100 ).toFixed(2) : "0" }} %  </strong> </p>
+                
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+      
+    <div class="row">
+        <div class="col-lg-6 col-md-12" *ngIf="upcoming_exam"> 
+                <mat-card>
+                    <h2>Exam List</h2>
+                    <hr class="m-b-20">
+                    <div *ngFor="let item of upcoming_exam">
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <p> <strong> {{item?.name}} </strong> </p>
+                            </mat-expansion-panel-header>
+                            
+                            <ng-template matExpansionPanelContent>
+                                <p *ngFor="let value of item.test_mcq_question"> {{value?.name}} </p>
+                            </ng-template>
+                        </mat-expansion-panel>
+                    </div>
+                </mat-card>
+        </div>
+        <div class="col-lg-6 col-md-12" *ngIf="completed_exam">
+            <mat-card>
+                <h2>Exams Completed</h2>
+                <hr class="m-b-20">
+                <div class="">
+                    <ng-container *ngFor="let item of completed_exam" >
+                        <mat-expansion-panel>
+                            <mat-expansion-panel-header>
+                                <p> <strong> {{item?.name}} </strong> </p>
+                            </mat-expansion-panel-header>
+                            
+                            <ng-template matExpansionPanelContent>
+                                <mat-list dense *ngFor="let value of item.mcq_test_result">
+                                    <mat-list-item (click)="getCompletedExam(value)"> <p class="set-name">{{value?.mcq_test?.name}}</p> 
+                                        <mat-chip-list>
+                                        <div class="chip-wrapper">
+                                            <mat-chip class="chip-right">Right: {{ value.right }}</mat-chip>
+                                            <mat-chip class="chip-wrong">Wrong: {{ value.wrong }}</mat-chip>
+                                            <!-- <mat-chip class="chip-skipped">Skipped: {{ value.skipped }}</mat-chip> -->
+                                            <mat-chip class="chip-score">
+                                                Score:
+                                                {{
+                                                    value.answers && value.right > 0 ? ( (value.right / value.answers.length) * 100 ).toFixed(2) : "0"
+                                                }}
+                                                %
+                                            </mat-chip> 
+                                        </div>  
+                                        </mat-chip-list>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                </mat-list>
+                            </ng-template>
+                        </mat-expansion-panel>
+                    </ng-container>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+</div>
+
+<div class="row" *ngIf="!user">
+  <div class="col-md-12 text-center">
+    <h3>No Data Avaiable</h3>
+  </div>
+</div>

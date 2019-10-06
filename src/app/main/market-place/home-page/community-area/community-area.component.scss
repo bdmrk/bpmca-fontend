@@ -1,0 +1,78 @@
+.q_bank_header, .q_bank_footer {
+  width: 100%;
+  display: inline-block;
+  height: 60px;
+  position: relative;
+}
+
+.q_bank_header h2 {
+  padding: 0 10px;
+  position: absolute;
+}
+
+.q-bank-image img {
+  width: 100%;
+}
+
+.q-bank-image {
+  margin-right: 10px !important;
+}
+
+.q-bank-body h3 {
+  margin: 0;
+  padding: 0;
+}
+
+.q-bank-body p {
+  margin: 0;
+  padding: 0;
+}
+
+.q-tag-list {
+  list-style: none;
+  margin-top: 5px;
+  margin-left: 10px;
+  padding-bottom: 15px;
+}
+
+.q-tag-list li {
+  float: left;
+  padding: 0 10px;
+  background: #e1e4ec;
+  border-radius: 15px;
+  margin-right: 5px;
+}
+
+.q_bank_footer a {
+  display: inline-block;
+  padding: 20px 10px;
+  color: #606060;
+}
+
+.qa_blog_area {
+  margin-top: 50px;
+  display: inline-block;
+}
+
+.qa_blog {
+  width: 70%;
+  margin-left: 110px;
+}
+
+/* Tablet Layout */
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Mobile Layout */
+
+@media only screen and (max-width: 767px) {
+
+}
+
+/* Wide Mobile Layout */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}

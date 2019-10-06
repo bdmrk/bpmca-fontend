@@ -1,0 +1,14 @@
+
+<div class="customContainer">
+    <app-tutor-list
+        [title]="'Our Directors'"
+        [dataSource]="tutorList"
+        [limit]="12"
+        [range]="11"
+        [showFilter]="false"
+        *ngIf="tutorList && tutorList.length > 0">
+    </app-tutor-list>
+
+</div>
+
+

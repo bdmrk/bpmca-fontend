@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Give your rating</h2>
+
+<mat-dialog-content>
+    <div class="page-layout simple">
+        <div class="content">
+            <div class="center">
+                <div class="app-panel-body" style="margin: 0; padding: 0;">
+                    <form id="ratingForm" [formGroup]="ratingForm" novalidate (ngSubmit)="onSubmit()"
+                          style="margin: 0 auto;">
+
+                      
+                            <star-rating-control [starType]="'svg'" [rating]="rating" formControlName="rating" required></star-rating-control>
+
+                            <mat-error *ngIf="ratingForm.get('rating').hasError('rating')">Rating is required.</mat-error>
+                        
+
+                        <mat-form-field>
+                            <textarea formControlName="comment" matInput placeholder="Leave a comment" required></textarea>
+                        </mat-form-field>
+
+                        <div style="width: 100%; position: relative; min-height: 50px; margin-top: 10px;">
+                            <button mat-button mat-raised-button color="warn" mat-dialog-close (click)="close()"
+                                    style="float: left;">Cancel
+                            </button>
+                            <mat-spinner-button [options]="btnOpts" style="margin-left: 0; position: absolute; right: 0; float: right;"></mat-spinner-button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

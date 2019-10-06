@@ -1,0 +1,25 @@
+
+    <div *ngIf="data" class="topHeader">
+        <h1 class="title">Search Result</h1>
+    </div>
+
+    
+    <div class="customContainer">
+
+        <section *ngIf="!data || !data.courses || !(data.courses.length > 0)" class="loader_center">
+            <img src="assets/img/loader/loader.gif" />
+        </section>
+
+        <section class="section bg-white m-t-m6">
+            <app-course-list
+                [title]="false"
+                [dataSource]="data.courses"
+                [limit]="12"
+                [range]="11"
+                [showFilter]="false"
+                [redirect] = "'/courses'"
+                *ngIf="data && data.courses && data.courses.length > 0">
+            </app-course-list>
+        </section>
+            
+    </div>

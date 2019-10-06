@@ -1,0 +1,9 @@
+    <div class="topHeader fixedOnTop">
+        <h1 class="title">
+            <span class="live">Live</span> Classes
+        </h1>
+    </div>
+
+    <section *ngFor="let data of course_data" class="topheaderMargin section bg-white">
+        <app-live-class-filter-section [category]="data.category" [courses]="data.courses"></app-live-class-filter-section>
+    </section>

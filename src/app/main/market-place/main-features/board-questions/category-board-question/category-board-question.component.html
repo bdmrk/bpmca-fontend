@@ -1,0 +1,46 @@
+<div class="fixedOnTop">
+  <div class="topHeader">
+      <h1 class="title">{{ categoryBQTitle }} - {{subjectName}}</h1>
+  </div>
+
+  <div class="filter">
+
+    <div class="filterContent">
+        <ul>
+            <li [class.active]="filterApplied" (click)="allBoardQuestionWithCategory()">সব</li>
+            <li *ngFor="let data of subcategoryCoursesDisplay" [class.active]="selectedIndex === data.id"
+                (click)="getAllBQ(data.id)">{{data.name}}</li>
+        </ul>
+        <div *ngIf="subcategoryCoursesMenu && subcategoryCoursesMenu.length>1">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="filterFont">
+                আরও <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button class="filterFont" mat-menu-item (click)="getAllBQ(data.id)"
+                    *ngFor="let data of subcategoryCoursesMenu">{{data.name}}</button> 
+            </mat-menu>
+        </div>
+    </div>
+  </div>
+</div>
+
+<div class="customContainer">
+    <section class="topHeaderMarginWithFilter">
+        <div *ngIf="!warningDiv" class="row">
+            <div class="col-xl-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let set of categoryBQlist">
+                <mat-card class="boardQuestionList m-b-20" (click)="bqDetails(set.id)">
+                   
+                   <p class="boardName">{{ set.board.name }}</p>
+                   <h1 class="year">{{ set.year }}</h1>
+                   <p><span> {{ set.subject.name }} </span> | <span> {{ set.class.name }} </span></p>
+
+                </mat-card>
+            </div>
+        </div>
+        <div class="noData" *ngIf="warningDiv" class="warningDiv">
+            <h1 class="warningText">No Content Available</h1>
+        </div>
+    </section>
+    
+  
+</div>

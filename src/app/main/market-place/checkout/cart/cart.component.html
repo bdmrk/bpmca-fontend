@@ -1,0 +1,83 @@
+<div class="topHeader">
+  <h1 class="title">Shopping Cart</h1>
+</div>
+<div class="customContainer">
+  <div class="row">
+    <div class="col-md-8">
+      <mat-card>
+        <mat-card-content class="cardContent">
+
+          <h3 mat-subheader>You have {{cartItems ? cartItems.length : 0}} items in you cart.</h3>
+          <mat-divider></mat-divider>
+          <div class="row cartItemRow" *ngFor="let item of cartItems;  let i = index; last as last;">
+            <div class="col-xs-3">
+              <div class="cartImage">
+                <img *ngIf="item.image" src={{awsS3Path+item.image}}>
+                <img *ngIf="!item.image" src="/assets/img/course/sample.jpg">
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <div class="cartDes">
+                <p class="mp-0">{{item.title}}</p>
+                <p class="mp-0">By {{item.tutor.name}}</p>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="cartPrice">
+                <p class="mp-0"> ৳ {{item.price.amount | number: '1.2-2'}}</p>
+              </div>
+            </div>
+            <div class="col-xs-2">
+              <div class="cartRemove">
+                <a button (click)="removeItem(i)" class="item-delete">
+                  <i class="material-icons delete"> cancel </i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="col-md-4">
+      <mat-card>
+        <p class="h2">Order Summary</p>
+        <mat-divider></mat-divider>
+        <div class="amount">
+          <div class="subtotal">
+            <p>Subtotal</p>
+            <p> <span>৳ </span> {{totalPrice | number: '1.2-2'}}</p>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="total">
+            <p>Total</p>
+            <p> <span>৳ </span> {{totalPrice | number: '1.2-2'}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <button (click)="goCheckout()" mat-button class="checkoutBtn"> Checkout </button>
+          </div>
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-xs-6">
+            <button (click)="keepPurchage()" mat-button class="keepPurchaseBtn"> Keep Purchase <i
+                class="material-icons">keyboard_return</i> </button>
+          </div>
+          <div class="col-xs-6">
+            <button (click)="cancelOrder()" mat-button class="cancelBtn"> Cancel Order <i
+                class="material-icons">cancel</i> </button>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div class="row">
+    <section class="section bg-white m-t-m4">
+      <app-course-list [title]="'Related Courses'" [dataSource]="courseList" [limit]="4" [range]="3"
+        [showFilter]="false" [redirect]="'/courses'" *ngIf="courseList && courseList.length > 0">
+      </app-course-list>
+    </section>
+  </div>
+</div>

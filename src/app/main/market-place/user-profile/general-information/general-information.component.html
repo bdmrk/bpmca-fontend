@@ -1,0 +1,116 @@
+<div class="page-layout simple">
+    <div class="content">
+        <div class="center pb-56">
+            <div class="app-panel-body">
+                <form name="generalInfo" [formGroup]="generalInfo" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;">
+                    <mat-form-field>
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput [matDatepicker]="picker" placeholder="Enter date of birth" formControlName="dob" disabled>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker disabled="false"></mat-datepicker>
+                        <mat-error *ngIf="generalInfo.get('dob').hasError('required')">
+                                Date of birth is required
+                            </mat-error>
+                      </mat-form-field>
+                    <!-- <mat-form-field>
+                        <mat-label>Date of Birth</mat-label>
+                        <input matInput placeholder="Enter date if birth" formControlName="dob">
+                        <mat-error *ngIf="generalInfo.get('dob').hasError('required')">
+                            Date of birth is required
+                        </mat-error>
+                    </mat-form-field> -->
+
+                    <mat-form-field>
+                        <mat-label>Bio</mat-label>
+                        <textarea matInput placeholder="Enter bio" rows="10" formControlName="bio"></textarea>
+                        <mat-error *ngIf="generalInfo.get('bio').hasError('required')">
+                            Bio is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>About</mat-label>
+                        <textarea matInput placeholder="Enter about" rows="10" formControlName="about"></textarea>
+                        <mat-error *ngIf="generalInfo.get('about').hasError('required')">
+                            About is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Address</mat-label>
+                        <input matInput placeholder="Enter address" formControlName="address">
+                        <mat-error *ngIf="generalInfo.get('address').hasError('required')">
+                            Address is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Phone</mat-label>
+                        <input matInput placeholder="Enter phone" formControlName="phone">
+                        <mat-error *ngIf="generalInfo.get('phone').hasError('required')">
+                            Phone is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select country" formControlName="country" required>
+                            <mat-option *ngFor="let country of countries" [value]="country.id">
+                                {{country.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="generalInfo.get('country').hasError('required')">Country is required</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select state" formControlName="state" required>
+                            <mat-option *ngFor="let state of states" [value]="state.id">
+                                {{state.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="generalInfo.get('state').hasError('required')">State is required.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select city" formControlName="city" required>
+                            <mat-option *ngFor="let city of cities" [value]="city.id">
+                                {{city.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="generalInfo.get('city').hasError('required')">City is required.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-label>Zip Code</mat-label>
+                        <input matInput placeholder="Enter zip code" formControlName="zip_code">
+                        <mat-error *ngIf="generalInfo.get('zip_code').hasError('required')">
+                            Zip code is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select relationship status" formControlName="relationship" required>
+                            <mat-option *ngFor="let relationship of relationships" [value]="relationship.id">
+                                {{relationship.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="generalInfo.get('relationship').hasError('required')">Relationship is required.</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <mat-select placeholder="Select religion" formControlName="religion" required>
+                            <mat-option *ngFor="let religion of religions" [value]="religion.id">
+                                {{religion.name}}
+                            </mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="generalInfo.get('religion').hasError('required')">Religion is required.</mat-error>
+                    </mat-form-field>
+
+                    <div style="width: 100%; position: relative; min-height: 50px;">
+                        <mat-spinner-button [options]="btnOpts" style="margin-left: 0; position: absolute; right: 0;"></mat-spinner-button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

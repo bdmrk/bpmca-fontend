@@ -1,0 +1,49 @@
+<div class="fixedOnTop">
+  <div class="topHeader">
+      <h1 class="title">{{ categoryPodcastitle }} - {{subjectName}} </h1>
+  </div>
+
+  <div class="filter">
+
+    <!-- <div class="filterContent">
+        <ul>
+            <li [class.active]="filterApplied" (click)="getAllSet()">সব</li>
+            <li *ngFor="let data of subcategoryPodcastDisplay" [class.active]="selectedIndex === data.id"
+                (click)="getAllMCQ(data.id)">{{data.name}}</li>
+        </ul>
+        <div *ngIf="subcategoryPodcastMenu && subcategoryPodcastMenu.length>1">
+            <button mat-icon-button [matMenuTriggerFor]="menu" class="filterFont">
+                আরও <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button class="filterFont" mat-menu-item (click)="getAllMCQ(data.id)"
+                    *ngFor="let data of subcategoryPodcastMenu">{{data.name}}</button> 
+            </mat-menu>
+        </div>
+    </div> -->
+  </div>
+</div>
+
+
+
+<div class="customContainer">
+    <section class="topHeaderMarginWithFilter">
+        <div class="row" *ngIf="!warningDiv">
+            
+            <div class="col-xl-12 col-sm-6 col-md-4 col-lg-3" >
+            <!-- <div class="col-xl-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let podcast of categoryPodcastlist" > -->
+                <mat-card class="podcastCard m-b-20" (click)="gotoPodcastDetail()">
+                  <img src="https://s3-ap-southeast-1.amazonaws.com/edutubebd/course/content/biMitXmJOhTItzyasuYILWLAfxn3gEAd1EgG2rZc.jpeg" alt="">
+                  <div class="contain">
+                    <p class="h2"> SSC Physics -Part 01</p>
+                    <p class="h4"> <span class="text-muted">SSC</span> |  <span class="text-muted">Physics</span></p>
+                  </div>
+                </mat-card>
+            </div>
+           
+        </div>
+        <div class="noData" *ngIf="warningDiv" class="warningDiv">
+            <h1 class="warningText">No Content Available</h1>
+        </div>
+    </section>
+</div>

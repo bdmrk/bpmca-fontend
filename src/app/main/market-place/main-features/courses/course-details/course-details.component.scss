@@ -1,0 +1,303 @@
+@import "src/css/variables.scss";
+@import "src/css/topHeader.scss";
+
+.headerContent{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
+
+/*ABOUT TUTOR */ 
+.avatarImage{
+  img{
+    height: 7em;
+  }
+}
+.card{
+  margin-bottom: 3em; 
+  // margin-top: 1.6em;
+}
+.sectionTitle{
+  font-size: 1.5em;
+  font-weight: bold;
+  margin: 1em 0!important;
+}
+
+/*END ABOUT TUTOR */
+
+.singleRow{
+  display: flex;
+  align-items: center;
+}
+
+mat-chip{
+  margin-left: 40%;
+  cursor: pointer;
+}
+iframe{
+  border: 0;
+}
+a:hover{
+  text-decoration: none!important;
+}
+
+// .test-scroll {
+//   height: 500px;
+//   overflow: scroll;
+// }
+
+  .desktopCard{
+    
+    text-align: center;
+    width: 100%;
+    .card{
+      padding: 6em 0.5em;
+    }
+
+    .price{
+      font-size: 1.8em;
+      font-weight: 500;
+      margin: 0;
+    }
+
+  }
+  
+  .social{
+    margin: 2em;
+    text-align: center;
+  }
+  
+.topHeader{
+  .description{
+    font-size: 1em;
+    margin: 0;
+  }
+  .tutorName{
+    color:aliceblue;
+    font-weight: 500;
+  }
+
+}
+
+
+.tutorCourse{
+  border-radius: 6px;
+  background:$mainColor;
+  color: white;
+  font-size: large;
+}
+
+
+
+.aboutTutor{
+  display: flex;
+  
+    .tutorInfo{
+      margin-left: 1em;
+    }
+}
+
+
+/*TUTOR INFO CSS */
+.tutorInfo{
+
+    margin-top: 2.5em;
+  .flexRow{
+    display: flex;
+    justify-content: space-around;
+
+    .flex-col-1{
+      flex:1;
+    }
+    .flex-col-2{
+      flex:3;
+    }
+  }
+  .avatarImage{
+    img{
+      height: 6em;
+      border-radius: 6px;
+      // margin-bottom: 1em;
+    }
+  }
+  .tutorName{
+    margin: 0;
+    font-size: large;
+    font-weight: 500;
+    margin-left: 10px;
+  }
+  
+}
+
+// END TUTOR INFO
+.btnCart{
+  height: 35px;
+  width: 100%;
+  background: $mainColor!important;
+  color: white;
+  font-weight: bold;
+}
+.section {
+  padding: 15px;
+  margin: 0 !important;
+  width: 100% !important;
+  display: inline-block;
+}
+
+.divider-hr {
+  border: 1px solid #C9CCD3;
+}
+
+.dark-bg {
+  background: #515151;
+}
+
+.course-intro {
+  margin-top: -4px !important;
+  color: #ffffff !important;
+}
+
+.rating-meta {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.rating-meta .rating-star {
+  float: left;
+  margin-right: 5px;
+}
+
+.rating-meta .rating-value {
+  float: left;
+  margin-top: 5px;
+}
+
+.rating-value span {
+  display: inline-block !important;
+  padding: 0 5px;
+}
+
+.course-intro a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.course-intro a:hover {
+  color: #F44336;
+  text-decoration: none;
+  transition: ease 0.15s;
+  cursor: pointer;
+}
+
+.course-details hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+.mat-list .mat-list-item {
+  height: 30px !important;
+}
+
+.mat-list, .mat-nav-list, .mat-selection-list {
+  padding-top: 0;
+  display: block;
+}
+
+.price h2 span {
+  font-size: 25px;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+
+.mat-expansion-panel:not([class*="mat-elevation-z"]) {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.05),0 2px 2px 0 rgba(0,0,0,.05),0 1px 4px 0 rgba(0,0,0,.05);
+}
+
+
+/* Mobile Layout */
+
+@media only screen and (max-width: 767px) {
+  .topHeader{
+    padding: 1em;
+  }
+  .mobileCard{
+    position: fixed;
+    bottom: 0;
+    z-index: 20;
+    left: 0;
+    width: 100%;
+  }
+  .video-thumb{
+    .product-image{
+      height: 15em!important;
+    }
+    iframe{
+      width: 100%!important;
+      height: 30vh!important;
+    }
+  }
+  .topHeader{
+    // margin-top: -10px;
+  }
+  .test-scroll{
+    margin-top: -60px;
+  }
+}
+
+.title2{
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* Wide Mobile Layout */
+
+@media (max-width: 767px) {
+  .singleRow{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .title2{
+    font-size: 1.2em;
+  }
+  .ratingStardiv{
+    margin-left: -0.5em!important;
+  }
+
+}
+
+/* Mobile Layout */
+@media only screen and (max-width: 639px) {  
+  .topHeader{
+    margin-top: 0;
+  }
+  .test-scroll{
+    margin-top: -10px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) { 
+  .topHeader{
+    // margin-top: -11px;
+  }
+  .test-scroll{
+    margin-top: -20px;
+  }
+}  
+
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+  .test-scroll{
+    margin-top: 80px;
+  } 
+  .customContainer {
+    padding: 4% 6% 2% 6%;
+  }
+}

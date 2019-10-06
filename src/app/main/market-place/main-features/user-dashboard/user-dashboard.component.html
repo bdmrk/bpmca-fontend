@@ -1,0 +1,42 @@
+
+<div class="mainPanel">
+    <div class="sidebar mobileHidden">
+        <ul>
+            <li routerLink="/user-dashboard/parents-panel">
+                <mat-icon>wc</mat-icon>
+                Childrens
+            </li>
+            <li routerLink="/user-dashboard/my-progress">
+                <mat-icon>list_alt</mat-icon>
+                My Progress
+            </li>
+            <li routerLink="/user-dashboard/mcq-practice">
+                <mat-icon>list_alt</mat-icon>
+                Practice MCQ
+            </li>
+            <li routerLink="/user-dashboard/mcq-test">
+                <mat-icon>ballot</mat-icon>
+                Test MCQ
+            </li>
+            <li routerLink="/user-dashboard/profile">
+                <mat-icon>account_circle</mat-icon>
+                Profile
+            </li>
+            <li routerLink="/user-dashboard/student-class">
+                <mat-icon>assignment_ind</mat-icon>
+                Current class
+            </li>
+            <li routerLink="/user-dashboard/complaint">
+                <mat-icon>desktop_access_disabled</mat-icon>
+                Complaint
+            </li>
+            <li (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+                Logout
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+</div>

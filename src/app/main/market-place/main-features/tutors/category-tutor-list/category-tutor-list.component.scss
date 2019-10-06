@@ -1,0 +1,108 @@
+@import "~bootstrap-sass-grid";
+
+
+$mainColor:#6dc067;
+
+.tutorDetails{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.mainTitle{
+  text-transform: uppercase;
+  font-size: 1.9em;
+  font-weight: 400;
+  border-left: 9px solid $mainColor;
+  padding-left: 1em;
+}
+.course-filter button {
+  margin-right: 10px; 
+  height: 35px;
+}
+
+.single-product {
+  width: 100%;
+  background: #FFFFFF;
+}
+.mat-card{
+  border-radius: 6px;
+  padding: 0;
+  min-height: 29em;
+}
+
+.btnProfile{
+  background: $mainColor;
+  height: 2.5em;
+  color: #FFFFFF;
+  padding: 0px 1em;
+}
+
+.product-image {
+  width: 100% !important;
+  height: 200px !important;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  margin: 0px !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.product-details {
+  width: 100%;
+  padding:1.5em;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.product-meta {
+  font-size: 14px;
+  color: #8a8c91;
+  display: inline-block;
+}
+
+.rating-meta {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 0.5em;
+}
+
+.rating-meta .rating-star {
+  float: left;
+  margin-right: 5px;
+}
+
+.rating-meta .rating-value {
+  float: left;
+}
+
+
+.bottom{
+  position: absolute;
+  bottom: 1.25em;
+}
+
+.courseList {
+  span{
+    color: #75787b;
+      padding-right: 0.5em;
+      font-weight: bold;
+  }
+}
+
+
+a {
+  color: #313334;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}

@@ -1,0 +1,249 @@
+$mainColor:#6dc067;
+
+.mainTitle{
+  text-transform: uppercase;
+  font-size: 1.9em;
+  font-weight: 400;
+  border-left: 9px solid $mainColor;
+  padding-left: 1em;
+}
+.course-filter button {
+  margin-right: 10px;
+  height: 35px;
+}
+
+.single-product {
+  width: 100%;
+  background: #FFFFFF; 
+}
+
+.mat-card{
+  border-radius: 6px;
+  min-height: 29em;
+}
+.headerCourseList{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.product-image {
+  width: 100%;
+  height: 200px;
+  min-height: 200px;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  margin:0!important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.product-details {
+  width: 100%;
+  padding: 1em;
+}
+
+.product-title {
+  font-size: 1.3em;
+  font-weight: 500;
+  min-height: 4em; 
+}
+
+.product-meta {
+  display: inline-block;
+  
+}
+
+.rating-meta {
+  position: absolute;
+  right: 0.5em;
+  top: 12em;
+  // background: white;
+}
+
+.rating-meta .rating-star {
+  float: left;
+  margin-right: 5px;
+}
+
+.rating-meta .rating-value {
+  float: left;
+}
+
+.product-action {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 4.5em;
+
+  .productBtn{
+    display: flex;
+    justify-content: end;
+    align-items: baseline;
+
+    .btnBuy{
+      background: $mainColor;
+      color: white!important;
+    }
+  }
+}
+
+.product-action .price { 
+  font-size: 1.35em;
+  font-weight: 500;
+  display: inline-block;
+}
+.courseSubContent { 
+  font-size: 1.2em;
+  font-weight: 500;
+  color: #8a8c91;
+}
+
+a {
+  color: #313334;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #313334;
+  text-decoration: none; 
+}
+
+.text-end{
+  text-align: end;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1400px) {
+ 
+  .mat-card{
+    min-height: 25em;
+  }
+  .product-image {
+    height: 170px;
+    min-height: 170px;
+  }
+  .product-title {
+    font-size: 1.2em;
+    min-height: 3.5em;
+  }
+  .rating-meta {
+    right: 0em;
+    top: 10em;
+  }
+  .product-details {
+    padding: 0.6em 1em 0;
+  }
+  .courseSubContent { 
+    font-size: 1em;
+  }
+}
+
+  // Medium devices (768px-991px)
+  @media (min-width: 768px)  and (max-width: 991px) { 
+
+    @media (orientation: landscape){
+      .mat-card{
+        min-height: 23em;
+      }
+      .col-sm-6 {
+        width: 33.3%;
+      }
+      .product-image {
+        height: 150px;
+        min-height: 150px;
+      }
+      .product-title {
+        font-size: 1em;
+        min-height: 3.5em;
+        font-weight: bold;
+      }
+      .rating-meta {
+        right: -0.2em;
+        top: 9em;
+      }
+      .product-details {
+        padding: 0.6em 1em 0;
+      }
+      .courseSubContent { 
+        font-size: 1em;
+        min-height: 2em;
+      }
+    }
+
+
+  }
+
+
+/* ----------- Wide Mobile Layout ----------- */
+@media only screen and (min-width: 640px) and (max-width: 767px) {
+  // .product-image {
+  //   height: 300px;
+  //   min-height: 300px;
+  // }
+  // .rating-meta {
+  //   top: 19em;
+  // }
+  @media (orientation: landscape){
+    .col-xs-12 {
+      width: 50%;
+    }
+    .product-image {
+      height: 160px;
+      min-height: 160px;
+    }
+    .product-title {
+      font-size: 1.2em;
+      min-height: 3.4em;
+    }
+    .rating-meta {
+      right: -0.2em;
+      top: 9.5em;
+    }
+    .product-details {
+      padding: 0.6em 1em 0;
+    }
+    .courseSubContent { 
+      font-size: 1em;
+    }
+  }
+}
+
+@media (min-width: 500px) and (max-width: 600px) {
+  .product-image {
+    height: 270px;
+    min-height: 270px;
+  }
+  .rating-meta {
+    top: 17em;
+  }
+}
+
+
+@media only screen and (max-width: 767px) { 
+  .mat-card{
+    border-radius: 6px;
+    min-height: 23em;
+  }
+}
+
+/* ----------- Mobile Potrait Only ----------- */
+@media only screen and (max-width: 639px) { 
+  // .product-image {
+  //   height: 200px;
+  //   min-height: 200px;
+  // }
+  // .rating-meta {
+  //   top: 12em;
+  // }
+  // .col-xs-12 {
+  //   width: 50%;
+  // }
+  @media (orientation: landscape){
+    .col-xs-12 {
+      width: 50%;
+    }
+  }
+}
+
+

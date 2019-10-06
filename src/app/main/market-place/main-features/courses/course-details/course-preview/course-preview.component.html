@@ -1,0 +1,156 @@
+<div class="preview">
+    <div class="row">
+        <div class="col-xs-12">
+            <div style="display: flex;justify-content: space-between;align-items: center;">
+                <p class="lectureTitle">{{lectureTitle}}</p>
+  
+                <div class="socialIcons" style="display: flex;justify-content: flex-end;">
+                  <div class="icon">
+                      <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{base_url}}{{
+                          currentUrl}}"><img src="assets/images/facebook.png" alt=""></a>
+                  </div>
+                  <!-- <div class="icon">
+                      <a target="_blank" href="http://twitter.com/share?text= && url={{base_url}}{{ 
+                          currentUrl
+                      }}"><img src="assets/images/twitter.png" alt=""></a>
+                  </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-7 col-md-8">
+            <mat-card class="youtubeVideoCard videoCard" *ngIf="youtube_api_data && youtube_api_data.items"> 
+                <ng-container>
+                    <iframe [src]="current_link"></iframe>
+                </ng-container>
+                <div class="buttonGroup">
+                   <div class="quiz">
+                        <!-- <button class="btnTheme" mat-button (click)="openQuizComponent()">Quiz</button> -->
+                   </div>
+                   <div class="player">
+                        <button [disabled]="(selectedVideoIndex===0)" mat-icon-button (click)="getPrevious(selectedVideoIndex)"> <mat-icon>navigate_before</mat-icon> </button>
+                        <button [disabled]="(selectedVideoIndex===youtube_api_data.items.length-1)" mat-icon-button (click)="getNext(selectedVideoIndex)"> <mat-icon>navigate_next</mat-icon></button>
+                   </div>
+                </div>
+            </mat-card>
+  
+            <mat-card class="videoCard" *ngIf="data && !youtube_api_data">
+                <ng-container *ngIf="url_iframe; else video">
+                    <iframe *ngIf="url_iframe" [src]="url_iframe"></iframe>
+                </ng-container>
+                <ng-template #video>
+                    <div class="youtubeVideoCard" *ngIf="video_file; else video2">
+                        <video width="100%" controls #videoPlayer>
+                            <source
+                                [src]="video_file"
+                                type="video/mp4"
+                            />
+                            Your browser does not support HTML5 video.
+                        </video>
+                        <div class="buttonGroup">
+                          <div class="quiz" *ngIf="data.quiz_count > 0">
+                               <button class="btnTheme" mat-button (click)="openQuizComponent()">Quiz</button>
+                          </div>
+                          
+                          <div class="player">
+                              <button [disabled]="(selectedRegularVideoIndex===0)" mat-icon-button (click)="getRegularPrevious(selectedRegularVideoIndex)"> <mat-icon>navigate_before</mat-icon> </button>
+                              <button [disabled]="(selectedRegularVideoIndex===regular_api_data.length-1)" mat-icon-button (click)="getRegularNext(selectedRegularVideoIndex)"> <mat-icon> navigate_next</mat-icon></button>
+                          </div>
+                       </div>
+                       
+                    </div>
+                </ng-template>
+  
+                <ng-template #video2>
+                    <div *ngIf="data.video; else image">
+                        <video width="100%" controls>
+                            <source src="{{ previewlink + data.video }}" type="video/mp4" />
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                </ng-template>
+                <ng-template #image>
+                    <div *ngIf="data.image" class="product-image">
+                        <img src="{{ previewlink + data.image }}" alt="" />
+                    </div>
+                    <div *ngIf="!data.image" class="product-image">
+                        <img src="assets/img/placeholder.jpg" alt="" />
+                    </div>
+                </ng-template>
+            </mat-card>
+  
+        </div>
+        <div class="col-sm-5 col-md-4">
+            <mat-card class="playListCard" [class.overFlowScroll]="regular_api_data && regular_api_data.length>5" *ngIf="regular_api_data && regular_api_data.length > 0">
+                <p class="title">{{ data ? data.title.substring(0, 35) : "" }}</p>
+                <div id="playListItems" class="playListItems">
+                    <mat-list role="list">
+                        <mat-list-item class="item-list-title" *ngFor="let data of regular_api_data;let i=index;" [class.active]="(i===selectedRegularVideoIndex)" (click)="getVideoIdRegularVideo(data.file,i)" role="listitem">
+                            <mat-icon>play_circle_filled</mat-icon>
+                            <p class="videoTitle">{{data.title.substring(0, 45)}}</p>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </mat-card>
+            <mat-card class="playListCard" *ngIf="youtube_api_data && youtube_api_data.items">
+                <p class="title">{{ data ? data.title : "" }}</p>
+                <div id="playListItems" class="playListItems" [class.overFlowScroll]="youtube_api_data && youtube_api_data.items.length>4">
+                    <mat-list role="list">
+                        <mat-list-item class="item-list-title" *ngFor="let data of youtube_api_data.items;let i=index;" [class.active]="(i===selectedVideoIndex)" (click)="getVideoId(data.snippet.resourceId.videoId,i)" role="listitem">
+                            <mat-icon>play_circle_filled</mat-icon>
+                            <p class="videoTitle">{{data.snippet.title.substring(0, 45)}}</p>
+                        </mat-list-item>
+                    </mat-list>
+                </div>
+            </mat-card>
+            <mat-card class="pricingCard">
+                <div class="row">
+                    <div class="col-xs-5 col-md-6">
+                        <div class="price">
+                            <h2 *ngIf="data && data.type">
+                                Price : ৳{{ data.price | number: "1.2-2" }}
+                            </h2>
+                            <h2 *ngIf="data && !data.type">Free</h2>
+                        </div>
+                    </div>
+                    <div class="col-xs-7 col-md-6">
+                        <div *ngIf="data && data.type">
+                            <button (click)="purchase()" mat-raised-button class="btnCart">
+                                Add To Cart
+                            </button>
+                        </div>
+                        <div *ngIf="data && !data.type">
+                            <mat-spinner-button *ngIf="!buttonDisabled" [options]="btnOpts" class="btnCart" (click)="enrollment()">
+                              
+                            </mat-spinner-button>
+                            <div *ngIf="buttonDisabled">
+                                <mat-chip-list aria-label="Fish selection">
+                                    <mat-chip color="warn" selected>Course already taken</mat-chip>
+                                  </mat-chip-list>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+  </div>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  

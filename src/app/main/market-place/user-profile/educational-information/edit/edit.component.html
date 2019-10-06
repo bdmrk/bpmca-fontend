@@ -1,0 +1,107 @@
+<h2 mat-dialog-title>Edit Educational Information</h2>
+<mat-dialog-content>
+    <div class="page-layout simple">
+        <div class="content">
+            <div class="center">
+                <div class="app-panel-body">
+                    <form name="educationForm" [formGroup]="educationForm" novalidate (ngSubmit)="onSubmit()"
+                          style="margin: 0 auto;">
+
+                        <mat-form-field>
+                            <input matInput placeholder="Name" formControlName="name">
+                            <mat-error *ngIf="educationForm.get('name').hasError('required')">
+                                Name is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                            <mat-error *ngIf="educationForm.get('description').hasError('required')">
+                                Description is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Address" formControlName="address">
+                            <mat-error *ngIf="educationForm.get('address').hasError('required')">
+                                Address is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="City" formControlName="city">
+                            <mat-error *ngIf="educationForm.get('city').hasError('required')">
+                                City is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="State" formControlName="state">
+                            <mat-error *ngIf="educationForm.get('state').hasError('required')">
+                                State is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Country" formControlName="country">
+                            <mat-error *ngIf="educationForm.get('country').hasError('required')">
+                                Country is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Zip code" formControlName="zip_code">
+                            <mat-error *ngIf="educationForm.get('zip_code').hasError('required')">
+                                Zip code is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Website" formControlName="website">
+                            <mat-error *ngIf="educationForm.get('website').hasError('required')">
+                                Website is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Degree" formControlName="degree">
+                            <mat-error *ngIf="educationForm.get('degree').hasError('required')">
+                                Degree is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Course" formControlName="course">
+                            <mat-error *ngIf="educationForm.get('course').hasError('required')">
+                                Course is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="Start" formControlName="start">
+                            <mat-error *ngIf="educationForm.get('start').hasError('required')">
+                                Start is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <input matInput placeholder="End" formControlName="end">
+                            <mat-error *ngIf="educationForm.get('end').hasError('required')">
+                                End is required.
+                            </mat-error>
+                        </mat-form-field>
+
+                        <div style="width: 100%; position: relative; min-height: 50px; margin-top: 10px;">
+                            <button mat-button mat-raised-button color="warn" mat-dialog-close (click)="close()"
+                                    style="float: left;">Cancel
+                            </button>
+                            <mat-spinner-button [options]="btnOpts"
+                                                style="margin-left: 0; position: absolute; right: 0; float: right;"></mat-spinner-button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

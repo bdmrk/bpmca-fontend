@@ -1,0 +1,103 @@
+<div class="content">
+  <div class="center p-24 pb-56">
+    <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+      <div class="app-panel-header">
+        <a routerLink="/user-dashboard/parents-panel/child" mat-raised-button class="reference-button m-b-20 mat-white-bg mt-sm-0">
+          <mat-icon style="margin-right: 3px;">keyboard_arrow_left</mat-icon>
+          <span>Go back</span>
+        </a>
+      </div>
+      <div class="app-panel-body">
+        <form name="childForm" [formGroup]="childForm" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;">
+
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Child name</mat-label>
+                <input matInput placeholder="Enter child name" formControlName="name">
+                <mat-error *ngIf="childForm.get('name').hasError('required')">
+                  child name is required
+                </mat-error>
+              </mat-form-field>
+    
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>child email</mat-label>
+                <input matInput placeholder="Enter child email" formControlName="email" required>
+                <mat-error *ngIf="childForm.get('email').hasError('required')">
+                  child email is required
+                </mat-error>
+                <mat-error *ngIf="!childForm.get('email').hasError('required') &&
+                          childForm.get('email').hasError('email')">
+                  Please enter a valid email address
+                </mat-error>
+              </mat-form-field>
+    
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Child phone</mat-label>
+                <input matInput placeholder="Enter child phone" formControlName="phone">
+                <mat-error *ngIf="childForm.get('phone').hasError('required')">
+                  Child phone is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-label>Child password</mat-label>
+                <input matInput type="password" placeholder="Enter child password" formControlName="password">
+                <mat-error *ngIf="childForm.get('password').hasError('required')">
+                  child password is required
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-select placeholder="Select group" formControlName="group" required>
+                    <mat-option *ngFor="let category of tutor_categories" [value]="category.id">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-md-6">
+              <mat-form-field>
+                <mat-select placeholder="Select class" formControlName="class" required>
+                    <mat-option *ngFor="let category of course_subcategories" [value]="category.id">
+                        {{category.name}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+          </div>
+        
+          
+          
+
+        
+
+         
+
+        
+
+    
+
+          <input type="file" (change)="getImage($event)" style="width: 100%; margin: 20px;" accept="image/*" />
+          <hr>
+
+          <div style="width: 100%; position: relative; min-height: 50px;">
+            <mat-spinner-button [options]="btnOpts" style="margin-left: 0; position: absolute; right: 0;">
+            </mat-spinner-button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

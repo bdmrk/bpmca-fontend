@@ -1,0 +1,38 @@
+<div class="topHeader fixedOnTop">
+  <h1 class="title">All Video Courses</h1>
+</div>
+<div class="customContainer topheaderMargin vidiosContainer" *ngIf="playListItem">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-md-3" *ngFor="let item of playListItem; let i=index;">
+
+      <mat-card class="single-product mp-0 m-t-30" (click)="getVideoId(item,i)" >
+
+        <iframe *ngIf="video_index === i && video_url" width="100%" height="192" [src]="video_url" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div *ngIf="(video_index !== i) && item.snippet" class="product-image">
+          <img *ngIf="item.snippet.thumbnails && item.snippet.thumbnails.high && item.snippet.thumbnails.high.url" src="{{item.snippet.thumbnails.high.url}}" alt=""
+            class="img-responsive product-image">
+        </div>
+        <div class="product-details">
+          <!-- {{item.snippet.resourceId.videoId}} -->
+          <!-- {{item.snippet.thumbnails.standard ? item.snippet.thumbnails.standard.url : 'na'}} -->
+          <h2 *ngIf="item.snippet" class="product-title mp-0">{{ item.snippet.title.substring(0, 50) }}</h2>
+
+          <!-- <div class="product-meta p-t-10 p-b-10">
+                <span>{{ course.tutor.name.substring(0, 15) }} | {{ course.category.name.substring(0, 15) }}</span>
+            </div> -->
+
+          <button mat-button class="btnTheme" mat-raised-button>{{ 'Free' }}</button> 
+        </div>
+      </mat-card>
+
+    </div>
+  </div>
+</div>
+
+<div class="text-center" *ngIf="playListItem">
+ <img src="assets/img/loader/loader.gif" />
+ <br>
+ <br>
+ <br>
+</div>

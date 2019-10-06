@@ -1,0 +1,36 @@
+<div class="fixedOnTop">
+  <div class="topHeader">
+      <h1 class="title">{{dataMCQSet?.name}}</h1>
+      <p class="mp-0" > <span>{{dataMCQSet?.class?.name}}</span> | <span>{{dataMCQSet?.subject?.name}}</span></p>
+  </div>
+</div>
+
+<div class="customContainer">
+  <section class="mcqDetails topheaderMarginPreparation">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="testCard">
+          <app-mcq-test *ngIf="question_tests" [question_tests]="question_tests"></app-mcq-test>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="relatedMCQ">
+          <p class="title">Related Test </p>
+          <ul>
+            <li *ngFor="let item of related_test" (click)="getTestItem(item)" [class.active]="item.id === selectedQuestion">
+              <mat-icon>list_alt</mat-icon>
+               {{item.name}} {{item.id}}
+            </li>
+          </ul>
+        </div>
+        <br>
+        <div class="btnGroup">
+          <a (click)="backtoMCQTestList()" class="btnCustom" mat-button>Test</a> 
+          <a (click)="backtoMCQPractice()" class="btnCustom" mat-button>Practice</a> 
+          <a (click)="backtoBoardQuestion()" class="btnCustom" mat-button>Board Questions</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+  

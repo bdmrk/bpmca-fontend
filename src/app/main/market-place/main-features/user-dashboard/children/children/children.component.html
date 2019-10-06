@@ -1,0 +1,132 @@
+<div class="childlist">
+    <button mat-button (click)="onClickDisplayAllProgress()" [class.selected]="selectedIndex === -1">All Progress</button>
+    <button mat-button *ngFor="let child of children;let i= index;" [class.selected]="i === selectedIndex" (click)="updateChildOnDisplay(i,child.user_id,child.user.name)">
+        <img class="avatar mr-0 mr-sm-16" src="{{child?.user?.profile_image ? child?.user?.profile_image : 'assets/img/avatar.png'}}">
+        {{child?.user?.name.split(" ").reverse()[0]}}
+    </button>
+    <button mat-button routerLink="/user-dashboard/parents-panel/add"><mat-icon class="plusButton">add_circle</mat-icon> Add children</button>
+   
+</div>
+
+<section *ngIf="!displayAllProgress" class="progressTab">
+        <mat-tab-group >
+            <mat-tab label="Student Info" class="tab"> 
+                <div class="row">
+                        <div class="col-md-6">
+                                
+                            <mat-card *ngIf="childOnDisplay">
+                                <div class="row">
+                                    <div class="col-xs-12 col-md-12 student-info">
+                                        <h2>Student Info</h2>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-4">    
+                                            <img class="profileImage" src="{{childOnDisplay?.user?.profile_image ? childOnDisplay.user.profile_image : 'assets/img/avatar.png' }}">
+                                            </div>
+                                            <div class="col-xs-12 col-md-8"> 
+                                            <p><strong> Id : </strong> {{childOnDisplay?.user?.id}} </p>
+                                            <p><strong> Name : </strong> {{childOnDisplay?.user?.name}} </p>
+                                            <p><strong>Class : </strong> {{childOnDisplay?.current_class?.name}} </p>
+                                            <p><strong> Email </strong> {{childOnDisplay?.user?.email}} </p>  
+                                            </div>
+                                        </div>
+                                        <br class="m-t-20">              
+                                    </div>
+                                </div>
+                            </mat-card>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="studentProgress" *ngIf="progressData && progressData.length > 0">
+                                <mat-card > 
+                                    <h2>Exam Progress</h2>
+                                    <app-compare-progress *ngIf="progressData" [progressData]="progressData"></app-compare-progress>
+                                    
+                                    <hr>
+                                    <hr>
+                                    <p style="font-size: medium;"> Total Exam : <strong>  {{exam_report?.total_exam}} </strong> | 
+                                        Exam Taken :<strong> {{exam_report?.exam_taken}}  </strong> |
+                                        Questions : <strong> {{score}} </strong> |
+                                        Obtained Mark:  <strong> {{obtained_mark}}  </strong> | 
+                                        Score :  <strong> {{ obtained_mark && score > 0 ? ((obtained_mark/score) * 100 ).toFixed(2) : "0" }} %  </strong> </p>
+                            
+                                </mat-card>
+                                
+                            </div>
+                        </div>
+                    
+                </div>
+            </mat-tab>
+            <mat-tab label="Exam List"> 
+                <div class="row">
+                    <div class="col-md-12" *ngIf="upcoming_exam"> 
+                            <mat-card>
+                                <h2>Exam List</h2>
+                                <hr class="m-b-20">
+                                <div *ngFor="let item of upcoming_exam">
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <p> <strong> {{item?.name}} </strong> </p>
+                                        </mat-expansion-panel-header>
+                                        
+                                        <ng-template matExpansionPanelContent>
+                                            <p *ngFor="let value of item.test_mcq_question"> {{value?.name}} </p>
+                                        </ng-template>
+                                    </mat-expansion-panel>
+                                </div>
+                            </mat-card>
+                    </div>
+                </div>
+            </mat-tab>
+            
+            <mat-tab label="Exam Result"> 
+                <div class="row">
+                    <div class="col-md-12" >
+                        <mat-card *ngIf="completed_exam">
+                            <h2>Exams Completed</h2>
+                            <hr class="m-b-20">
+                            <div class="">
+                                <ng-container *ngFor="let item of completed_exam" >
+                                    <mat-expansion-panel>
+                                        <mat-expansion-panel-header>
+                                            <p> <strong> {{item?.name}} </strong> </p>
+                                        </mat-expansion-panel-header>
+                                        
+                                        <ng-template matExpansionPanelContent>
+                                            <mat-list dense *ngFor="let value of item.mcq_test_result">
+                                                <mat-list-item (click)="getCompletedExam(value)"> <p class="set-name">{{value?.mcq_test?.name}}</p> 
+                                                    <mat-chip-list>
+                                                    <div class="chip-wrapper">
+                                                        <mat-chip class="chip-right">Right: {{ value.right }}</mat-chip>
+                                                        <mat-chip class="chip-wrong">Wrong: {{ value.wrong }}</mat-chip>
+                                                        <!-- <mat-chip class="chip-skipped">Skipped: {{ value.skipped }}</mat-chip> -->
+                                                        <mat-chip class="chip-score">
+                                                            Score:
+                                                            {{
+                                                                value.answers && value.right > 0 ? ( (value.right / value.answers.length) * 100 ).toFixed(2) : "0"
+                                                            }}
+                                                            %
+                                                        </mat-chip> 
+                                                    </div>  
+                                                    </mat-chip-list>
+                                                </mat-list-item>
+                                                <mat-divider></mat-divider>
+                                            </mat-list>
+                                        </ng-template>
+                                    </mat-expansion-panel>
+                                </ng-container>
+                            </div>
+                        </mat-card>
+                    </div>
+                </div>
+            </mat-tab>
+
+        </mat-tab-group>
+
+ 
+   
+
+</section>
+<section *ngIf="displayAllProgress">
+    <app-all-progress-report></app-all-progress-report>
+</section>
+

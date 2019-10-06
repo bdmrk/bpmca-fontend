@@ -1,0 +1,83 @@
+@import "src/css/variables.scss";
+
+
+.courseContent{
+  max-height: 21em;
+  margin-top: 1.5em;
+}
+.card{
+    margin-bottom: 3em;
+    margin-top: 1.6em;
+    p{
+      line-height: 28px;
+      font-size: 16px;
+      text-align: justify;
+      p{
+        line-height: 28px;
+        font-size: 16px;
+        text-align: justify;
+      }
+    }
+  }
+  .courseContentExpPnael{
+    // padding: 0.2em 0;
+    border-radius: 6px;
+    font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+    // background: #eaeae9;
+    margin-bottom: 0.3em;
+  
+    .lectures{
+      list-style: none;
+      padding: 0;
+    
+      li{
+        padding: 0.6em 0;
+        border-bottom: 1px solid #b1acac;
+      }
+    }
+  }
+
+ .courseDetailsfont{
+  font-size: calc(14px + (20 - 14) * ((100vw - 300px) / (1600 - 300)));
+    
+ }
+.courseDescription{
+    margin: 1em 0;
+    .mat-card{
+      padding: 20px!important;
+      border-radius: 6px;
+      margin-bottom: 1em;
+      background: #f6f6f6;
+    }
+    .sectionTitle{
+      font-size: 1.5em;
+      font-weight: bold;
+      margin: 0.5em 0!important;
+    }
+  }
+
+.tutorImage{
+    height: 10em;
+    width: 10em;
+    // text-align: center;
+    img{
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .tutorRating{
+    justify-content: flex-start;
+    display: flex;
+    background: $mainColor;
+    width: 8em;
+    border-radius: 6px;
+    padding: 0.2em;
+  }
+
+ul {
+    li{
+      list-style: none;
+      cursor: pointer;
+    }
+  }
+ 

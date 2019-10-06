@@ -1,0 +1,50 @@
+<div class="page-layout simple" style="margin-top: 20px; padding-right: 10px; padding-top: 2px;">
+    <div style="width: 100%;">
+        <a (click)="add()" mat-raised-button class="mat-white-bg mt-16 mt-sm-0 mb-20" style="float: right !important;">
+            <mat-icon style="margin-right: 3px;">add_circle_outline</mat-icon>
+            <span>Add More</span>
+        </a>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Search by anything</mat-label>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search here">
+    </mat-form-field>
+    <table mat-table [dataSource]="dataSource" matSort>
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px;"> No.</th>
+            <td mat-cell *matCellDef="let row" style="width: 100px;"> {{row.id ? row.id : '-'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="language">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Language</th>
+            <td mat-cell *matCellDef="let row"> {{row.language.name ? row.language.name : '-'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="proficiency">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Proficiency</th>
+            <td mat-cell *matCellDef="let row"> {{row.proficiency ? row.proficiency : '-'}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 20px !important;">
+                Action
+            </th>
+            <td mat-cell *matCellDef="let row" style="width: 20px !important;">
+                <button mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu" xPosition="before">
+                    <button mat-menu-item (click)="edit(row)">
+                        <mat-icon>edit</mat-icon>
+                        <span>Edit</span>
+                    </button>
+                    <button mat-menu-item (click)="delete(row.id)">
+                        <mat-icon>delete</mat-icon>
+                        <span>Delete</span>
+                    </button>
+                </mat-menu>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>

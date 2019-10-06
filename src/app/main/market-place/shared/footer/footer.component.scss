@@ -1,0 +1,109 @@
+#footer_top_area{
+  padding-top: 30px;
+  background:#EBEBEB;
+  background-image: repeating-linear-gradient(180deg, #efefef, #efefef 1.5px, #e6e6e6 1.5px, #e6e6e6 3px);
+}
+
+.customContainer > div > div > h3{
+  margin-top: 25px;
+}
+
+.footer-item-list {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 0;
+}
+
+.footer-item-list li {
+  padding: 8px 0;
+}
+
+.footer-item-list li a {
+  color: #222;
+  font-size: 15px;
+}
+
+.footer-item-list li a:hover {
+  color: #1489c5;
+}
+
+#footer_area {
+  padding: 10px;
+}
+
+.social-icons{
+  margin-top: 35px;
+}
+
+.social-icons ul{
+  padding: 0;
+}
+
+.social-icons ul li{
+  list-style: none;
+  display: inline;
+  padding-right: 10px;
+}
+
+.social-icons ul li a:hover{
+  cursor: pointer;
+}
+
+.footer-line{
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+.copyright {
+  float: left;
+  font-size: small;
+}
+
+.copyright span {
+  padding: 0 10px;
+}
+
+.links {
+  float: right;
+  a{
+    font-size: 0.9em;
+    color:#222;
+    &:hover{
+      color:#0676b0; 
+    }
+  }
+}
+
+.links span {
+  padding: 0 10px !important;
+}
+
+.view-more {
+  height: 35px;
+}
+.logo{
+  padding: 1.5em 0 0 0;
+}
+.logo img{
+  height: 3em;
+}
+
+.edutube-slogan{
+  font-size: 15px;
+}
+
+/* Mobile Layout */
+
+@media only screen and (max-width: 767px) { 
+  .links {
+    float: left;
+    margin-top: 10px;
+  }
+
+}
+
+/* Wide Mobile Layout */
+
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+
+}

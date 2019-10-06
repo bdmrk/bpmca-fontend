@@ -1,0 +1,24 @@
+;
+
+$mainColor:#6dc067;
+
+.line{
+  width: 5em;
+  border: 3px solid $mainColor;
+}
+
+
+.find-form-container {
+ padding: 1em;
+}
+.feature {
+  text-align: center;
+  padding: 2em;
+}
+.feature p{
+  text-align: justify;
+}
+
+.mat-form-field{
+  width: 100%;
+}

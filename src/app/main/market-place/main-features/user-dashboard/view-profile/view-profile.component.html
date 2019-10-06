@@ -1,0 +1,126 @@
+<div class="container-fluid profileContainer">
+    <div class="row">
+        <div class="col-lg-3">
+            <mat-card>
+                <div class="profileImage">
+                    <img src="{{  user_data?.profile_image }}">
+                </div>
+                <div class="info">
+                    <p class="mp-0 h2 fw500">{{user_data?.name}}</p>
+
+                    <br>
+                    <mat-chip-list *ngIf="user_data && user_data.sub_category">
+                       
+                        <mat-chip>{{user_data?.sub_category.name}}</mat-chip>
+                    </mat-chip-list>
+                    <br>
+                    <div *ngIf="user_data && user_data.general_information">
+                        <p class="mp-0"> <span class="text-muted">Phone: </span> {{user_data.general_information.phone}}</p>
+                        <p class="mp-0"> <span class="text-muted">Country: </span> {{user_data.general_information.country?.name}}</p>
+                        <p class="mp-0"> <span class="text-muted">City: </span> {{user_data.general_information.city?.name}} , <span class="text-muted">Zip code:  </span> {{user_data?.general_information.zip_code}}</p>
+                        <p class="mp-0"> <span class="text-muted">Relationship status: </span>   {{user_data.general_information.relationship?.name}}</p>
+                        <p class="mp-0"> <span class="text-muted">Religion:</span>   {{user_data.general_information.religion?.name}}</p>
+                        <p class="mp-0"> <span class="text-muted">Date of birth:</span>  {{user_data.general_information.dob}}</p>
+                        <p class="mp-0"> <span class="text-muted">Email: </span> {{user_data.email}}</p>
+
+                        <hr class="line">
+                        {{user_data?.general_information.bio}}
+                    </div>
+                </div>
+            </mat-card>
+            <br>
+            <mat-card class="language">
+                <p class="mp-0 h2 fw500">Language proficiency</p>
+                <hr class="line">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <p class="mp-0 fw500">Language</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="mp-0 fw500">Proficiency</p>
+                    </div>
+                </div>
+                <div class="row" *ngFor="let langs of user_data?.languages; let i = index">
+                    <div class="col-xs-6">
+                        <p class="mp-0">{{langs.language.name}}</p>
+                    </div>
+                    <div class="col-xs-6">
+                        <p class="mp-0">{{langs.proficiency}}</p>
+                    </div>
+                </div>
+            </mat-card>
+            <br>
+            <mat-card class="skills">
+                <p class="mp-0 h2 fw500">Skills</p>
+                <hr class="line">
+                <mat-chip-list>
+                    <mat-chip *ngFor="let skill of user_data?.skills;">{{skill.skill.name}}</mat-chip>
+                </mat-chip-list>
+               
+            </mat-card>
+        </div>
+        <div class="col-lg-9">
+            <mat-card class="about" *ngIf="user_data && user_data.general_information">
+                <div class="header">
+                    <p class="mp-0 fw500 h2">About </p>
+                    <div *ngIf="showBtn"> <a routerLink="/user-dashboard/profile-edit"><button class="btnTheme" mat-button>Edit Profile</button></a> </div>
+                </div>
+                <hr class="line">
+                <p class="aboutText">{{user_data?.general_information.about}}</p>
+            </mat-card>
+
+            <br>
+
+            <mat-card>
+                <div class="header">
+                    <p class="mp-0 fw500 h2">Education </p>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                      <th>Institute Name</th>
+                      <th>Degree</th>
+                      <th>Course</th>
+                      <th>Passing Year</th>
+                      <th>CGPA</th>
+                      <th>Grade</th>
+                    </tr>
+                    <tr *ngFor="let education of user_data?.educations">
+                        <td>{{education.name}}</td>
+                        <td>{{education.degree}}</td>
+                        <td>{{education.course}}</td>
+                        <td>{{education.end}}</td>
+                        <td></td>
+                        <td></td>
+                        
+                    </tr>
+                </table>
+                  
+            </mat-card>
+
+            <br>
+
+            <mat-card>
+                <div class="header">
+                    <p class="mp-0 fw500 h2">Experience </p>
+                </div>
+                <br>
+                <table>
+                    <tr>
+                        <th>Institute Name</th>
+                        <th>Department</th>
+                        <th>Position</th>
+                        <th>Year</th>
+                    </tr>
+                    <tr *ngFor="let exp of user_data?.experience">
+                        <td>{{exp.name}}</td>
+                        <td>{{exp.department}}</td>
+                        <td>{{exp.position}}</td>
+                        <td>{{exp.start}} - {{exp.end}}</td>
+                    </tr>
+                </table>
+                    
+            </mat-card>
+        </div>
+    </div>
+</div>

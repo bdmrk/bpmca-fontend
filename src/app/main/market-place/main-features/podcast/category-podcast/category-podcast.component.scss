@@ -1,0 +1,20 @@
+.podcastCard{
+    padding: 0;
+    border-radius: 6px;
+
+    img{
+        width: 100%;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+    }
+
+    .contain{
+        padding: 0.75em;
+
+        .h2{
+            font-size: large;
+            font-weight: bold;
+            margin-top: 0.3em;
+        }
+    }
+}

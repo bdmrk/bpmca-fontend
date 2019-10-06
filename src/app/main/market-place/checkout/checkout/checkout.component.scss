@@ -1,0 +1,137 @@
+$mainColor:#6dc067;
+$subColor:#007791;
+
+@media (min-width: 768px)
+{
+  .order-price-summary{
+    margin-top: 5em;
+  }
+
+}
+.order-price-summary{
+  padding: 2em;
+  text-align: center;
+}
+.mat-card-header{
+  justify-content: center;
+}
+
+.mainColor{
+  color: $mainColor!important;
+}
+.keepPurchaseBtn{
+  background: $subColor;
+  height: 3em;
+  width: 100%;
+  color: aliceblue;
+}
+.cancelBtn{
+  background: #ec5252;
+  height: 3em;
+  width: 100%;
+  color: aliceblue;
+}
+.checkoutBtn{
+  background: $mainColor;
+  height: 3em;
+  width: 100%;
+  color: aliceblue;
+}
+.material-icons{
+  color: aliceblue;
+  font-weight: bold;
+}
+
+// /* Default Code */
+
+// /* Tablet Layout */
+
+// @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+// }
+
+// /* Mobile Layout */
+
+// @media only screen and (max-width: 767px) {
+
+// }
+
+// /* Wide Mobile Layout */
+
+// @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+// }
+
+// .main {
+//     width: 100% !important;
+//   }
+  
+//   .section {
+//     padding: 10px 0;
+//     margin: 0 !important;
+//     width: 100% !important;
+//     display: inline-block;
+//   }
+  
+//   .divider-hr {
+//     border: 1px solid #C9CCD3;
+//   }
+  
+//   .m-t-m4 {
+//     margin-top: -4px !important;
+//   }
+
+// .payment-card{
+//     min-height: 485px !important;
+// }
+// .payment-section{
+//     display: flex;
+//     flex-direction: row;
+// }
+// .order-price-summary{
+//     box-shadow: none !important;
+// }
+// .payment-section .payment-section-input {
+//     width: 100%;
+//   }
+//   .order-price-header{
+//     justify-content: center;
+//     align-items: center;
+//     font-weight: bold;
+// }
+// .price-card-content{
+//     text-align: center;
+// }
+// .price-card-content p{
+//     text-align: justify;
+//   text-justify: inter-word;
+// }
+
+// .checkout-proceed-action{    
+//    display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   margin-bottom: 0 !important; 
+// }
+// .checkout-proceed-button{
+//     width: 75%;
+//     height: 40px;
+//     background-color: #E0E0E0;
+// }
+
+// .success-transaction{
+//     background-color: #00811F;
+//     border-color: #00811F;
+//     color: #ffffff;
+//     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.6);
+//     border-radius: 6px;
+//     text-align: center;
+// }
+// .failed-transaction{
+//     background-color: #d9534f;
+//     border-color: #d9534f;
+//     color: #ffffff;
+//     box-shadow: 0 2px 9px rgba(0, 0, 0, 0.6);
+//     border-radius: 6px;
+//     text-align: center;
+// }

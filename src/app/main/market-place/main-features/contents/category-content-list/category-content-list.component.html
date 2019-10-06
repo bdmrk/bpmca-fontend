@@ -1,0 +1,23 @@
+    <div *ngIf="data" class="topHeader">
+        <h1 class="title">{{ data.category.name }}</h1>
+    </div>
+
+    <div class="customContainer">
+
+        <section class="section m-t-m6">
+            <app-course-list
+                    [title]="false"
+                    [dataSource]="data.courses"
+                    [limit]="12"
+                    [range]="11"
+                    [showFilter]="false"
+                    *ngIf="data && data.courses && data.courses.length > 0">
+            </app-course-list>
+        </section>
+
+        <section *ngIf="!data || !data.courses || !(data.courses.length > 0)" class="noData">
+            <h1>Upload New Content</h1>
+            <a routerLink="/registration" mat-raised-button  class="btnNodata">Upload Content</a>
+        </section>
+                
+    </div>

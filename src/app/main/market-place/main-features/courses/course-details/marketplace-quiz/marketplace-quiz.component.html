@@ -1,0 +1,169 @@
+
+<div class="header">
+  <h2 mat-dialog-title>Quiz Questions</h2>
+  <button mat-icon-button (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+
+<mat-dialog-content class="dialog-content">
+  <mat-card>
+    <div class="text-center" *ngIf="!start_quiz_btn">
+      <p>Note: After starting quiz information.</p>
+      <a
+        mat-raised-button
+        class="reference-button mat-white-bg mt-16 mt-sm-0"
+        (click)="start_quiz()"
+      >
+        <mat-icon style="margin-right: 3px;">play_arrow</mat-icon>
+        <span>Start Quiz</span>
+      </a>
+    </div>
+    <div id="takeQuizSectionForm">
+      <form name="quizForm" [formGroup]="quizForm" novalidate>
+        <ng-container *ngIf="start_quiz_btn">
+          <countdown
+              [config]="{ leftTime: leftTime }"
+              (start)="onStart()"
+              (finished)="onFinished()"
+              (notify)="onNotify($event)"
+              >$!s!:$!m!
+          </countdown >
+          <ng-container *ngFor="let data of testQuestion; let i = index">
+            <ng-container *ngIf="i === index_value">
+              <mat-card-title>
+                <span>{{ data.data.question_title }}</span>
+              </mat-card-title>
+              <mat-card-subtitle>
+                time: {{ data.data.time_limit }} sec
+              </mat-card-subtitle>
+              <mat-card-content>
+                <div class="col-md-12">
+                  <div class="col-md-8 optionsDiv">
+                    <mat-radio-group
+                      (change)="radioChange($event, i)"
+                      formControlName="quiz_option_{{ i }}"
+                    >
+                      <mat-radio-button
+                        [value]="1"
+                        [checked]="data.givenAnswer.answer === 1 ? true : false"
+                      >
+                        <span
+                          *ngIf="
+                            data.testOptionJson.option1;
+                            else image_option_1
+                          "
+                          >{{ data.testOptionJson.option1 }}</span
+                        >
+                        <ng-template #image_option_1
+                          ><img
+                            [src]="
+                              aws_link + data.testOptionJson.image_option_1
+                            "
+                          />
+                        </ng-template>
+                      </mat-radio-button>
+                      <mat-radio-button
+                        [value]="2"
+                        [checked]="data.givenAnswer.answer === 2 ? true : false"
+                      >
+                        <span
+                          *ngIf="
+                            data.testOptionJson.option2;
+                            else image_option_2
+                          "
+                          >{{ data.testOptionJson.option2 }}</span
+                        >
+                        <ng-template #image_option_2
+                          ><img
+                            [src]="
+                              aws_link + data.testOptionJson.image_option_2
+                            "
+                          />
+                        </ng-template>
+                      </mat-radio-button>
+                      <mat-radio-button
+                        [value]="3"
+                        [checked]="data.givenAnswer.answer === 3 ? true : false"
+                      >
+                        <span
+                          *ngIf="
+                            data.testOptionJson.option3;
+                            else image_option_3
+                          "
+                          >{{ data.testOptionJson.option3 }}</span
+                        >
+                        <ng-template #image_option_3
+                          ><img
+                            [src]="
+                              aws_link + data.testOptionJson.image_option_3
+                            "
+                          />
+                        </ng-template>
+                      </mat-radio-button>
+                      <mat-radio-button
+                        [value]="4"
+                        [checked]="data.givenAnswer.answer === 4 ? true : false"
+                      >
+                        <span
+                          *ngIf="
+                            data.testOptionJson.option4;
+                            else image_option_4
+                          "
+                          >{{ data.testOptionJson.option4 }}</span
+                        >
+                        <ng-template #image_option_4
+                          ><img
+                            [src]="
+                              aws_link + data.testOptionJson.image_option_4
+                            "
+                          /> </ng-template
+                      ></mat-radio-button>
+                    </mat-radio-group>
+                  </div>
+                  <div class="col-md-4" *ngIf="data.data.question_image">
+                    <img src="{{ aws_link + data.data.question_image }}" />
+                  </div>
+                </div>
+          
+              </mat-card-content>
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </form>
+      <br>
+      <div
+        class="pagination"
+        *ngIf="start_quiz_btn"
+      >
+        <button
+          mat-raised-button
+          *ngIf="previous"
+          (click)="loadLess()"
+          [disabled]="previousDisable"
+        >
+          <mat-icon>keyboard_arrow_left</mat-icon>
+          Previous
+        </button>
+
+        <button
+          mat-raised-button
+          *ngIf="next"
+          (click)="loadMore()"
+          [disabled]="nextDisable"
+        >
+          Next
+          <mat-icon>keyboard_arrow_right</mat-icon>
+          
+        </button>
+
+        <button mat-raised-button style="float:right;" (click)="submit()">
+          Submit
+        </button>
+      </div>
+    </div>
+    <mat-card-content *ngIf="!start_quiz_btn" style="margin-top:30px;">
+      <!-- <app-course-lecture-quiz-answer></app-course-lecture-quiz-answer> -->
+    </mat-card-content>
+  </mat-card>
+</mat-dialog-content>

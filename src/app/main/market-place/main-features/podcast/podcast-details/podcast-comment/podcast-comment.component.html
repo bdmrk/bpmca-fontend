@@ -1,0 +1,92 @@
+
+<div class="commentContainer">
+    
+    <div class="commentList" *ngFor="let data of commentApiData; let i = index">
+        <div class="commentAvatar">
+          <img [src]="data.user && data.user.profile_image? data.user.profile_image : '/assets/img/avatar.png'" alt=""/> 
+        </div>
+        <div class="comments">
+          <p class="name">{{data.user?.name}}</p>
+          <p>{{ data?.comment }}</p>
+          <p class="time"> 
+            <mat-icon>schedule</mat-icon> 
+            {{ getTimeDiff(data.created_at) }} ago  
+            <button mat-button color="primary" (click)="reply(data,i+1)">Reply</button> 
+          </p> 
+          <hr>
+          <div class="commentList" *ngFor="let reply of data.reply">
+              <div class="commentAvatar">
+                <img src="/assets/img/avatar.png" alt=""/> 
+              </div>
+              <div class="comments">
+                  <p class="name">{{reply?.user_name}}</p>
+                  <p>{{reply?.reply}}</p>
+                  <div class="time"> 
+                      <mat-icon>schedule</mat-icon> 
+                      {{ getTimeDiff(reply.created_at) }} ago  
+                  </div> 
+              </div>            
+            </div> 
+          
+            <mat-card class="commentSection" *ngIf="replyToggle && replyToggle === i+1">
+              <form name="commentForm" [formGroup]="commentForm" (ngSubmit)="onReplySubmit()">
+            <div class="commentForm">
+                <div class="commentAvatar">
+                    <img src="/assets/img/avatar.png" alt=""/> 
+                </div>
+                <div class="commentText">
+                  <mat-form-field>
+                    <mat-label>write here</mat-label>
+                      <br>
+                      <textarea matInput
+                      cdkTextareaAutosize
+                      #autosize="cdkTextareaAutosize"
+                      cdkAutosizeMinRows="1"
+                      cdkAutosizeMaxRows="5"
+                      formControlName="reply" 
+                      required>
+                      </textarea>
+                    <mat-error *ngIf="commentForm.get('reply').hasError('required')">The reply is required</mat-error>
+                  </mat-form-field>
+                </div>
+            </div>
+            <div class="commentPost">
+              <p>Posted As : <span style="font-weight: bold;">Md Mainuddin Islam</span></p>
+              <button mat-raised-button color="primary" type="submit">Reply</button> &nbsp;&nbsp;
+            </div>
+            </form>
+          </mat-card>
+
+        </div>
+      </div>
+</div>
+
+<mat-card class="commentSection">
+  <form name="commentForm" [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()">
+<div class="commentContainerForm">
+    <div class="commentAvatar">
+        <img src="/assets/img/avatar.png" alt=""/> 
+    </div>
+    <div class="commentText">
+      <mat-form-field>
+        <mat-label>write here</mat-label>
+        <br>
+        <textarea matInput
+                  cdkTextareaAutosize
+                  #autosize="cdkTextareaAutosize"
+                  cdkAutosizeMinRows="1"
+                  cdkAutosizeMaxRows="5"
+                  formControlName="comment" 
+                  required>
+        </textarea>
+        <mat-error *ngIf="commentForm.get('comment').hasError('required')">The comment is required</mat-error>
+      </mat-form-field>
+    </div>
+</div>
+<div class="commentPost">
+  <p>Posted As : <span style="font-weight: bold;">{{ authorName ? authorName : ''}}</span></p>
+  <button mat-raised-button color="primary" type="submit">Comment</button> &nbsp;&nbsp;
+</div>
+</form>
+</mat-card>
+  

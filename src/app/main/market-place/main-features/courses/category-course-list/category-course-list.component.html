@@ -1,0 +1,57 @@
+<div class="fixedOnTop">
+    <div *ngIf="data" class="topHeader">
+        <div style="display: flex;justify-content: space-between;align-items: center;">
+            <h1 class="title">{{ data.category ? data.category.name : '-' }}</h1> 
+
+            <div class="socialIcons" style="display: flex;justify-content: flex-end;">
+              <div class="icon">
+                  <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{base_url}}{{
+                      currentUrl}}"><img src="assets/images/facebook-2.png" alt=""></a>
+              </div>
+              <!-- <div class="icon">
+                  <a target="_blank" href="http://twitter.com/share?text= && url={{base_url}}{{ 
+                      currentUrl
+                  }}"><img src="assets/images/twitter.png" alt=""></a>
+              </div> -->
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="subcategoryCoursesDisplay.length > 0" class="filter">
+
+        <div class="filterContent">
+            <ul>
+                <li [class.active]="filterApplied" (click)="allCourses()">সব</li>
+                <li *ngFor="let data of subcategoryCoursesDisplay" [class.active]="selectedIndex === data.id"
+                    (click)="getAllCourses(data.id)">{{data.name}}</li>
+            </ul>
+            <div *ngIf="subcategoryCoursesMenu.length>1">
+                <button mat-icon-button [matMenuTriggerFor]="menu" class="filterFont">
+                    আরও <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button class="filterFont" mat-menu-item (click)="getAllCourses(data.id)"
+                        *ngFor="let data of subcategoryCoursesMenu">{{data.name}}</button>
+                </mat-menu>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="customContainer">
+
+    <section *ngIf="loaderStatus" class="loader_center">
+        <img src="assets/img/loader/loader.gif" />
+    </section>
+    <section *ngIf="data && data.courses && data.courses.length == 0" class="loader_center">
+        <h2>No content found</h2>
+    </section>
+
+    <section class="section m-t-m6 topHeaderMarginWithFilter">
+        <app-course-list [title]="false" [dataSource]="data.courses" [limit]="16" [range]="15" [showFilter]="false"
+            [showAll]="true" [scrolling]="true" *ngIf="data && data.courses && data.courses.length > 0">
+        </app-course-list>
+    </section>
+
+</div>

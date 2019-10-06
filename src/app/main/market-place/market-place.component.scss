@@ -1,0 +1,126 @@
+@import "src/css/custom-material.scss";
+$mainColor:#6dc067;
+
+main{
+  min-height: 100vh;
+}
+.dashboardMenu li{
+  background: rgb(249, 249, 249);
+  font-size: 1.15em;
+  padding: 0.5em 2em 0.5em 1.25em;
+  height: 50px!important;
+  border-bottom: 1px solid #efe6e6;
+}
+.listItem{
+  border-bottom: 1px solid #ddd;
+  padding: 0.75em 0.5em 0.75em 3em;
+  color: rgba(0, 0, 0, 0.54);
+  cursor: pointer;
+}
+.listItem:active{
+  background: white;
+  color: #73b76e;
+}
+.menu-icon{
+  margin-top: -10px;
+  padding-top: 2px;
+  margin-left: -2px;
+}
+
+
+ul {
+  list-style: none;
+  padding: 0 ;
+  margin: 0;
+
+  li{
+    .material-icons{
+      vertical-align: sub;
+    }
+  }
+}
+.logo{
+  padding: 1em 0px 0.5em 1.75em;
+  img{
+    height: 2.5em;
+  }
+}
+.main {
+  width: 100vw !important;
+  background: #ffffff;
+  overflow: auto;
+  overflow-x: hidden!important;
+  
+}
+
+header{
+  display: flex;
+  // align-items: center;
+  position: fixed;
+
+  background: white;
+  z-index: 999;
+  width: 100%;
+}
+
+/* Mobile Layout */
+@media only screen and (max-width: 480px) {
+  
+  header{
+    padding: 0.75em 0 5px 0px;
+  }
+  main{
+    margin-top: 7.3em;
+  }
+  @media (orientation: landscape){
+    main {
+      margin-top: 7em;
+    }
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  
+  main{
+    margin-top: 3.9em;
+  }
+  header{
+    padding: 0.75em 0 0 0;
+  }
+  .menu-icon{
+    margin-top: -10px;
+    padding-top: 2px;
+    margin-left: -2px;
+  }
+  @media (orientation: landscape){
+    main {
+      margin-top: 4em;
+    }
+  }
+
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  
+  main{
+    margin-top: 4.5em;
+  }
+
+  .menu-icon{
+    padding-top: 11px;
+  }
+
+}
+
+@media (min-width: 992px) and (max-width: 1400px)  {
+  
+  main{
+    margin-top: 5.8em;
+  }
+}
+@media (min-width: 1401px) {
+  
+  main{
+    margin-top: 5.8em;
+  }
+}

@@ -1,0 +1,57 @@
+<div class="page-layout simple left-sidebar inner-sidebar inner-scroll">
+  <div class="content">
+    <div class="center p-24 pb-56">
+      <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+        <div class="app-panel-header">
+          <div class="app-panel-title">Submit a ticket</div>
+          <a routerLink="/user-dashboard/complaint" mat-raised-button class="reference-button mat-white-bg mt-sm-0">
+            <mat-icon style="margin-right: 3px;">keyboard_arrow_left</mat-icon>
+            <span>Go back</span>
+          </a>
+        </div>
+        <div class="app-panel-body">
+          <form name="complainForm" [formGroup]="complainForm" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;">
+
+            <mat-form-field>
+              <mat-select placeholder="Select category" formControlName="category_id" required>
+                <mat-option *ngFor="let category of complainCategories" [value]="category.id">
+                  {{category.complaint}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="complainForm.get('category_id').hasError('required')">Category is
+                required
+              </mat-error>
+            </mat-form-field>
+
+         
+
+            <mat-form-field>
+              <mat-label>Subject</mat-label>
+              <input matInput placeholder="Enter subject" formControlName="subject">
+              <mat-error *ngIf="complainForm.get('subject').hasError('required')">
+                Subject is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Description</mat-label>
+              <textarea matInput placeholder="Enter description" rows="10" formControlName="description"></textarea>
+              <mat-error *ngIf="complainForm.get('description').hasError('required')">
+                Description is required
+              </mat-error>
+            </mat-form-field>
+            <div class="file">
+              <input (change)="loadFile($event)" type="file" placeholder="Select file" #clearValue> <br>
+          </div>
+           
+
+            <div style="width: 100%; position: relative; min-height: 50px;">
+              <mat-spinner-button [options]="btnOpts" style="margin-left: 0; position: absolute; right: 0;"></mat-spinner-button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

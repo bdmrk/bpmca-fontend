@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Add Certificate</h2>
+
+<form name="certificateForm" [formGroup]="certificateForm" novalidate (ngSubmit)="onSubmit()"
+  style="margin: 0 auto;">
+
+<mat-form-field>
+  <mat-label>Certificate</mat-label>
+  <mat-select formControlName="certificates_id">
+      <mat-option *ngFor="let data of certificate" [value]="data.id">
+        {{data.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="certificateForm.get('certificates_id').hasError('required')">
+        Name is required.
+    </mat-error>
+</mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Starting date" formControlName="start_date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput [matDatepicker]="pickerTo" placeholder="Starting date" formControlName="end_date">
+      <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+      <mat-datepicker #pickerTo></mat-datepicker>
+    </mat-form-field>
+
+      <input type="file" (change)="loadImage($event)" placeholder="file" formControlName="file" #clearImage>
+
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close class="btnDanger">Cancel</button>
+  <button mat-raised-button type="submit">Submit</button>
+</mat-dialog-actions>
+
+</form>

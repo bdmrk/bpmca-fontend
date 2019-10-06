@@ -1,0 +1,86 @@
+;
+
+.topHeader{
+
+  .tutorDetail{
+    table{
+      
+      overflow-y: scroll!important;
+    }
+  }
+
+  .title{
+    font-size: 2em;
+    font-weight: 500;
+    margin: 0;
+  }
+  .description{
+    font-size: 1em;
+    margin: 0;
+  }
+}
+.tutorDetailsContainer{
+  padding: 2% 12%;
+}
+
+.imageCard{
+  padding: 0;
+  text-align: center;
+  background: #f6f6f6;
+
+  .profileImage{
+    text-align: center;
+
+  
+    img{
+      height: 200px;
+      width: 100%;
+      border-radius: 6px;
+      object-fit: cover;
+    }
+  }
+  .name{
+    margin: 0;
+    padding: 1em;
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+
+}
+
+.tutorDetail{
+  .mat-card{
+    padding: 20px!important;
+    border-radius: 6px;
+    margin-bottom: 1em;
+    background: #f6f6f6;
+  }
+  .sectionTitle{
+    font-size: 1.5em;
+    font-weight: 500;
+  }
+}
+
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #eeeeee;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: #eeeeee;
+}
+
+.noData{
+  text-align: center;
+  font-size: 1.5em;
+  padding: 1em;
+  text-transform: capitalize;
+}

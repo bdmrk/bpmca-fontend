@@ -1,0 +1,37 @@
+<h2 mat-dialog-title>Add Language</h2>
+<mat-dialog-content>
+    <div class="page-layout simple">
+        <div class="content">
+            <div class="center">
+                <div class="app-panel-body">
+                    <form language_id="languageForm" [formGroup]="languageForm" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;">
+
+                        <mat-form-field>
+                            <mat-select placeholder="Select language" formControlName="language_id" required>
+                                <mat-option *ngFor="let language of languages" [value]="language.id">
+                                    {{language.name}}
+                                </mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="languageForm.get('language_id').hasError('required')">Language is required.</mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-select placeholder="Select proficiency" formControlName="proficiency" required>
+                                <mat-option value="High">High</mat-option>
+                                <mat-option value="Medium">Medium</mat-option>
+                                <mat-option value="Low">Low</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="languageForm.get('proficiency').hasError('required')">Proficency is required.</mat-error>
+                        </mat-form-field>
+
+                        <div style="width: 100%; position: relative; min-height: 50px; margin-top: 10px;">
+                            <button mat-button mat-raised-button color="warn" mat-dialog-close (click)="close()" style="float: left;">Cancel</button>
+                            <mat-spinner-button [options]="btnOpts" style="margin-left: 0; position: absolute; right: 0; float: right;"></mat-spinner-button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

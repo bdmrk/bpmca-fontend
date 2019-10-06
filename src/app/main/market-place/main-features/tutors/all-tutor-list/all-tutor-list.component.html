@@ -1,0 +1,21 @@
+<div class="topHeader">
+    <h1 class="title">Executive Directors</h1>
+</div>
+
+<div class="customContainer">
+
+    <div *ngIf="dataList">
+        <section *ngFor="let data of dataList">
+            <app-tutor-list
+                [title]="data.name"
+                [dataSource]="data.tutors"
+                [limit]="12"
+                [range]="11"
+                [showFilter]="false"
+                *ngIf="data && data.tutors && data.tutors.length > 0">
+            </app-tutor-list>
+        </section>
+    </div>
+
+</div>
+

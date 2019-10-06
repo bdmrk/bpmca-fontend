@@ -1,0 +1,37 @@
+<div style="width: 100%; display: block">
+    <div class="row mp-0">
+        <div class="col-md-6 qa_blog_area">
+            <div class="qa_blog">
+                <h2 class="mp-0">ENCOURAGE ASKING  “ - REPLY ”</h2>
+                <p class="p-t-20 p-b-20">
+                    Are your stuck with a problem that need immediate solution? Write down and
+                    get microtutoring help while at home or on the go. Registered experts are
+                    here to help form renowned institutions. Learn something new everyday.
+                </p>
+                <button mat-raised-button color="warn" style="height: 35px;">Join Question & Answer Blog</button>
+            </div>
+        </div>
+        <div class="col-md-6 q-bank-area">
+            <div class="q_bank_header mp-0 bg-light">
+                <h2 style="text-transform: uppercase;">LATEST ADDITION IN QUESTION BANK</h2>
+            </div>
+            <div class="q-bank_body">
+                <div *ngFor="let qBank of qBanks" class="q-bank-item p-t-10 p-l-10 p-b-10 p-r-10">
+                    <div class="q-bank-image f-left">
+                        <img style="margin-top: 5px;" src="{{ qBank.image }}" alt="{{ qBank.title}}">
+                    </div>
+                    <div class="q-bank-body mp-0">
+                        <h3>{{ qBank.title}}</h3>
+                        <p class="mp-0">Total Questions {{ qBank.question_count}}</p>
+                        <ul class="q-tag-list">
+                            <li *ngFor="let tag of qBank.tags">{{ tag.name }}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="q_bank_footer mp-0 bg-light">
+                <a href="">More</a>
+            </div>
+        </div>
+    </div>
+</div>

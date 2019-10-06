@@ -1,0 +1,118 @@
+<div class="container">
+  <div class="row" *ngIf="totalPrice > 0">
+    <div class="col-md-8 col-xs-12">
+      <mat-horizontal-stepper linear #stepper>
+        <mat-step [stepControl]="firstFormGroup" [editable]="isEditable">
+          <ng-template matStepLabel>Terms & Conditionsone</ng-template>
+          <div class="payment-section">
+            <mat-card>
+              <mat-card-header class="order-price-header">
+                <h1>Terms & Conditions</h1>
+                <!-- <h1>Payment Detail</h1> -->
+              </mat-card-header>
+              <mat-card-content class="price-card-content">
+                <p>
+                  PAYEE LIMITATION
+                  The Service reserves the right to refuse to pay any Payee to whom you may direct a payment.
+                  The
+                  Service will notify you promptly if it decides to refuse to pay a Payee designated by you.
+                  This
+                  notification is not required if you attempt to make a prohibited payment or an exception
+                  payment
+                  under this Agreement.
+                </p>
+                <p>
+                  RETURNED PAYMENTS In using the Service, you understand that Payees and/or the United States
+                  Postal
+                  Service may return payments to the Service for various reasons such as, but not limited to,
+                  Payee's
+                  forwarding address expired; Payee account number is not valid; Payee is unable to locate
+                  account;
+                  or Payee account is paid in full. The Service will use its best efforts to research and
+                  correct
+                  the
+                  returned payment and return it to your Payee, or void the payment and credit your Payment
+                  Account.
+                  You may receive notification from the Service.
+                </p>
+                <section class="example-section">
+                  <mat-checkbox (click)="agreeTermConditoin(disabled = ! disabled)">
+                    I agree to the terms and conditions.
+                  </mat-checkbox>
+                </section>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <div *ngIf="transactionResponseData">
+            <div class="row failed-transaction" *ngIf="transactionResponseData.status == 'FAILED'">
+              <h3>Your payment has been failed for the transaction ID: {{transactionId}}</h3>
+            </div>
+            <div class="row success-transaction" *ngIf="transactionResponseData.status == 'VALID'">
+              <h2>Thank you for your order</h2>
+              <h2>Transaction ID: {{transactionId}}</h2>
+            </div>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </div>
+    <div class="col-md-4 col-xs-12">
+      <mat-card class="order-price-summary">
+        <mat-card-header class="order-price-header">
+          <h1>Order Detail</h1>
+        </mat-card-header>
+        <mat-card-content class="price-card-content">
+          <h1 class="mainColor">৳ {{totalPrice | number: '1.2-2'}} </h1>
+          <div class="row">
+            <div class="col-xs-12">
+              <mat-card-actions *ngIf="!transactionId" class="checkout-proceed-action">
+                <!-- <button mat-button class="checkout-proceed-button" (click)="placeOrder()">Place Order</button> -->
+                <mat-spinner-button class="checkoutBtn" [options]="btnOpts" (click)="placeOrder()"></mat-spinner-button>
+              </mat-card-actions>
+            </div>
+          </div>
+          <mat-card-actions *ngIf="!transactionId" class="checkout-proceed-action">
+            <div class="row">
+              <div class="col-xs-6">
+                <button routerLink="/" mat-button class="keepPurchaseBtn"> Keep Purchase <i
+                    class="material-icons">keyboard_return</i> </button>
+              </div>
+              <div class="col-xs-6">
+                <button (click)="cancelOrder()" mat-button class="cancelBtn"> Cancel Order <i
+                    class="material-icons">cancel</i> </button>
+              </div>
+            </div>
+          </mat-card-actions>
+
+        </mat-card-content>
+
+
+      </mat-card>
+    </div>
+  </div>
+  <div class="row" *ngIf="totalPrice == 0">
+    <div class="col-md-12 col-xs-12">
+
+      <mat-card class="order-price-summary">
+        <mat-card-header class="order-price-header">
+          <h1>Order Detail</h1>
+        </mat-card-header>
+        <mat-card-content class="price-card-content">
+          <h1 class="mainColor">Your cart is empty</h1>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="totalPrice > 0">
+
+    <section class="section bg-white m-t-m4">
+      <app-course-list [title]="'Related Courses'" [dataSource]="courseList" [limit]="4" [range]="3"
+        [showFilter]="false" [redirect]="'/courses'" *ngIf="courseList && courseList.length > 0">
+      </app-course-list>
+    </section>
+
+  </div>
+</div>

@@ -1,0 +1,35 @@
+.mainPanel{
+    display: flex;
+}
+.sidebar{
+    background: #f5f5f5;
+    height: 100%;
+}
+ul{
+    width: 18em;
+    height: 100vh;
+    list-style: none;
+    padding-left: 0;
+
+    li{
+        padding: 1em 1.5em;
+        font-size: large;
+        border-bottom: 1px solid #cacaca;
+        cursor: pointer;
+
+        mat-icon{
+            vertical-align: bottom;
+        }
+    }
+}
+.content{
+    width: 100%;
+    padding: 0em 2em;
+}
+@media (max-width:786px)  { 
+    .content{
+        width: 100%;
+        padding: 0em 0.5em;
+    }
+
+}

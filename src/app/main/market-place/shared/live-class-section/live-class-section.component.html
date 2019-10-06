@@ -1,0 +1,80 @@
+<div class="customContainer">
+    <div class="row mp0 m-t-10 m-b-10 products">
+        <div *ngFor="let course of courseList" class="col-xs-12 col-sm-6 col-md-3">
+            <mat-card class="single-product mp-0 m-b-30">
+                <a routerLink="/live-class/{{ course.id }}">
+                    <div *ngIf="!course.image" class="product-image" [style.background]="'url(assets/img/live-class-demo.png)'"></div>
+                    <div *ngIf="course.image" class="product-image" [style.background]="'url('+ AWS_URL + course.image +')'"></div>
+                </a>
+                
+                <div class="product-details">
+                    <a routerLink="/live-class/{{ course.id }}">
+                        <h2 class="product-title mp-0">{{ course.title.substring(0, 30) }}</h2>
+                    </a>
+                    <div class="rating-meta">
+                        <span class="rating-star">
+                            <star-rating [starType]="'icon'" [rating]="0"></star-rating>
+                        </span>
+                        
+                    </div>
+                    <div class="row product-action">
+                        <div class="col-md-6 mp-0">
+                            <span class="">
+                              From:  {{course.start_date ? course.start_date : '-'}}
+                            </span>
+                        </div>
+                        <div class="col-md-6 mp-0">
+                            <span class="">
+                                  {{course.start_time ? course.start_time : '-'}}
+                              </span>
+                        </div>
+                    </div>
+                    <div class="product-action">
+                        <div class="mp-0">
+                            <span class="price" *ngIf="course.discount == 0">
+                                {{course.type == 'free' ? 'Free' : '৳' + ( course.price | number : '1.2-2' )}}
+                            </span>
+                            <span *ngIf="course.discount > 0" class="discount-price price">
+                                ৳{{course.price | number : '1.2-2'}} 
+                            </span>
+                            <span *ngIf="course.discount > 0" class="price">
+                                &nbsp;&nbsp;{{' ' + '৳' + (course.discount | number : '1.2-2')}}
+                            </span>
+
+                        </div>
+                        <div class="mp-0">
+                            <button mat-button class="customBtn" *ngIf="course.price == 0"
+                                routerLink="/live-class/{{ course.id }}">
+                                <mat-icon aria-label="Example icon-button with a heart icon">play_arrow</mat-icon> Play Now
+                            </button>
+                            <button mat-button class="customBtn" *ngIf="course.price != 0"
+                                (click)="bookingLiveClass(course.id)">
+                                Book Now                           
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row mp0 products" style="margin-top: -30px;">
+        <div class="col-md-12 mp-0" style="text-align: center;">
+            <div style="text-align: center;">
+                <button (click)="loadLess(count - limit)" class="m-r-15" matTooltip="View Less" mat-icon-button
+                        color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">remove</mat-icon>
+                </button>
+                <button (click)="loadMore(count + limit)" class="m-r-15" matTooltip="View More" mat-icon-button
+                        color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
+                </button>
+                <button matTooltip="View All" mat-icon-button color="warn"
+                        style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon aria-label="Example icon-button with a heart icon">view_list</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

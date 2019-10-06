@@ -1,0 +1,55 @@
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 100px;"> No.</th>
+    <!-- <td mat-cell *matCellDef="let row"> {{row.position}}</td> -->
+    <td mat-cell *matCellDef=" let i = index;"> {{i+1}} </td>
+  </ng-container>
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
+    <td mat-cell *matCellDef="let row"> {{row.title ? row.title : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="frequency">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Frequency</th>
+    <td mat-cell *matCellDef="let row"> {{row.frequency ? row.frequency : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="week_days">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Days</th>
+    <td mat-cell *matCellDef="let row"> {{row.week_days ? row.week_days : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="start">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start</th>
+    <td mat-cell *matCellDef="let row">{{row.start_time ? row.start_time : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="end">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> End Time</th>
+    <td mat-cell *matCellDef="let row">{{row.end_time ?
+      row.end_time : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="startDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Start Date</th>
+    <td mat-cell *matCellDef="let row"> {{row.start_date ? row.start_date : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="endDate">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> End Date</th>
+    <td mat-cell *matCellDef="let row"> {{row.end_date ? row.end_date : '-'}}</td>
+  </ng-container>
+  <ng-container matColumnDef="price">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Price</th>
+    <td mat-cell *matCellDef="let row"> {{row.price ? row.price : '-'}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Book</th>
+    <td mat-cell *matCellDef="let row">
+      <!-- <button mat-menu-item (click)="slotBooking(row.id)">
+        <mat-icon>book</mat-icon>
+      </button> -->
+      <button mat-button   (click)="slotBooking(row.id)">Book
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+  </tr>
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>

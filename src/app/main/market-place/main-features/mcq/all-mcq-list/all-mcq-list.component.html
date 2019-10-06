@@ -1,0 +1,32 @@
+
+    <div class="topHeader fixedOnTop">
+        <h1 class="title">All Set Questions</h1>
+    </div>
+    <div class="customContainer topheaderMargin">
+      
+      <ng-container *ngFor="let set of set_questions">
+          <div class="row mp0"> 
+              <div class="col-md-12 headerCourseList">
+                  <h2 class="mainTitle">{{set?.name}}</h2>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-md-3" *ngFor="let item of set.set_mcq_question">
+                  <mat-card class="mcqList m-b-20" (click)="mcqDetails(item)">
+                     <p class="setName">{{item?.name}}</p>
+                     <p class="category"> <span>{{item?.subject?.name}}</span> | <span>{{item?.class?.name}}</span></p>
+                     <div class="flexRow">
+                         <div class="flexCol">
+                             <p class="questionCount">Total Q : {{item?.mcq_ids?.split(",")?.length}}
+                            </p>
+                         </div>
+                         <div class="flexCol">
+                             <p class="setType">Free</p>
+                         </div>
+                     </div>
+                  </mat-card>
+              </div>
+          </div>
+      </ng-container>
+
+    </div>

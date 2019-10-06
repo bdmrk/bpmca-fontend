@@ -1,0 +1,68 @@
+@import "src/css/variables.scss";
+@import "src/css/filter.scss";
+
+$mainColor:#6dc067;
+
+.headerCourseList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .mainTitle{
+    text-transform: uppercase;
+    font-size: 1.9em;
+    font-weight: 400;
+    border-left: 9px solid $mainColor;
+    padding-left: 1em;
+  }
+
+.boardQuestionList{
+    border-radius: 6px;
+    padding: 40px;
+    text-align: center;
+    transition: all 0.5s ease-in-out 0s;
+    -moz-transition: all 0.5s  ease-in-out 0s;
+    -webkit-transition: all 0.5s  ease-in-out 0s;
+    -o-transition: all 0.5s  ease-in-out 0s;
+    
+
+    .boardName{
+        font-size: x-large!important;
+    }
+    p{
+        margin: 6px 0 0 0;
+        font-weight: bold;
+    }
+    .year{
+        font-size: 4em;
+        margin: 0.2em;
+    }
+    .setName{
+        min-height: 5em;
+        font-size: large;
+    }
+    .category{
+        font-weight: bold;
+        font-size: small;
+        margin: 1em 0;
+    }
+    .flexRow{
+        display: flex;
+        justify-content: space-between;
+
+        .questionCount{
+            font-size: small;
+            font-weight: bold;
+        }
+        .setType{
+            font-weight: bold;
+            font-size: 1.5em;
+        }
+    }
+}
+.boardQuestionList:hover{
+    cursor: pointer;
+    color: white;
+    background: $mainColor;
+}

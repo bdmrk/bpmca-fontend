@@ -1,0 +1,86 @@
+
+
+:host {
+
+  .content {
+
+    form {
+      width: 100%;
+      max-width: 800px !important;
+    }
+
+    .form-errors-model {
+      flex: 1;
+
+      code {
+        background: none !important;
+      }
+    }
+
+    .horizontal-stepper-wrapper,
+    .vertical-stepper-wrapper {
+      max-width: 800px;
+    }
+  }
+
+}
+
+.ps__rail-x {
+  display: none !important;
+}
+
+.app-panel-wrapper {
+
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.24), 0 0 2px rgba(0, 0, 0, 0.12);
+  margin: 4px;
+  h3 {
+    margin-top: 10px;
+  }
+}
+
+.app-panel-header {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  padding: 8px 20px;
+
+  flex: 1 1 auto;
+
+  .app-panel-title {
+    flex: 1 1 auto;
+    font-size: 18px;
+    color: #363b45;
+  }
+
+  .icon-holder {
+    width: 112px;
+    height: 120px;
+
+    .icon-name {
+      font-size: 12px;
+      word-wrap: break-word;
+      width: 100px;
+      text-align: center;
+    }
+  }
+}
+
+.app-panel-body {
+  padding: 24px;
+  width: 100%;
+  height: auto;
+
+  table {
+    width: 100%;
+  }
+
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  td, th {
+    width: 25%;
+  }
+}

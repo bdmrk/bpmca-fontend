@@ -1,0 +1,107 @@
+<div class="page-layout simple left-sidebar inner-sidebar">
+  <div class="content">
+      <div class="center p-24 pb-56 col-12">
+          <div class="app-panel-wrapper mat-white-bg mat-elevation-z2">
+              <div class="app-panel-header">
+                  <div class="app-panel-title">Complain</div>
+                   <a routerLink="/user-dashboard/complaint" mat-raised-button class="reference-button mat-white-bg mt-16 mt-sm-0">
+                      <mat-icon style="margin-right: 3px;">keyboard_arrow_left</mat-icon>
+                      <span>Go back</span>
+                  </a>
+              </div>
+              <div class="app-panel-body">
+                <div class="row">
+                  <div class="col-md-12">
+                      <div class="col-md-6">
+                          <h3 style="display: inline;">Subject: </h3>  <p style="display: inline;">{{ complain_data?.subject}}</p>
+                      </div>
+                      <div class="col-md-6 statusContainer">
+                          
+                          <h3 >status: </h3> 
+                          <div class="statusDiv">
+                            <mat-chip-list>
+                                <mat-chip *ngIf="complain_data?.status == 'open' || complain_data?.status == 'reviewing'"
+                                        class="successChip">
+                                        {{complain_data?.status}}
+                                    </mat-chip>
+                                    <mat-chip *ngIf="complain_data?.status == 'closed' "
+                                        class="dangerChip">
+                                        {{complain_data?.status}}
+                                    </mat-chip>
+                            </mat-chip-list>
+                        </div>
+                      </div>
+                     
+                      <div class="col-md-12">
+                          <h3>Description: </h3><p>{{complain_data?.description}}</p>
+                      </div>
+                      <div class="col-md-4 " *ngIf="complain_data?.status != 'closed' && forwardable ">
+                            <div class="multiselect">                                
+                                  <ng-multiselect-dropdown
+                                      [placeholder]="'Forward to'"
+                                      [data]="dropdownList"
+                                      [(ngModel)]="selectedItems"
+                                      [settings]="dropdownSettings"
+                                      (onSelect)="onItemSelect($event)"
+                                      (onSelectAll)="onSelectAll($event)"
+                                  >
+                                  </ng-multiselect-dropdown>
+                          </div>
+                          <!-- <button mat-button (click)="forwardIssue()">Forward && forwardable=='true'</button> -->
+                        </div>
+                  </div>
+                </div>
+                <div class="all-notification">
+                    <div class="container">
+                      <div class="row mt-5">
+                          <div class="col-lg-12">
+                              <ul class="notification-list">
+                                  <li *ngFor="let comment of complain_data?.comments">
+                                        <div class="notification-left-all">
+                                            <img class="notification_image" [src]="empty_profile_image" alt="congratulation-01-copy" border="0" />
+                                        </div>  
+                                        <div class="notification-right-all">
+                                            {{comment.comments}}<br> 
+                                          <p class="notification-time">{{ getTimeDiff(comment.created_at,comment.updated_at) }} ago</p>
+                                        </div>
+                                  </li>
+                              </ul>
+                            </div>   
+                        </div>
+                      </div>
+                </div> 
+                 <div class="row" *ngIf="status=='active'">
+                        <div class="app-panel-wrapper col-md-12 mat-white-bg mat-elevation-z2">
+                            <div class="app-panel-body">
+                                <form name="commentForm" [formGroup]="commentForm" novalidate (ngSubmit)="onSubmit()" style="margin: 0 auto;">
+                                
+                                    <mat-form-field>
+                                        <mat-label>Comment</mat-label>
+                                        <textarea matInput placeholder="Enter comment" rows="10" formControlName="comment"></textarea>
+                                        <mat-error *ngIf="commentForm.get('comment').hasError('required')">
+                                          Comment is required
+                                        </mat-error>
+                                    </mat-form-field>
+                                     <div class="row">
+                                       <div class="col-xs-6">
+                                        <div class="file">
+                                            <input (change)="loadFile($event)" type="file" placeholder="Select file" #clearValue> <br>
+                                        </div>
+                                       </div>
+                                       <div class="col-xs-6">
+                                        <div class="btnPanel">
+                                            <mat-spinner-button [options]="btnOpts" class="btnTheme mx-1"></mat-spinner-button>
+                                            <button mat-button class="btnDanger" type="button" (click)="closeIssue()" >Close</button>
+                                        </div>
+                                       </div>
+                                     </div>
+                                </form>
+                            </div> 
+                        </div>
+                </div>
+              </div>
+            </div>
+        </div> 
+    </div>
+</div>
+  

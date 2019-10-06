@@ -1,0 +1,57 @@
+<div class="courseDescription">
+  <div class="row">
+      <div class="col-xs-12">
+          <div class="card" *ngIf="data && data.sections.length>0">
+              <p class="sectionTitle mp-0">Course Contents</p>
+              
+              <div class="courseContent"  [class.overFlowScroll]="data && data.sections.length>4">
+                  <mat-accordion>
+                      <mat-expansion-panel hideToggle="true" #courseContent class="courseContentExpPnael" *ngFor="let section of data.sections">
+                          <mat-expansion-panel-header>
+                              <mat-icon *ngIf="!courseContent.expanded">add</mat-icon>
+                              <mat-icon *ngIf="courseContent.expanded">remove</mat-icon>
+                              <mat-panel-title>
+                                  {{ section.title }}
+                              </mat-panel-title>
+                              
+                          </mat-expansion-panel-header>
+                          <ul class="lectures">
+                              <li *ngFor="let lecture of section.lectures">
+                                  <mat-icon class="mr-5">info</mat-icon>
+                                  {{ lecture.title }}
+                              </li>
+                          </ul>
+                          
+                      </mat-expansion-panel>
+                  </mat-accordion>
+              </div>
+          </div>
+          <div class="card">
+              <p class="sectionTitle mp-0">Description</p>
+              <hr class="lineGray" />
+              <p class="courseDetailsfont" [innerHTML]='data ? data.description : ""'></p>
+          </div>
+          <div class="card">
+              <p class="sectionTitle mp-0">Specification</p>
+              <hr class="lineGray" />
+              <p class="courseDetailsfont" [innerHTML]='data ? data.specification : ""'></p>
+          </div>
+          <div class="card">
+              <p class="sectionTitle mp-0">Who Can Take?</p>
+              <hr class="lineGray" />
+              <p class="courseDetailsfont" [innerHTML]='data ? data.who_can_take : ""'></p>
+          </div>
+          <div class="card">
+              <p class="sectionTitle mp-0">Achivements</p>
+              <hr class="lineGray" />
+              <p class="courseDetailsfont" class="courseDetailsfont" [innerHTML]='data ? data.achievement : ""'></p>
+          </div>
+          <div class="card">
+              <p class="sectionTitle mp-0">Requirements</p>
+              <hr class="lineGray" />
+              <p class="courseDetailsfont" [innerHTML]='data ? data.requirements : ""'></p>
+          </div>
+
+      </div>
+  </div>
+</div>
