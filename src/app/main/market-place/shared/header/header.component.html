@@ -51,7 +51,7 @@
                 </mat-menu>
             </li>
 
-            <li>
+            <!-- <li>
                 <a mat-icon-button class="searchIconPadding">
                     <mat-icon (click)="expand(2)">search</mat-icon>
                 </a>
@@ -68,9 +68,9 @@
                     <button mat-button class="btnTheme mobileSearchBtn" (click)="searchCourse()"> Search </button>
 
                 </div>
-            </li>
+            </li> -->
 
-            <li>
+            <!-- <li>
                 <div class="searchsuggestion">
                     <div *ngIf="!collapsed">
                         <mat-list role="list">
@@ -81,7 +81,7 @@
                         </mat-list>
                     </div>
                 </div>
-            </li>
+            </li> -->
         </ul>
     </div>
 
@@ -314,9 +314,9 @@
         </li> -->
 
      
-        <li class="header-button">
+        <!-- <li class="header-button">
             <a mat-icon-button routerLink="/user-dashboard/complaint"><img class="icon-help" src="/assets/images/icon-help.png"></a>
-        </li>
+        </li> -->
 
         <li *ngIf="!isLoggedin" class="header-icon mp-0">
             <a routerLink="/login" class="mp-0 m-10" matTooltip="Login / Sign Up" mat-icon-button color="warn">
@@ -324,7 +324,7 @@
             </a>
         </li>
 
-        <li class="header-icon">
+        <!-- <li class="header-icon">
             <a mat-icon-button class="mp-0" matTooltip="Search Here">
                 <mat-icon class="icon-search" (click)="expand(1)">search</mat-icon>
             </a>
@@ -340,7 +340,7 @@
                     </mat-list-item>
                 </mat-list>
             </div>
-        </div>
+        </div> -->
         <li *ngIf="isLoggedin" class="header-icon mp-0">
             <button mat-button [matMenuTriggerFor]="userMenu" class="user-button">
                 <div class="headerAvatar">

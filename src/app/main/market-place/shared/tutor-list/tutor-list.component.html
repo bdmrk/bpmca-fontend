@@ -5,9 +5,7 @@
     </div>
 </div>
 <div class="row products" *ngIf="tutorList">
-    {{
-        tutorList | json
-    }}
+    
     <div *ngFor="let tutor of tutorList" class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
         <mat-card *ngIf="tutor" class="single-product m-b-30">
             <a routerLink="/tutor/{{ tutor.user_id }}">
