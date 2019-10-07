@@ -45,6 +45,7 @@ import { CheckoutComponent } from './checkout/checkout/checkout.component';
 import { CourseAreaComponent } from './home-page/course-area/course-area.component';
 import { AuthGuard } from '../../guard/auth.guard';
 import { CountdownModule } from 'ngx-countdown';
+import { MatCarouselModule } from '@ngmodule/material-carousel';
 
 
 // Routes
@@ -224,7 +225,8 @@ const routes = [
         MatModuleModule,
         StarRatingModule,
         SharedModule,
-        CountdownModule
+        CountdownModule,
+        MatCarouselModule
     ],
     declarations: [
         HomePageComponent,

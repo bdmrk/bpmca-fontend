@@ -8,6 +8,9 @@
 @import "src/css/filter.scss";
 
 
+.carousel{
+  min-height:30em;
+}
 // p{
 //   margin-top:0;
 // }
@@ -498,6 +501,11 @@ button.mat-accent {
 }
 /*END MSG FOR NO DATA */
 
+
+//media query
+
+
+
 // -----------------------------------------------------------------------------------------------------
 // @ Multiple material themes example
 // -----------------------------------------------------------------------------------------------------
@@ -986,3 +994,39 @@ button.mat-accent {
 .f-right {
   float: right;
 }
+
+
+
+
+@media only screen and (min-width: 1367px) and (max-width: 1400px) { 
+
+    .carousel{
+  min-height:30em;
+}
+}
+
+
+
+/* -----------iPad Pro ----------- */
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .carousel{
+  min-height:30em;
+  }
+}
+
+/* ----------- Tablet Layout ----------- */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .carousel{
+  min-height:15em;
+  }
+}
+
+/* Mobile Layout */
+@media only screen and (max-width: 767px) { 
+  .carousel{
+  min-height:15em;
+  }
+   
+}
+  
