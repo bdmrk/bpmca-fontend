@@ -1,19 +1,6 @@
-<!-- <div class="main">
 
-  <header id="navigation_area" class="section mp-0 bg-white">
-      <app-header></app-header>
-  </header>
-
-  <main>
-    <router-outlet></router-outlet>
-  </main>
-  <app-footer></app-footer>
-
-</div> -->
-
-
+<!-- Mobile Sidebar -->
 <div class="main">
-
     <mat-sidenav-container class="example-container">
       <mat-sidenav #drawer mode="over" role="navigation"> 
         <div class="logo">
@@ -40,34 +27,7 @@
                       </li>
                   </ul>
                 </mat-expansion-panel>
-                <!-- <mat-expansion-panel class="mobileSidebar"> 
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                       Contents
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ul>
-                        <li (click)="drawer.close()" routerLink="/contents/{{ category.id }}" *ngFor="let category of categories" class="listItem">
-                            <a>
-                                {{ category.name }}
-                            </a>
-                        </li>
-                    </ul>
-                </mat-expansion-panel>
-                <mat-expansion-panel class="mobileSidebar">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                        Tutors
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ul>
-                        <li (click)="drawer.close()" routerLink="/tutors/{{ category.id }}" *ngFor="let category of categories" class="listItem">
-                            <a>
-                                {{ category.name }}
-                            </a>
-                        </li>
-                    </ul>
-                </mat-expansion-panel> -->
+             
                 <mat-expansion-panel class="mobileSidebar">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
