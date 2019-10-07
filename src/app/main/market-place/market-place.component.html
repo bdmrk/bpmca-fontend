@@ -10,70 +10,35 @@
         </div>
         <mat-nav-list>
             <mat-accordion>
-                <mat-expansion-panel [expanded]="false" class="mobileSidebar">
-                  <mat-expansion-panel-header>
-                    <mat-panel-title>
-                      <div class="mainmenu">
-                        <mat-icon>view_module</mat-icon> &nbsp;
-                        <span>Courses</span>
-                      </div>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <ul>
-                      <li (click)="drawer.close()" routerLink="/courses/{{ category.id }}" *ngFor="let category of categories" class="listItem">
-                          <a>
-                              {{ category.name }}
-                          </a>
-                      </li>
-                  </ul>
-                </mat-expansion-panel>
-             
-                <mat-expansion-panel class="mobileSidebar">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                          <div class="mainmenu">
-                            <mat-icon>view_module</mat-icon> &nbsp;
-                            <span>MCQ</span>
-                          </div>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ul>
-                        <li class="listItem" (click)="drawer.close()" routerLink="/mcq"> All </li>
-                        <li routerLink="/mcq/{{ category.id }}" *ngFor="let category of categories" class="listItem">
-                            <a>{{ category.name }}</a>
-                        </li>
-                    </ul>
-                </mat-expansion-panel> 
-                <mat-expansion-panel class="mobileSidebar">
-                    <mat-expansion-panel-header>
-                      <mat-panel-title>
-                          <div class="mainmenu">
-                            <mat-icon>view_module</mat-icon> &nbsp;
-                            <span>Board Questions</span>
-                          </div>
-                      </mat-panel-title>
-                    </mat-expansion-panel-header>
-                    <ul>
-                        <li class="listItem" (click)="drawer.close()" routerLink="/bq"> All </li>
-                        <li routerLink="/bq/{{ category.id }}" *ngFor="let category of categories" class="listItem">
-                            <a>{{ category.name }}</a>
-                        </li>
-                    </ul>
-                </mat-expansion-panel> 
-
-
-                <ul *ngIf="showUserDashboardMenu" class="dashboardMenu">
-                    <li (click)="drawer.close()" routerLink="/user-dashboard/parents-panel">
-                        <mat-icon>wc</mat-icon> &nbsp;
-                        Childrens
+                
+                <ul  class="dashboardMenu">
+                   <li (click)="drawer.close()" routerLink="/">
+                      <mat-icon>home</mat-icon> &nbsp;
+                        Home
                     </li>
-                    <li (click)="drawer.close()" routerLink="/user-dashboard/mcq-practice">
-                        <mat-icon>view_list</mat-icon> &nbsp;
-                        Practice MCQ
+                    <li (click)="drawer.close()" routerLink="/about-us">
+                      <mat-icon>add_circle</mat-icon> &nbsp;
+                        About
                     </li>
-                    <li (click)="drawer.close()" routerLink="/user-dashboard/mcq-test">
-                        <mat-icon>ballot</mat-icon> &nbsp;
-                        Test MCQ
+                    <li (click)="drawer.close()" routerLink="/tutors">
+                      <mat-icon>group</mat-icon> &nbsp;
+                        Directors
+                    </li>
+                    <li (click)="drawer.close()" routerLink="/about-us">
+                      <mat-icon>home</mat-icon> &nbsp;
+                        Our Activities
+                    </li>
+                     <li (click)="drawer.close()" routerLink="/about-us">
+                      <mat-icon>event</mat-icon> &nbsp;
+                        Events
+                    </li>
+                    <li (click)="drawer.close()" routerLink="/about-us">
+                      <mat-icon>notifications</mat-icon> &nbsp;
+                        Notices
+                    </li>
+                    <li (click)="drawer.close()" routerLink="/about-us">
+                      <mat-icon>call</mat-icon> &nbsp;
+                        Contact Us
                     </li>
                 </ul>
               </mat-accordion>
