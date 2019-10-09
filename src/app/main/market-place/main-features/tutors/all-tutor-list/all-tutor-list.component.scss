@@ -1,59 +1,114 @@
-;
+@import "../../../../../../../node_modules/bootstrap-sass-grid/sass/bootstrap-sass-grid";
 
-.main {
-  width: 100% !important;
-  background: #ffffff;
+
+$mainColor:#6DBFFF;
+
+.topHeader {
+  background: linear-gradient(#6DBFFF, #9198e5);
 }
 
-.section {
-  padding: 10px 0;
-  margin: 0 !important;
+
+
+.tutorDetails{
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
+.mainTitle{
+  text-transform: uppercase;
+  font-size: 1.9em;
+  font-weight: 400;
+  border-left: 9px solid $mainColor;
+  padding-left: 1em;
+}
+.course-filter button {
+  margin-right: 10px; 
+  height: 35px;
+}
+
+.single-product {
+  width: 100%;
+  background: #FFFFFF;
+}
+.mat-card{
+  border-radius: 6px;
+  padding: 0;
+  min-height: 25em;
+}
+
+.btnProfile{
+  background: $mainColor;
+  height: 2.5em;
+  color: #FFFFFF;
+  padding: 0px 1em;
+}
+
+.product-image {
   width: 100% !important;
+  height: 200px !important;
+  position: relative !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: cover !important;
+  margin: 0px !important;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.product-details {
+  width: 100%;
+  padding:1.5em;
+}
+
+.product-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0;
+  padding: 0.5em 0;
+}
+
+.product-meta {
+  font-size: 14px;
+  color: #8a8c91;
   display: inline-block;
 }
 
-.divider-hr {
-  border: 1px solid #C9CCD3;
+.rating-meta {
+  display: inline-block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 0.5em;
 }
 
-.m-t-m6 {
-  margin-top: -6px !important;
+.rating-meta .rating-star {
+  float: left;
+  margin-right: 5px;
 }
 
-.course-banner {
-  background-image: url("/assets/img/course/banner.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 150px;
-  margin-top: -16px;
-  position: relative;
+.rating-meta .rating-value {
+  float: left;
 }
 
-.course-banner h2 {
+
+.bottom{
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #fff;
-  padding: 0 20px;
-  margin: 0;
+  bottom: 1.25em;
 }
 
-/* Tablet Layout */
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-
+.courseList {
+  span{
+    color: #75787b;
+      padding-right: 0.5em;
+      font-weight: bold;
+  }
 }
 
-/* Mobile Layout */
 
-@media only screen and (max-width: 767px) {
-
+a {
+  color: #313334;
+  text-decoration: none;
 }
 
-/* Wide Mobile Layout */
-
-@media only screen and (min-width: 480px) and (max-width: 767px) {
-
+a:hover {
+  text-decoration: none;
 }
-

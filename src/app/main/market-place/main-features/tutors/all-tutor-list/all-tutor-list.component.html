@@ -1,21 +1,66 @@
+
+
 <div class="topHeader">
     <h1 class="title">Executive Directors</h1>
 </div>
 
+
 <div class="customContainer">
 
-    <div *ngIf="dataList">
-        <section *ngFor="let data of dataList">
-            <app-tutor-list
-                [title]="data.name"
-                [dataSource]="data.tutors"
-                [limit]="12"
-                [range]="11"
-                [showFilter]="false"
-                *ngIf="data && data.tutors && data.tutors.length > 0">
-            </app-tutor-list>
-        </section>
+    <div class="row products" *ngIf="dataList">
+        
+        <div *ngFor="let tutor of dataList" class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
+            <mat-card *ngIf="tutor" class="single-product m-b-30">
+                <a routerLink="/tutor/{{ tutor.user_id }}">
+                    <img *ngIf="tutor.user.profile_image" mat-card-image class="product-image" src="{{tutor.user.profile_image}}" alt="Photo">
+                    <div *ngIf="!tutor.user.profile_image" class="product-image" [style.background]="'url(assets/img/avatar.png)'">
+                    </div>
+                </a>
+                <div class="tutorDetails">
+                    <div class="tutorInfo">
+                        <a routerLink="/tutor/{{ tutor.user.id }}">
+                            <h2 class="product-title">{{ tutor.user.name.substring(0, 30) }}</h2>
+                        </a>
+                       <!--  <div class="rating-meta">
+                            <span class="rating-star">
+                             
+                            </span>
+                        </div> -->
+                        <div class="courseList">
+                            <span>Director </span>
+                        
+                        </div>
+                        <div class="courseList">
+                            <span>Dhaka Medical College </span>
+                        </div>
+                       <div class="bottom">
+                            <a routerLink="/tutor/{{ tutor.user_id }}" mat-button class="btnProfile"> View Profile</a>
+                       </div>
+                    </div>
+                    
+                </div>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="total > 4" class="row products m-t-30">
+        <div class="col-md-12 mp-0" style="text-align: center;">
+            <div style="text-align: center;">
+                <button *ngIf="showMinus" (click)="loadLess(range - limit)" class="m-r-15" matTooltip="View Less"
+                    mat-icon-button color="warn"
+                    style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>remove</mat-icon>
+                </button>
+                <button *ngIf="showPlus" (click)="loadMore(range + limit)" class="m-r-15" matTooltip="View More"
+                    mat-icon-button color="warn"
+                    style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <button routerLink="/tutors" matTooltip="View All" mat-icon-button color="warn"
+                    style="background: #fbfbfb; box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);">
+                    <mat-icon>view_list</mat-icon>
+                </button>
+            </div>
+        </div>
     </div>
 
 </div>
-

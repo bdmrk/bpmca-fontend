@@ -20,6 +20,7 @@ export class AllTutorListComponent implements OnInit {
         this.apiCommon.get('public/tutors').subscribe(
             (res) => {
                 this.dataList = res.data;
+                // console.log('hello')
                 console.log(this.dataList);
             }
         );

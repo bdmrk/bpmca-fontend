@@ -1,4 +1,7 @@
-;
+@import "../../../../../../node_modules/bootstrap-sass-grid/sass/bootstrap-sass-grid";
+
+
+$mainColor:#6DBFFF;
 
 .course-filter button {
   margin-right: 10px;
@@ -61,6 +64,13 @@
   font-size: 22px;
   margin-top: 5px;
   display: inline-block;
+}
+
+.btnProfile{
+  background: $mainColor;
+  height: 2.5em;
+  color: #FFFFFF;
+  padding: 0px 1em;
 }
 
 /* Tablet Layout */
